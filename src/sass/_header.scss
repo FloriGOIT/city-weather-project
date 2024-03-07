@@ -1,0 +1,41 @@
+.search-section {background-image: url("https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg");
+                 height: 500px;}
+
+.search-section .search-container { position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;}
+.search-section .search-container form {display: flex;
+                      flex-direction: row;
+                      align-items: center;}
+
+.search-section .search-container form input{width: 100%;
+                          margin-top: 36px;
+                          margin-left: auto;
+                          margin-right: auto;
+                          border: 1px solid rgb(0, 140, 255);
+                          border-radius: 25px;
+                          height: 50px;
+                          padding-left: 56px;
+                          }
+.search-section .search-container form input:placeholder-shown{padding-left: 56px;}
+.search-section .search-container form .icons{margin-top: 35px;}
+.search-section .search-container form #gps,
+.search-section .search-container form #star{position: absolute;}
+
+.search-section .search-container form #gps{left:20px;}
+.search-section .search-container form #star{right:20px;}
+
+.search-section .search-container form .saved-cities{color:  #000000;
+    margin-left: auto;
+    margin-right: auto;}
+
+.search-section .search-container .saved-cities{display: flex;
+                                                flex-direction: row;
+                                                gap: 15px;
+                                                padding-top: 20px;
+                                                padding-left: 40px;}
+.search-section .search-container .saved-cities span {display: block;
+                                                      font-variant:normal ;}
+
