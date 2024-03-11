@@ -1,15 +1,17 @@
 .weather-data-container svg {
-    width:35px;
-    height:35px;
+    width: 35px;
+    height: 35px;
 }
+
 .weather-data-container {
     background-color: #102136;
-    border-radius:35px;
-    padding-left:55px;
-    padding-right:55px;
-    padding-top:30px;
-    padding-bottom:30px;
+    border-radius: 35px;
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
+
 .svg-location-wrapper {
     display: flex;
     align-items: center;
@@ -17,73 +19,138 @@
 }
 
 .temperatures-wrapper {
-padding-top:9px;
+    padding-top: 17px;
     display: flex;
-    align-items:center;
+    align-items: center;
     flex-direction: row;
     justify-content: space-around;
 }
+
 .container {
     padding-left: 20px;
     padding-right: 20px;
 }
+
 .weather-boxshadow {
-box-shadow: 0px 5px 33px 0px #10213699;
-border-radius:35px;
+    box-shadow: 0px 5px 33px 0px #10213699;
+    border-radius: 35px;
 }
 
 .temperatures-mobile {
-    display:flex;
+    display: flex;
+    gap: 10px;
 }
 
 .minimum-temp {
-    padding-right:20px;
+    padding-right: 5px;
 }
 
 .current-temperature {
-    font-size: 45px;
+    font: var(--lato300-s45-h54-normal);
+    color: var(--white-main);
 }
 
 .location-text {
-    padding-top:5px;
-    font-size: 16px;
+    padding-top: 5px;
+    font: var(--lato400-s16-h19-normal);
+    color: #767676;
+}
+
+.maximum-temp {
+    padding-left: 5px;
 }
 
 .minmax-font {
-    font-size: 14px;
+    font: var(--lato400-s14-h17-normal);
     text-align: center;
+    color: #767D85;
 }
 
 .temp-font {
-    font-size: 16px;
+    font: var(--lato400-s16-h19-normal);
     text-align: center;
+    color: var(--white-main);
+}
+
+.change-page-buttons {
+    text-transform: uppercase;
+    padding: 6px 40px;
+    font: var(--lato700-s14-h17-normal);
+    border-radius: 20px;
+    border: none;
+    background-color: rgba(255, 255, 255);
+}
+
+.change-page-buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+.change-page-buttons:nth-child(2) {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 @media screen and (min-width: 768px) {
     .weather-data-container {
-        padding:17px 33px 190px;
+        padding: 17px 33px;
         height: 235px;
     }
+
     .container {
-        padding-left:134px;
-        padding-right:134px;
+        padding-left: 134px;
+        padding-right: 134px;
     }
+
     .temperatures-wrapper {
-        flex-direction:column;
+        flex-direction: column;
+        padding-top: 10px;
     }
+
     .location-text {
-        font-size:18px;
+        font: var(--lato400-s18-h22-normal);
     }
+
     .current-temperature {
-        font-size:90px;
+        font: var(--lato300-s90-h108-normal);
     }
+
     .minmax-font {
-        font-size:18px;
+        font-size: var(--lato400-s18-h22-normal);
     }
+
+    .minimum-temp {
+        padding-right: 10px;
+    }
+
+    .maximum-temp {
+        padding-left: 10px;
+    }
+
     .temp-font {
-        font-size:18px;
+        font-size: var(--lato400-s18-h22-normal);
+    }
+
+    .change-page-buttons-wrapper {
+        padding-top: 40px;
     }
 }
-@media screen and (min-width: 1158px) {
-    
+
+@media screen and (min-width: 1280px) {
+    .container {
+        padding: 0;
+        width: 450px;
+        position: absolute;
+        right: 0;
+    }
+
+    .weather-data-container {
+        border-bottom-right-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    .change-page-buttons-wrapper {
+        padding-top: 20px;
+    }
 }
