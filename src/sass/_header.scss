@@ -1,41 +1,120 @@
-.search-section {background-image: url("https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg");
-                 height: 500px;}
+:root {--blackMain: #000000;
+    --whiteMain: #FFFFFF;
+    --orangeMain: #FF6B09;
+    --blueChart: #0906EB;
+    --yellowChart: #EA9A05;
+    --greenChart: #067806;
+    --lato700-s28h-h34-normal: normal normal 700 28px/34px Lato, sans-serif;
+    --lato700-s18-h22-normal: normal normal 700 18px/22px Lat, sans-serif;
+    --lato700-s25-h30-normal: normal normal 700 25px/30px Lato, sans-serif;
+    --lato700-s14-h17-normal: normal normal 700 14px/17px Lato, sans-serif;
+    --lato700-s12-h14-normal: normal normal 700 12px/14px Lato, sans-serif;
+    --lato400-s25-h30-normal: normal normal 400 25px/30px Lato, sans-serif;
+    --lato400-s22-h26-normal: normal normal 400 22px/26px Lato, sans-serif;
+    --lato400-s22-h24-normal: normal normal 400 22px/24px Lato, sans-serif;
+    --lato400-s18-h22-normal: normal normal 400 18px/22px Lato, sans-serif;
+    --lato400-s16-h19-normal: normal normal 400 16px/19px Lato, sans-serif;
+    --lato400-s14-h17-normal: normal normal 400 14px/17px Lato, sans-serif;
+    --lato400-s13-h16-normal: normal normal 400 13px/16px Lato, sans-serif;
+    --lato400-s12-h14-normal: normal normal 400 12px/14px Lato, sans-serif;
+    --lato300-s90-h108-normal: normal normal 300 90px/108px Lato, sans-serif;
+    --lato300-s45-h54-normal: normal normal 300 45px/54px Lato, sans-serif;
+    --lato700-s28-h34-italic: italic normal 700 28px/34px Lato, sans-serif;
+    --lato700-s25-h30-italic: italic normal 700 25px/30px Lato, sans-serif;
+    --lato700-s18-h22-italic: italic normal 700 18px/22px Lato, sans-serif;
+    --lato700-s14-h17-italic: italic normal 700 14px/17px Lato, sans-serif;
+    --lato700-s12-h14-italic: italic normal 700 12px/14px Lato, sans-serif;
+    --lato400-s25-h30-italic: italic normal 400 25px/30px Lato, sans-serif;
+    --lato400-s22-h26-italic: italic normal 400 22px/26px Lato, sans-serif;
+    --lato400-s22-h24-italic: italic normal 400 22px/24px Lato, sans-serif;
+    --lato400-s18-h22-italic: italic normal 400 18px/22px Lato, sans-serif;
+    --lato400-s16-h19-italic: italic normal 400 16px/19px Lato, sans-serif;
+    --lato400-s14-h17-italic: italic normal 400 14px/17px Lato, sans-serif;
+    --lato400-s13-h16-italic: italic normal 400 13px/16px Lato, sans-serif;
+    --lato400-s12-h14-italic: italic normal 400 12px/14px Lato, sans-serif;
+    --lato300-s90-h108-italic: italic normal 300 90px/108px Lato, sans-serif;
+    --lato300-s45-h54-italic: italic normal 300 45px/54px Lato, sans-serif; };
+
+body{background-image: url("../images/simple\ sky.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;}
+
+.search-section {height: 500px;};
 
 .search-section .search-container { position: relative;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 500px;}
+                                    width: 80%;
+                                    margin-left: auto;
+                                    margin-right: auto;
+                                //min-width: 200px;
+                                    max-width: 500px;};
 .search-section .search-container form {display: flex;
-                      flex-direction: row;
-                      align-items: center;}
+                                        flex-direction: row;
+                                        align-items: center;}
 
 .search-section .search-container form input{width: 100%;
-                          margin-top: 36px;
-                          margin-left: auto;
-                          margin-right: auto;
-                          border: 1px solid rgb(0, 140, 255);
-                          border-radius: 25px;
-                          height: 50px;
-                          padding-left: 56px;
-                          }
-.search-section .search-container form input:placeholder-shown{padding-left: 56px;}
+                                             margin-top: 36px;
+                                             margin-left: auto;
+                                             margin-right: auto;
+                                             border: 1px solid rgb(0, 140, 255);
+                                             border-radius: 25px;
+                                             height: 50px;
+                                             padding-left: 56px;
+                                             outline: none;
+                                             font: var(--lato400-s14-h17-normal)}
+.search-section .search-container form input:placeholder-shown{padding-left: 56px;
+                                                               font: var(--lato400-s14-h17-normal)}
 .search-section .search-container form .icons{margin-top: 35px;}
 .search-section .search-container form #gps,
 .search-section .search-container form #star{position: absolute;}
 
 .search-section .search-container form #gps{left:20px;}
-.search-section .search-container form #star{right:20px;}
+.search-section .search-container form #star{right:20px;
+                                             fill:#808080c2; }
 
-.search-section .search-container form .saved-cities{color:  #000000;
-    margin-left: auto;
-    margin-right: auto;}
+.search-section .search-container .saved-cities-scroll {display: flex;
+                                                 flex-direction: row;
+                                                 gap: 15px;
+                                                 padding-top: 15px;};
 
-.search-section .search-container .saved-cities{display: flex;
-                                                flex-direction: row;
-                                                gap: 15px;
-                                                padding-top: 20px;
-                                                padding-left: 40px;}
-.search-section .search-container .saved-cities span {display: block;
-                                                      font-variant:normal ;}
+.search-section .search-container .saved-cities-scroll .other-cities{border-radius: 20px;
+                                                                    border-width: 0px;
+                                                                    color: #808080;
+                                                                    font-weight:600;}
+
+.search-section .search-container .saved-cities-scroll .begging {visibility: visible;}
+.search-section .search-container .saved-cities-scroll .toend {visibility: visible;}
+
+.search-section .search-container .saved-cities-scroll .saved-cities{display: flex; flex-direction: row; gap: 15px; 
+                                                                     overflow: hidden; list-style: none;
+                                                                     padding-inline-start: 0px;
+                                                                     margin: 0px;}
+
+.search-section .search-container .saved-cities-scroll .saved-cities .saved-city{display: flex;
+                                                                                 flex-direction: row;
+                                                                                 align-items: center;
+                                                                                 background-color: #808080b6;
+                                                                                 border-radius: 25px;
+                                                                                 color: var(--whiteMain);
+                                                                                 padding: 4px 12px;
+                                                                                 font: var(--lato400-s12-h14-normal);}
+.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city{fill: var(--whiteMain);
+                                                                                             width: 10px;
+                                                                                             height: 10px;
+                                                                                             margin-left: 23px;}
+.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city
+
+.search-section .search-container form #star:hover,
+.search-section .search-container .saved-cities-scroll .other-cities:hover,
+.search-section .search-container .saved-cities-scroll .city:hover{fill: gold;
+    color: gold;}
+.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city:hover{fill: gold;
+                     width: 13px;
+                     height: 13px;
+                     margin-left: 20px;}
+
+
+@media screen and (min-width: 768px)
+{   .search-section .search-container form input{font: var(--lato400-s18-h22-normal)};
+    .search-section .search-container form input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
+    .search-section .search-container .saved-cities-scroll .saved-cities .saved-city{font: var(--lato400-s14-h17-normal)};  }
 
