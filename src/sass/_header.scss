@@ -47,11 +47,11 @@ body{background-image: url("../images/simple\ sky.jpg");
                                     margin-right: auto;
                                 //min-width: 200px;
                                     max-width: 500px;};
-.search-section .search-container form {display: flex;
+.search-section .search-container .searchbar {display: flex;
                                         flex-direction: row;
                                         align-items: center;}
 
-.search-section .search-container form input{width: 100%;
+.search-section .search-container .searchbar input{width: 100%;
                                              margin-top: 36px;
                                              margin-left: auto;
                                              margin-right: auto;
@@ -61,15 +61,13 @@ body{background-image: url("../images/simple\ sky.jpg");
                                              padding-left: 56px;
                                              outline: none;
                                              font: var(--lato400-s14-h17-normal)}
-.search-section .search-container form input:placeholder-shown{padding-left: 56px;
+.search-section .search-container .searchbar input:placeholder-shown{padding-left: 56px;
                                                                font: var(--lato400-s14-h17-normal)}
-.search-section .search-container form .icons{margin-top: 35px;}
-.search-section .search-container form #gps,
-.search-section .search-container form #star{position: absolute;}
-
-.search-section .search-container form #gps{left:20px;}
-.search-section .search-container form #star{right:20px;
-                                             fill:#808080c2; }
+.search-section .search-container .searchbar .icons{margin-top: 35px; fill: #808080d2; }
+.search-section .search-container .searchbar #gps,
+.search-section .search-container .searchbar #star{position: absolute;}
+.search-section .search-container .searchbar #gps{left:20px;}
+.search-section .search-container .searchbar #star{right:20px; cursor: pointer;}
 
 .search-section .search-container .saved-cities-scroll {display: flex;
                                                  flex-direction: row;
@@ -95,26 +93,25 @@ body{background-image: url("../images/simple\ sky.jpg");
                                                                                  background-color: #808080b6;
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
-                                                                                 padding: 4px 12px;
+                                                                                 padding: 4px 12px; cursor: pointer;
                                                                                  font: var(--lato400-s12-h14-normal);}
+.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .city::first-letter{text-transform: uppercase;}
 .search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city{fill: var(--whiteMain);
                                                                                              width: 10px;
                                                                                              height: 10px;
                                                                                              margin-left: 23px;}
-.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city
 
-.search-section .search-container form #star:hover,
+.search-section .search-container .searchbar #star:hover,
 .search-section .search-container .saved-cities-scroll .other-cities:hover,
-.search-section .search-container .saved-cities-scroll .city:hover{fill: gold;
-    color: gold;}
+.search-section .search-container .saved-cities-scroll .city:hover{color: gold; fill: gold;cursor: pointer;}
 .search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city:hover{fill: gold;
-                     width: 13px;
-                     height: 13px;
-                     margin-left: 20px;}
+                                                                                                   width: 13px;
+                                                                                                   height: 13px;
+                                                                                                   margin-left: 20px;}
 
 
 @media screen and (min-width: 768px)
-{   .search-section .search-container form input{font: var(--lato400-s18-h22-normal)};
-    .search-section .search-container form input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
+{   .search-section .search-container .searchbar input{font: var(--lato400-s18-h22-normal)};
+    .search-section .search-container .searchbar input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
     .search-section .search-container .saved-cities-scroll .saved-cities .saved-city{font: var(--lato400-s14-h17-normal)};  }
 
