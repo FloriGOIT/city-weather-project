@@ -42,11 +42,10 @@ body{background-image: url("../images/simple\ sky.jpg");
 .search-section {height: 500px;};
 
 .search-section .search-container { position: relative;
-                                    width: 80%;
                                     margin-left: auto;
                                     margin-right: auto;
                                 //min-width: 200px;
-                                    max-width: 500px;};
+                                    max-width: 280px;};
 .search-section .search-container .searchbar {display: flex;
                                         flex-direction: row;
                                         align-items: center;}
@@ -90,7 +89,7 @@ body{background-image: url("../images/simple\ sky.jpg");
 .search-section .search-container .saved-cities-scroll .saved-cities .saved-city{display: flex;
                                                                                  flex-direction: row;
                                                                                  align-items: center;
-                                                                                 background-color: #808080b6;
+                                                                                 background-color: rgba(128, 128, 128, 0.4);
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
                                                                                  padding: 4px 12px; cursor: pointer;
@@ -113,5 +112,6 @@ body{background-image: url("../images/simple\ sky.jpg");
 @media screen and (min-width: 768px)
 {   .search-section .search-container .searchbar input{font: var(--lato400-s18-h22-normal)};
     .search-section .search-container .searchbar input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
-    .search-section .search-container .saved-cities-scroll .saved-cities .saved-city{font: var(--lato400-s14-h17-normal)};  }
+    .search-section .search-container .saved-cities-scroll .saved-cities .saved-city{font: var(--lato400-s14-h17-normal)};
+    .search-section .search-container{max-width: 500px;}  }
 
