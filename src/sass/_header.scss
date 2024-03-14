@@ -35,6 +35,14 @@
     --lato300-s90-h108-italic: italic normal 300 90px/108px Lato, sans-serif;
     --lato300-s45-h54-italic: italic normal 300 45px/54px Lato, sans-serif; };
 
+//toggle classes
+
+.tosee{visibility: visible;};
+.tohidden{visibility: hidden;}
+
+
+
+//
 body{background-image: url("../images/simple\ sky.jpg");
     background-repeat:no-repeat;
     background-size:cover;}
@@ -70,7 +78,7 @@ body{background-image: url("../images/simple\ sky.jpg");
 
 .search-section .search-container .saved-cities-scroll {display: flex;
                                                  flex-direction: row;
-                                                 gap: 15px;
+                                                 justify-content: space-between;
                                                  padding-top: 15px;};
 
 .search-section .search-container .saved-cities-scroll .other-cities{border-radius: 20px;
@@ -81,32 +89,38 @@ body{background-image: url("../images/simple\ sky.jpg");
 .search-section .search-container .saved-cities-scroll .begging {visibility: visible;}
 .search-section .search-container .saved-cities-scroll .toend {visibility: visible;}
 
-.search-section .search-container .saved-cities-scroll .saved-cities{display: flex; flex-direction: row; gap: 15px; 
-                                                                     overflow: hidden; list-style: none;
+.search-section .search-container .saved-cities-scroll .saved-cities{display: flex; flex-direction: row;
+                                                                     width: 210px;
+                                                                     overflow: hidden; 
+                                                                     gap: 10px;
                                                                      padding-inline-start: 0px;
-                                                                     margin: 0px;}
+                                                                     margin: 0px;  list-style: none;}
 
 .search-section .search-container .saved-cities-scroll .saved-cities .saved-city{display: flex;
                                                                                  flex-direction: row;
-                                                                                 align-items: center;
+                                                                                 align-items: center; 
+                                                                                 justify-content: space-between;
                                                                                  background-color: rgba(128, 128, 128, 0.4);
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
-                                                                                 padding: 4px 12px; cursor: pointer;
-                                                                                 font: var(--lato400-s12-h14-normal);}
+                                                                                 padding: 4px 9px; cursor: pointer;
+                                                                                 font: var(--lato400-s12-h14-normal);
+                                                                                 width: 100px;}
+.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .tonone{display: none;}
 .search-section .search-container .saved-cities-scroll .saved-cities .saved-city .city::first-letter{text-transform: uppercase;}
-.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city{fill: var(--whiteMain);
-                                                                                             width: 10px;
-                                                                                             height: 10px;
-                                                                                             margin-left: 23px;}
+.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city{
+                                                                                            fill: var(--whiteMain);
+                                                                                             width: 9px;
+                                                                                             height: 9px;
+                                                                                             //text-align: end;
+                                                                                             }
 
 .search-section .search-container .searchbar #star:hover,
 .search-section .search-container .saved-cities-scroll .other-cities:hover,
 .search-section .search-container .saved-cities-scroll .city:hover{color: gold; fill: gold;cursor: pointer;}
 .search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city:hover{fill: gold;
-                                                                                                   width: 13px;
-                                                                                                   height: 13px;
-                                                                                                   margin-left: 20px;}
+                                                                                                   width: 12px;
+                                                                                                   height: 12px;}
 
 
 @media screen and (min-width: 768px)
@@ -115,3 +129,4 @@ body{background-image: url("../images/simple\ sky.jpg");
     .search-section .search-container .saved-cities-scroll .saved-cities .saved-city{font: var(--lato400-s14-h17-normal)};
     .search-section .search-container{max-width: 500px;}  }
 
+.search-section .search-container .saved-cities-scroll .saved-cities .saved-city #tuzla{display: none;};
