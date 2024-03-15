@@ -36,10 +36,8 @@
     --lato300-s45-h54-italic: italic normal 300 45px/54px Lato, sans-serif; };
 
 //toggle classes
-
-.tosee{visibility: visible;};
-.tohidden{visibility: hidden;}
-
+.hidden {visibility: hidden;}
+.visible {visibility: visible;}
 
 
 //
@@ -84,14 +82,15 @@ body{background-image: url("../images/simple\ sky.jpg");
 .search-section .search-container .saved-cities-scroll .other-cities{border-radius: 20px;
                                                                     border-width: 0px;
                                                                     color: #808080;
-                                                                    font-weight:600;}
+                                                                    font-weight:600;
+                                                                    height: 30px;}
 
 .search-section .search-container .saved-cities-scroll .begging {visibility: visible;}
 .search-section .search-container .saved-cities-scroll .toend {visibility: visible;}
 
-.search-section .search-container .saved-cities-scroll .saved-cities{display: flex; flex-direction: row;
+.search-section .search-container .saved-cities-scroll .saved-cities{display: flex;
+                                                                     float: left;
                                                                      width: 210px;
-                                                                     overflow: hidden; 
                                                                      gap: 10px;
                                                                      padding-inline-start: 0px;
                                                                      margin: 0px;  list-style: none;}
@@ -106,7 +105,10 @@ body{background-image: url("../images/simple\ sky.jpg");
                                                                                  padding: 4px 9px; cursor: pointer;
                                                                                  font: var(--lato400-s12-h14-normal);
                                                                                  width: 100px;}
-.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .tonone{display: none;}
+.search-section .search-container .saved-cities-scroll .saved-cities .saved-city:nth-child(n+3):nth-child(-n+10) {
+    display: none;
+}
+.search-section .search-container .saved-cities-scroll .saved-cities .tonone{display:none;};
 .search-section .search-container .saved-cities-scroll .saved-cities .saved-city .city::first-letter{text-transform: uppercase;}
 .search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city{
                                                                                             fill: var(--whiteMain);

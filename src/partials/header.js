@@ -30,19 +30,24 @@ savedCityMarkup = (event) =>
   console.log(citiesArr);
   if(inputText == undefined){Notiflix.Notify.warning('Enter a valid city name.')}
   else if(inputText.length !== 0)
-      {if(!citiesArr.includes(inputText)){let markup = `<li class="saved-city" id="${inputText}">
-                                                     <span class="city">${inputText}</span>
+      {if(!citiesArr.includes(inputText)){ citiesArr.push(inputText.toLowerCase());
+                                          let item = document.createElement("li");
+                                          item.classList.add("saved-city");
+                                          item.setAttribute("id", `${inputText}`);
+                                          console.log("length ", citiesArr.length);
+                                          let markup = `<span class="city">${inputText}</span>
                                                      <svg class="close-city">
                                                       <use href = "/header-symbol-defs.5e7c9225.svg#icon-cancel-circle"></use>
-                                                     </svg>
-                                                    </li>`;
-                                      savedCities.insertAdjacentHTML("beforeend", markup);
-                                      citiesArr.push(inputText.toLowerCase());
-                                      console.log("Add array:",citiesArr);
+                                                     </svg>`;
+                                      savedCities.append(item);
+                                      item.insertAdjacentHTML("beforeend", markup);
+                                      //classing();
                                       localStorage.setItem(localStoreCities, JSON.stringify(citiesArr));
+                                      console.log("Add array:",citiesArr);
                                       return citiesArr;}
        else{Notiflix.Notify.warning('City already as favorite.')}}
-  else(Notiflix.Notify.warning('Enter a valid city name.'))
+  else(Notiflix.Notify.warning('Enter a valid city name.'));
+
 };
 
 emptyMarkup = (event) => {let g = event.target.parentNode;
@@ -54,30 +59,43 @@ emptyMarkup = (event) => {let g = event.target.parentNode;
                           removeing.remove();}
                           let idx = citiesArr.indexOf(removeing);
                           citiesArr.splice(idx,1);
+                          //classing();
+                          console.log(citiesArr.length);
                           localStorage.setItem(localStoreCities, JSON.stringify(citiesArr));
+                          console.log(searchSection);
                           console.log("Empty array", citiesArr);
                              }
 
-function storedCities(){let retrievedArrayAsString = localStorage.getItem(localStoreCities);
-                        retrievedArray = JSON.parse(retrievedArrayAsString);
-                        console.log("Local saved: ", retrievedArray);
-                        citiesArr = [...retrievedArray];
-                        console.log(citiesArr)
-                        if(citiesArr.length !== 0){citiesArr.forEach(city => {let markupSaved = `<li class="saved-city" id="${city}">
-                                                          <span class="city">${city}</span>
-                                                          <svg class="close-city">
-                                                            <use href = "/header-symbol-defs.5e7c9225.svg#icon-cancel-circle"></use>
-                                                          </svg>
-                                                        </li>`;
-                        savedCities.insertAdjacentHTML("beforeend", markupSaved)});
-                        return retrievedArray;}
-                        }
+function storedCities()
+{let retrievedArrayAsString = localStorage.getItem(localStoreCities);
+retrievedArray = JSON.parse(retrievedArrayAsString);
+console.log("Local saved: ", retrievedArray);
+citiesArr = [...retrievedArray];
+console.log(citiesArr)
+if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.createElement("li");
+                                                      item.classList.add("saved-city");
+                                                      item.setAttribute("id", `${city}`);
+                                                      let markupSaved = `<span class="city">${city}</span>
+                                                                                            <svg class="close-city">
+                                                                                              <use href = "/header-symbol-defs.5e7c9225.svg#icon-cancel-circle"></use>
+                                                                                            </svg>`;
+                                                      savedCities.append(item);
+                                                      item.insertAdjacentHTML("beforeend", markupSaved)});
+                                                      return retrievedArray;}
+}
 storedCities()
+
+function classing(){console.log(citiesArr.length);
+                    let itemcity = document.querySelector(".saved-city");
+                    //for(let i = 2; i > citiesArr.length;){itemcity.classList.add("tonone");}
+                    //for(let i = 2, i > citiesArr.length, i++){itemcity.classList.remove("tonone");}
+                    console.log(savedCities)}
 
 //eventlistener
 cityInput.addEventListener("input", getInput);
 saveCitySVG.addEventListener("click", savedCityMarkup);
 savedCities.addEventListener("click", emptyMarkup);
+
 
 
 
