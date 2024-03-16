@@ -30,8 +30,19 @@ let count = 0;
 let calcTrans;
 let scrolled;
 let maxCount = citiesArr.length;
-
+let initial = 0;
+let moveTrans = 110;
 //functions
+
+//scroll saved city
+
+
+function btnShow(){if(citiesArr.length > itemsPerPage){nextButton.style.visibility = "visible";}
+                      else{nextButton.style.visibility = "hidden";
+                          prevButton.style.visibility = "hidden";
+                           savedCities.style.transform = `translatex(0px)`;}}
+                         
+
 getInput = () => {inputText = form.elements.userinput.value.toLowerCase();
                      return inputText;}
 
@@ -46,9 +57,10 @@ savedCityMarkup = (event) =>
                                           let item = document.createElement("li");
                                           item.classList.add("saved-city");
                                           item.setAttribute("id", `${inputText}`);
+                                          item.setAttribute("title", `${inputText}`);
                                           console.log("length ", citiesArr.length);
                                           let markup = `<span class="city">${inputText}</span>
-                                                     <svg class="close-city">
+                                                     <svg class="close-city" title = ${inputText}>
                                                       <use href = "/header-symbol-defs.5e7c9225.svg#icon-cancel-circle"></use>
                                                      </svg>`;
                                       savedCities.append(item);
@@ -63,16 +75,20 @@ savedCityMarkup = (event) =>
 };
 
 emptyMarkup = (event) => {let g = event.target.parentNode;
+                          console.log("g 1",g);
                           let gg = g.parentNode;
                           let removeing;
-                          if(g.nodeName == "svg"){removeing = document.querySelector(`#${gg.getAttribute("id")}`);
-                                                  removeing.remove();}
-                          else{removeing = document.querySelector(`#${g.getAttribute("id")}`);
-                          removeing.remove();}
-                          citiesArr.splice(citiesArr.indexOf(removeing.getAttribute("id")),1);
+                          if(g.nodeName == "svg"){gg.remove(); console.log("gg 1",gg);
+                          citiesArr.splice(citiesArr.indexOf(gg.getAttribute("title")),1);}
+                          else{console.log("g 2",g); g.remove();
+                                citiesArr.splice(citiesArr.indexOf(g.getAttribute("title")),1);}
+                          
                           localStorage.setItem(localStoreCities, JSON.stringify(citiesArr));
                           console.log(searchSection);
                           console.log("Empty array", citiesArr);
+                          initial = 0;
+                          savedCities.style.transform = `translatex(0px)`;
+                          prevButton.style.visibility = "hidden";
                           btnShow();
                              }
 
@@ -85,6 +101,7 @@ console.log(citiesArr)
 if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.createElement("li");
                                                       item.classList.add("saved-city");
                                                       item.setAttribute("id", `${city}`);
+                                                      item.setAttribute("title", `${city}`);
                                                       let markupSaved = `<span class="city">${city}</span>
                                                                                             <svg class="close-city">
                                                                                               <use href = "/header-symbol-defs.5e7c9225.svg#icon-cancel-circle"></use>
@@ -97,25 +114,14 @@ if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.create
 storedCities()
 
 
-//scroll saved city
-
-let initial = 0;
-let moveTrans = 110;
-function btnShow(){if(citiesArr.length > itemsPerPage){nextButton.style.visibility = "visible";}
-                      else{nextButton.style.visibility = "hidden";}}
-                         
-function showNextItems(){console.log("initial=0 ", initial);
-                         
+function showNextItems(){console.log("initial=0 ", initial);                     
                          let maxTrans = (citiesArr.length - itemsPerPage) * 110;                   
-                         if(initial < maxTrans){
-                                                initial += 110;
+                         if(initial < maxTrans){initial += 110;
                                                  savedCities.style.transform = `translatex(-${initial}px)`;
-                                                 console.log("NEXT initial + maxTrans: ", initial, maxTrans);
-                                                 };
+                                                 console.log("NEXT initial + maxTrans: ", initial, maxTrans);};
                          if(initial == maxTrans){nextButton.style.visibility = "hidden"};
                                                  prevButton.style.visibility = "visible";
-                                                  return initial;
-                                                }
+                                                  return initial;}
 function showPreviousItems(){ console.log("PREV initial 1", initial);
                               if(initial > 0){initial -= 110;
                                                 savedCities.style.transform = `translatex(-${initial}px)`;

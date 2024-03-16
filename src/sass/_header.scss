@@ -93,18 +93,19 @@ body{background-image: url("../images/simple\ sky.jpg");
                                                                    padding-inline-start: 0px;
                                                                    margin: 0px;  list-style: none;
                                                                    transform: translatex(0px);
-                                                                   transition-duration: 1000ms}
+                                                                   transition-duration: 300ms;
+                                                                   transition-timing-function: linear;}
 
 
 .search-section .search-container .cities-scroll div .saved-cities .saved-city{display: inline-block;
-
+                                                                                width: 100px; margin-right: 10px;
                                                                                  background-color: rgba(128, 128, 128, 0.4);
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
                                                                                  padding: 6px 9px; cursor: pointer;
-                                                                                 font: var(--lato400-s12-h14-normal);
-                                                                                 width: 100px; margin-right: 10px;;}
-.search-section .search-container .cities-scroll div .saved-cities .saved-city .city {display: inline-block; width: 60px;}
+                                                                                 font: var(--lato400-s12-h14-normal);}
+.search-section .search-container .cities-scroll div .saved-cities .saved-city .city {display: inline-block; width: 60px;
+                                                                                      overflow: hidden;}
 
 
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .city::first-letter{text-transform: uppercase;}
