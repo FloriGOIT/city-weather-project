@@ -74,53 +74,48 @@ body{background-image: url("../images/simple\ sky.jpg");
 .search-section .search-container .searchbar #gps{left:20px;}
 .search-section .search-container .searchbar #star{right:20px; cursor: pointer;}
 
-.search-section .search-container .saved-cities-scroll {display: flex;
+.search-section .search-container .cities-scroll {display: flex;
                                                  flex-direction: row;
                                                  justify-content: space-between;
                                                  padding-top: 15px;};
 
-.search-section .search-container .saved-cities-scroll .other-cities{border-radius: 20px;
+.search-section .search-container .cities-scroll .other-cities{border-radius: 20px;
                                                                     border-width: 0px;
                                                                     color: #808080;
                                                                     font-weight:600;
                                                                     height: 30px;}
 
-.search-section .search-container .saved-cities-scroll .begging {visibility: visible;}
-.search-section .search-container .saved-cities-scroll .toend {visibility: visible;}
+.search-section .search-container .cities-scroll div {overflow: hidden;
+                                                      width: 210px;}
 
-.search-section .search-container .saved-cities-scroll .saved-cities{display: flex;
-                                                                     float: left;
-                                                                     width: 210px;
-                                                                     gap: 10px;
-                                                                     padding-inline-start: 0px;
-                                                                     margin: 0px;  list-style: none;}
+.search-section .search-container .cities-scroll div .saved-cities{float: left; white-space: nowrap;
+                                                                   padding-inline-start: 0px;
+                                                                   margin: 0px;  list-style: none;
+                                                                   transform: translatex(0px);
+                                                                   transition-duration: 1000ms}
 
-.search-section .search-container .saved-cities-scroll .saved-cities .saved-city{display: flex;
-                                                                                 flex-direction: row;
-                                                                                 align-items: center; 
-                                                                                 justify-content: space-between;
+
+.search-section .search-container .cities-scroll div .saved-cities .saved-city{display: inline-block;
+
                                                                                  background-color: rgba(128, 128, 128, 0.4);
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
-                                                                                 padding: 4px 9px; cursor: pointer;
+                                                                                 padding: 6px 9px; cursor: pointer;
                                                                                  font: var(--lato400-s12-h14-normal);
-                                                                                 width: 100px;}
-.search-section .search-container .saved-cities-scroll .saved-cities .saved-city:nth-child(n+3):nth-child(-n+10) {
-    display: none;
-}
-.search-section .search-container .saved-cities-scroll .saved-cities .tonone{display:none;};
-.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .city::first-letter{text-transform: uppercase;}
-.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city{
-                                                                                            fill: var(--whiteMain);
+                                                                                 width: 100px; margin-right: 10px;;}
+.search-section .search-container .cities-scroll div .saved-cities .saved-city .city {display: inline-block; width: 60px;}
+
+.search-section .search-container .cities-scroll div .saved-cities .saved-city .city::first-letter{text-transform: uppercase;}
+.search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city{fill: var(--whiteMain);
+                                                                                           text-align: end;
+                                                                                           margin-left: 10px;
                                                                                              width: 9px;
-                                                                                             height: 9px;
-                                                                                             //text-align: end;
-                                                                                             }
+                                                                                             height: 9px;}
 
 .search-section .search-container .searchbar #star:hover,
-.search-section .search-container .saved-cities-scroll .other-cities:hover,
-.search-section .search-container .saved-cities-scroll .city:hover{color: gold; fill: gold;cursor: pointer;}
-.search-section .search-container .saved-cities-scroll .saved-cities .saved-city .close-city:hover{fill: gold;
+.search-section .search-container .cities-scroll .other-cities:hover,
+.search-section .search-container .cities-scroll .city:hover{color: gold; fill: gold;cursor: pointer;}
+.search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city:hover{fill: gold;
                                                                                                    width: 12px;
                                                                                                    height: 12px;}
 
@@ -128,7 +123,6 @@ body{background-image: url("../images/simple\ sky.jpg");
 @media screen and (min-width: 768px)
 {   .search-section .search-container .searchbar input{font: var(--lato400-s18-h22-normal)};
     .search-section .search-container .searchbar input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
-    .search-section .search-container .saved-cities-scroll .saved-cities .saved-city{font: var(--lato400-s14-h17-normal)};
+    .search-section .search-container .cities-scroll div .saved-cities .saved-city{font: var(--lato400-s14-h17-normal)};
     .search-section .search-container{max-width: 500px;}  }
 
-.search-section .search-container .saved-cities-scroll .saved-cities .saved-city #tuzla{display: none;};
