@@ -23,7 +23,7 @@ let nrOfCities;
 let currentIndex = 0;
 let itemWidth = 105;
 let itemsPerPage;
-if (savedCitiesWidth == 210){itemsPerPage = 2;}
+if (savedCitiesWidth < 220){itemsPerPage = 2;}
 else{itemsPerPage = 4;}
 let move = 110;
 let count = 0;
@@ -91,59 +91,48 @@ if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.create
                                                                                             </svg>`;
                                                       savedCities.append(item);
                                                       item.insertAdjacentHTML("beforeend", markupSaved)});
+                                                      btnShow();
                                                       return retrievedArray;}
 }
 storedCities()
 
 
-//scroll
+//scroll saved city
 
+let initial = 0;
+let moveTrans = 110;
+function btnShow(){if(citiesArr.length > itemsPerPage){nextButton.style.visibility = "visible";}
+                      else{nextButton.style.visibility = "hidden";}}
+                         
+function showNextItems(){console.log("initial=0 ", initial);
+                         
+                         let maxTrans = (citiesArr.length - itemsPerPage) * 110;                   
+                         if(initial < maxTrans){
+                                                initial += 110;
+                                                 savedCities.style.transform = `translatex(-${initial}px)`;
+                                                 console.log("NEXT initial + maxTrans: ", initial, maxTrans);
+                                                 };
+                         if(initial == maxTrans){nextButton.style.visibility = "hidden"};
+                                                 prevButton.style.visibility = "visible";
+                                                  return initial;
+                                                }
+function showPreviousItems(){ console.log("PREV initial 1", initial);
+                              if(initial > 0){initial -= 110;
+                                                savedCities.style.transform = `translatex(-${initial}px)`;
+                                                console.log("PREV initial  2 ", initial);
+                                                if (initial == 0){nextButton.style.visibility = "visible";
+                                                                  prevButton.style.visibility = "hidden";
+                                                                  console.log("PREV initial 3 ", initial);}}
+                                                return initial;}
 
-/*
-function btnShow(){if(citiesArr.length <= itemsPerPage){nextButton.style.visibility = "hidden";
-                  prevButton.style.visibility = "hidden";}
-                  else{nextButton.style.visibility = "visible";
-                       prevButton.style.visibility = "visible";}}
+                                     
 
-
-
-//function showNextItems()
-{if (savedCitiesWidth == 210)
- {scrolled = itemsPerPage + count;
- calcTrans = move * count + 110;
- if(scrolled <= citiesArr.length){count++;
-                                  savedCities.style.transform = `translatex(-${calcTrans}px)`;
-                                  console.log("aaa",citiesArr.length)
-                                  console.log("aaa",scrolled);
-                                  console.log("aaa",calcTrans);
-                                  console.log("aaa",count);
-                                  return calcTrans;}
-else{nextButton.style.visibility = "hidden";} 
- console.log("aaa",calcTrans);
- 
-
-}
-
-}
-
-function showPreviousItems()
-{console.log("bbb",calcTrans)
- scrolled = itemsPerPage + count;
-console.log("bbb",scrolled)
- if(calcTrans > 0){calcTrans -= move;
-                  savedCities.style.transform = `translatex(-${calcTrans}px)`;
-                  console.log("bbb",calcTrans)}
- else{savedCities.style.transform = `translatex(0px)`;
-      nextButton.style.visibility = "visible";
-      prevButton.style.visibility = "hidden";} 
-}
-*/
 //eventlistener
 cityInput.addEventListener("input", getInput);
 saveCitySVG.addEventListener("click", savedCityMarkup);
 savedCities.addEventListener("click", emptyMarkup);
 nextButton.addEventListener("click", showNextItems);
 prevButton.addEventListener("click", showPreviousItems);
-window.addEventListener("load",btnShow)
+//window.addEventListener("load",btnShow)
 
 
