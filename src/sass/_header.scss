@@ -102,7 +102,9 @@ body{background-image: url("../images/simple\ sky.jpg");
                                                                                  background-color: rgba(128, 128, 128, 0.4);
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
-                                                                                 padding: 6px 9px; cursor: pointer;
+                                                                                 padding-left: 10px;
+                                                                                 padding-top: 4px;
+                                                                                 cursor: pointer;
                                                                                  font: var(--lato400-s12-h14-normal);}
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .city {display: inline-block; width: 60px;
                                                                                       overflow: hidden;}
@@ -113,7 +115,8 @@ body{background-image: url("../images/simple\ sky.jpg");
                                                                                            text-align: end;
                                                                                            margin-left: 10px;
                                                                                              width: 9px;
-                                                                                             height: 9px;}
+                                                                                             height: 9px;
+                                                                                           margin-bottom: 3px;}
 
 .search-section .search-container .searchbar #star:hover,
 .search-section .search-container .cities-scroll .other-cities:hover,

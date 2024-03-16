@@ -139,6 +139,42 @@ saveCitySVG.addEventListener("click", savedCityMarkup);
 savedCities.addEventListener("click", emptyMarkup);
 nextButton.addEventListener("click", showNextItems);
 prevButton.addEventListener("click", showPreviousItems);
-//window.addEventListener("load",btnShow)
+
+/*
+let body = document.querySelector("body")
+console.log(body)
+
+let largeImageARR=[];
+let inputText = `bratislava`;
+
+
+let apiUrl = `https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&&safesearch=true&image_type=photo&pretty=true&q=${inputText}`;//${inputText}
+fetch(apiUrl).then(response => {if (!response.ok) {body.style.backgroundImage = `url("/images/other.webp")`;}
+                                else{return response.json()};})
+             .then(data => {for(let hit of data.hits){if (hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("city") || hit.tags.includes("landscape") || hit.tags.includes("landmark"))
+                                                                    {largeImageARR.push(hit.largeImageURL);
+                                                                        console.log(largeImageARR)}};
+                                                                    if(largeImageARR.length > 0){body.style.backgroundImage = `url('${largeImageARR[0]}')`}
+                                                                    else{body.style.backgroundImage = `url("/images/other.webp")`}});
+
+body {background-image: url('/images/other.webp');
+  background-size: cover;
+  background-repeat: no-repeat;}
+
+
+      npm i googletrans
+
+    from googletrans import Translator
+
+def translate_city_name(city_name):
+    translator = Translator()
+    translated_text = translator.translate(city_name, src='ro', dest='en')
+    return translated_text.text
+
+# Example usage
+romanian_city_name = "București"
+english_city_name = translate_city_name(romanian_city_name)
+print(f"Romanian: {romanian_city_name}, English: {english_city_name}")
+*/
 
 
