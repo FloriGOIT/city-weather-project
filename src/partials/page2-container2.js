@@ -4,8 +4,7 @@ const fiveDaysContainer = document.querySelector('.fivedayscontainer');
 const weatherChart = document.querySelector('.weather-fivedays-container');
 const cityName = document.getElementById('city-fivedays-name');
 const countryName = document.getElementById('country-fivedays-name');
-const leftBtn = document.querySelector('.left-btn');
-const rightBtn = document.querySelector('.right-btn');
+
 
 // de sters, le-am facut eu ca sa pot lucra
 const inputText = document.getElementsByName("searchQuery")[0];
@@ -78,11 +77,4 @@ function weatherPerDays(weatherData) {
     weatherChart.innerHTML = weatherMarkup.join("");
 }
 
-leftBtn.addEventListener("click", () => {
-    weatherChart.style.transform += "translateX(90px)";
-})
-
-rightBtn.addEventListener("click", () => {
-    weatherChart.style.transform += "translateX(-90px)";
-});
 
