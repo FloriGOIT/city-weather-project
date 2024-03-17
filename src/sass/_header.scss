@@ -41,11 +41,12 @@
 
 
 //
-body{background-image: url("../images/simple\ sky.jpg");
+body{background-image: url("/src/images/simple_sky.jpg");
     background-repeat:no-repeat;
     background-size:cover;}
 
-.search-section {height: 500px;};
+.search-section {height: 500px;
+                 margin-top: 40px};
 
 .search-section .search-container { position: relative;
                                     margin-left: auto;
@@ -68,11 +69,11 @@ body{background-image: url("../images/simple\ sky.jpg");
                                              font: var(--lato400-s14-h17-normal)}
 .search-section .search-container .searchbar input:placeholder-shown{padding-left: 56px;
                                                                font: var(--lato400-s14-h17-normal)}
-.search-section .search-container .searchbar .icons{margin-top: 35px; fill: #808080d2; }
+.search-section .search-container .searchbar .icons{margin-top: 35px; fill: #808080d2; cursor: pointer;}
 .search-section .search-container .searchbar #gps,
 .search-section .search-container .searchbar #star{position: absolute;}
 .search-section .search-container .searchbar #gps{left:20px;}
-.search-section .search-container .searchbar #star{right:20px; cursor: pointer;}
+.search-section .search-container .searchbar #star{right:20px;}
 
 .search-section .search-container .cities-scroll {display: flex;
                                                  flex-direction: row;
@@ -87,7 +88,7 @@ body{background-image: url("../images/simple\ sky.jpg");
                                                                 visibility: hidden;}
 
 .search-section .search-container .cities-scroll div {overflow: hidden;
-                                                      width: 210px;}//433
+                                                      width: 210px;}
 
 .search-section .search-container .cities-scroll div .saved-cities{float: left; white-space: nowrap;
                                                                    padding-inline-start: 0px;
@@ -99,7 +100,7 @@ body{background-image: url("../images/simple\ sky.jpg");
 
 .search-section .search-container .cities-scroll div .saved-cities .saved-city{display: inline-block;
                                                                                 width: 100px; margin-right: 10px;
-                                                                                 background-color: rgba(128, 128, 128, 0.4);
+                                                                                 background-color: rgba(128, 128, 128, 0.7);
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
                                                                                  padding-left: 10px;
@@ -118,17 +119,23 @@ body{background-image: url("../images/simple\ sky.jpg");
                                                                                              height: 9px;
                                                                                            margin-bottom: 3px;}
 
-.search-section .search-container .searchbar #star:hover,
+.search-section .search-container .searchbar .icons:hover,
 .search-section .search-container .cities-scroll .other-cities:hover,
 .search-section .search-container .cities-scroll .city:hover{color: gold; fill: gold;cursor: pointer;}
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city:hover{fill: gold;
-                                                                                                   width: 12px;
-                                                                                                   height: 12px;}
+                                                                                                width: 12px;
+                                                                                                height: 12px;}
+
 
 
 @media screen and (min-width: 768px)
-{   .search-section .search-container .searchbar input{font: var(--lato400-s18-h22-normal)};
+{   
+    .search-section .search-container{max-width: 500px;}
+    .search-section .search-container .searchbar input{font: var(--lato400-s18-h22-normal)};
     .search-section .search-container .searchbar input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
+
     .search-section .search-container .cities-scroll div .saved-cities .saved-city{font: var(--lato400-s14-h17-normal)};
-    .search-section .search-container{max-width: 500px;}  }
+    .search-section .search-container .cities-scroll div{width: 433px;}
+
+}
 
