@@ -7,7 +7,7 @@ const countryName = document.getElementById('country-fivedays-name');
 const leftBtn = document.querySelector('.left-btn');
 const rightBtn = document.querySelector('.right-btn');
 
-// de sters, astea 3 le-am facut eu ca sa pot lucra
+// de sters, le-am facut eu ca sa pot lucra
 const inputText = document.getElementsByName("searchQuery")[0];
 const form = document.querySelector('.form');
 const showFiveDaysWeather = document.querySelector('.fivedays-button');
