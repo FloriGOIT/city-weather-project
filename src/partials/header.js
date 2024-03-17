@@ -117,7 +117,7 @@ function inputSearch(event){console.log("inputText submit enter",inputText);
                        fetch(apiUrl).then(response => {if (!response.ok) {console.log("response No:", body);}
                                                         else{console.log("response YES:", body)
                                                               return response.json()};})
-                                    .then(data => {for(let hit of data.hits){if (hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("city") || hit.tags.includes("landscape") || hit.tags.includes("landmark")){largeImageARR.push(hit.largeImageURL);};};
+                                    .then(data => {for(let hit of data.hits){if (hit.tags.includes("city") || hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("landscape") || hit.tags.includes("landmark")){largeImageARR.push(hit.largeImageURL);};};
                                                                              if(largeImageARR.length > 1){body.style.backgroundImage = `url('${largeImageARR[1]}')`;}
                                                                              else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}});
                        largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
