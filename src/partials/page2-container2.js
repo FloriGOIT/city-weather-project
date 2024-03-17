@@ -4,8 +4,8 @@ const fiveDaysContainer = document.querySelector('.fivedayscontainer');
 const weatherChart = document.querySelector('.weather-fivedays-container');
 const cityName = document.getElementById('city-fivedays-name');
 const countryName = document.getElementById('country-fivedays-name');
-const leftBtn = document.querySelector('.left-btn');
-const rightBtn = document.querySelector('.right-btn');
+//const leftBtn = document.querySelector('.left-btn');
+//const rightBtn = document.querySelector('.right-btn');
 
 // de sters, le-am facut eu ca sa pot lucra
 const inputText = document.getElementsByName("searchQuery")[0];
@@ -78,11 +78,35 @@ function weatherPerDays(weatherData) {
     weatherChart.innerHTML = weatherMarkup.join("");
 }
 
-leftBtn.addEventListener("click", () => {
-    weatherChart.style.transform += "translateX(90px)";
-})
+//butoane mobil
 
-rightBtn.addEventListener("click", () => {
-    weatherChart.style.transform += "translateX(-90px)";
-});
+//let transformStart = 0;
+//let transOneMove = 90;
+//let transMaxMove = 180;
+
+//rightBtn.addEventListener("click", nexttransOneMoveFunction);
+//leftBtn.addEventListener("click", prevtransOneMoveFunction);
+
+//function nexttransOneMoveFunction(){
+//    transformStart += transOneMove;
+//    if(transformStart < transMaxMove ){
+//        weatherChart.style.transform = `translatex(-${transformStart}px)`;
+//        console.log(transformStart);
+//        console.log(transMaxMove);
+//    }else {
+//        weatherChart.style.transform = `translatex(-${transMaxMove}px)`
+//        rightBtn.style.disabled = true;
+//    }return transformStart;
+//   }
+//
+//function prevtransOneMoveFunction(){
+//    console.log(transformStart)
+//    transformStart -= transOneMove;
+//    weatherChart.style.transform = `translatex(-${transformStart}px)`;
+//    if(transformStart == 0 ){
+//        leftBtn.style.disabled = true;
+//    }
+//       return transformStart}
+
+
 
