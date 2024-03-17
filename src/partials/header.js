@@ -14,6 +14,7 @@ let searchCitySVG = document.querySelector("#gps");
 let savedCities = document.querySelector(".saved-cities");
 let savedCitiesWidth = savedCities.parentNode.offsetWidth; 
 let localStoreCities = "localCities";
+let localStoreTemporary = "temporary";
 let prevButton = document.querySelector(".prevButton");
 let nextButton = document.querySelector(".nextButton");
 let itemsPerPage;
@@ -34,6 +35,8 @@ function btnShow(){if(citiesArr.length > itemsPerPage){nextButton.style.visibili
 
 getInput = () => {inputText = form.elements.userinput.value.toLowerCase();
                      return inputText;}
+
+
 
 savedCityMarkup = (event) =>
 {let retrievedArrayAsString = localStorage.getItem(localStoreCities);
@@ -61,9 +64,9 @@ savedCityMarkup = (event) =>
 
 };
 
-emptyMarkup = (event) => {let g = event.target;
+emptyMarkup = (event) => {event.preventDefault();
+                          let g = event.target;
                           let gg = g.parentNode;
-                          let removeing;
                           if(g.nodeName == "span"){console.log("gg 0: all good"); return;}
                           else if(g.nodeName == "svg"){gg.remove();
                                                   citiesArr.splice(citiesArr.indexOf(gg.getAttribute("title")),1);}
@@ -74,6 +77,7 @@ emptyMarkup = (event) => {let g = event.target;
                           savedCities.style.transform = `translatex(0px)`;
                           prevButton.style.visibility = "hidden";
                           btnShow();
+                          
                              }
 
 function storedCities()
@@ -108,10 +112,8 @@ function showPreviousItems(){if(initial > 0){initial -= 110;
                                                                   prevButton.style.visibility = "hidden";}}
                                                 return initial;}                                       
 
-function inputSearch(event){
-                       console.log("inputText submit enter",inputText);
+function inputSearch(event){console.log("inputText submit enter",inputText);
                        let apiUrl = `https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&&safesearch=true&image_type=photo&pretty=true&q=${inputText}`;
-                       console.log(apiUrl)   
                        fetch(apiUrl).then(response => {if (!response.ok) {console.log("response No:", body);}
                                                         else{console.log("response YES:", body)
                                                               return response.json()};})
@@ -120,21 +122,26 @@ function inputSearch(event){
                                                                              else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}});
                        largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
                        console.log("inputText submit exit",inputText);
-                       form.reset();                                                      
+                       form.reset();                                                   
                           }
 
 function addInputText(event){console.log("inputText add enter",inputText);
+                            console.log(event.target.nodeName);
                             let www = event.target;
-                             inputText = www.textContent;
                              console.log("inputText add set",inputText);
-                             inputSearch();
-                             largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
+                             if(event.target.nodeName == "SPAN"){inputText = www.textContent;
+                                                                 console.log(inputText)
+                                                                  inputSearch();
+                                                                  largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
+                                                                inputText = ``; return;}
                              console.log("inputText add exit",inputText);
-                             inputText = ``;
                              }                                   
 
 function inputSearchDefault(event){event.preventDefault();
                                    inputSearch();}         
+
+/*function temporaryCity(){localStorage.setItem('temporary', 'cuba');
+                         console.log(localStorage.getItem('temporary'));}*/
 //eventlistener
 cityInput.addEventListener("input", getInput);
 saveCitySVG.addEventListener("click", savedCityMarkup);
@@ -146,40 +153,5 @@ searchCitySVG.addEventListener("click", inputSearchDefault);
 savedCities.addEventListener("click", addInputText);
 
 
-/*
-let body = document.querySelector("body")
-console.log(body)
 
-let largeImageARR=[];
-let inputText = `bratislava`;
-
-
-let apiUrl = `https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&&safesearch=true&image_type=photo&pretty=true&q=${inputText}`;//${inputText}
-fetch(apiUrl).then(response => {if (!response.ok) {body.style.backgroundImage = `url("/images/other.webp")`;}
-                                else{return response.json()};})
-             .then(data => {for(let hit of data.hits){if (hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("city") || hit.tags.includes("landscape") || hit.tags.includes("landmark"))
-                                                                    {largeImageARR.push(hit.largeImageURL);
-                                                                        console.log(largeImageARR)}};
-                                                                    if(largeImageARR.length > 0){body.style.backgroundImage = `url('${largeImageARR[0]}')`}
-                                                                    else{body.style.backgroundImage = `url("/images/other.webp")`}});
-
-body {background-image: url('/images/other.webp');
-  background-size: cover;
-  background-repeat: no-repeat;}
-
-
-      npm i googletrans
-
-    from googletrans import Translator
-
-def translate_city_name(city_name):
-    translator = Translator()
-    translated_text = translator.translate(city_name, src='ro', dest='en')
-    return translated_text.text
-
-# Example usage
-romanian_city_name = "București"
-english_city_name = translate_city_name(romanian_city_name)
-print(f"Romanian: {romanian_city_name}, English: {english_city_name}")
-*/
 
