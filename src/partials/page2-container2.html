@@ -1,14 +1,27 @@
+<form id="form" class="form">
+
+    <input
+      type="text"
+      name="searchQuery"
+      autocomplete="off"
+      placeholder="Search..."
+    >
+</form>
+<button class="fivedays-button">5 DAYS</button>
 <section class="fivedayscontainer">
-   
-        <button class="fivedays-button">5 DAYS</button>
-
-    <div class="wheather-section">
-        <h2 class="city-name">Name</h2>
-        <ul class="weather"></ul>
+    
+    <div class="wheather-fivedays-section">
+        <div class="fivedays-city-country-name">
+            <span id="city-fivedays-name">Name</span>
+            <span id="country-fivedays-name">Name</span>
+        </div>
+        
+        <ul class="weather-fivedays-container"></ul>
+        
+        <div class="navigation-buttons">
+            <button class="left-btn">&lt;</button>
+            <button class="right-btn"> > </button>
+        </div>
     </div>
 
-    <div class="navigation-buttons">
-        <button class="left-btn"> < </button>
-        <button class="right-btn"> > </button>
-    </div>
 </section>
