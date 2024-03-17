@@ -176,6 +176,20 @@
   padding: 0;
 }
 
+/*.navigation-buttons{
+  margin-bottom: 10px;
+  border-radius: 50%;
+  display: flex;
+}
+
+.navigation-buttons .left-btn,
+.navigation-buttons .right-btn{
+  background-color: unset;
+  cursor: pointer;
+  border: none;
+  color: var(--whiteMain);
+}*/
+
 @media screen and (min-width:768px){
   .wheather-fivedays-section{
     border-radius: 0;
@@ -263,6 +277,10 @@
     display: flex;
     align-items: center;
   }
+
+  /*.navigation-buttons{
+    display: none;
+  }*/
 }
 
 @media screen and (min-width:1280px){
