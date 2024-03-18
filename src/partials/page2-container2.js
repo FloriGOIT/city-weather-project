@@ -1,12 +1,11 @@
 import axios from "axios";
 
-
+let array23 = [];
 const fiveDaysContainer22 = document.querySelector('.fivedayscontainer');
 const weatherChart22 = document.querySelector('.weather-fivedays-container');
 const cityName22 = document.getElementById('city-fivedays-name');
 const countryName22 = document.getElementById('country-fivedays-name');
 let aContainer = document.querySelector('.cities-scroll');
-console.log(aContainer)
 //const leftBtn = document.querySelector('.left-btn');
 //const rightBtn = document.querySelector('.right-btn');
 
@@ -16,7 +15,6 @@ const form22 = document.querySelector('.searchbar');
 const addForm22 = document.querySelector('.city');
 
 const showFiveDaysWeather = document.querySelector('#five');
-console.log("showFiveDaysWeather", showFiveDaysWeather);
 
 form22.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -29,7 +27,6 @@ aContainer.addEventListener("click", async (e) => {
     await fetchWeather();})
 
 function get(event){let x = event.target;
-                    console.log(event.target)
                     x.click()}
 
 
@@ -86,11 +83,11 @@ function weatherPerDays(weatherData) {
 
     for (let i = 0; i < weatherData.length; i += 8) {
         filteredWeatherData.push(weatherData[i]);
-        console.log(weatherData[i]);
+        //console.log(weatherData[i]);
     } 
 
     const weatherMarkup = filteredWeatherData.map((data) => `
-        <li class="weatherfivedays-card">
+        <li class="weatherfivedays-card" data-date=${new Date(data.dt_txt).getDate()}>
             <h2 class="day">${days[new Date(data.dt_txt).getDay()]}</h2>
             <h2 class="date">${new Date(data.dt_txt).getDate() + ' ' + currtentMonth}</h2>
             <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"

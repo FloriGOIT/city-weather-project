@@ -53,7 +53,7 @@ let fiveDayBtn = document.querySelector("#five");
 let page22 = document.querySelector(".fivedayscontainer");
 page22.style.visibility = 'hidden';
 //page22.style.visibility = "hidden";
-console.log(page22)
+
 
 setInterval(function() {let quoteText = document.querySelector(".quote-text");
                         let quoteAuthor = document.querySelector(".quote-author");
@@ -63,9 +63,7 @@ setInterval(function() {let quoteText = document.querySelector(".quote-text");
 
 function oneDayhidden(){page22.style.visibility = 'visible';
                         page12.style.visibility = 'hidden';
-                        page22.style.transform = `translatey(-550px)`;
-                      console.log(page22);
-                    }
+                        page22.style.transform = `translatey(-550px)`;}
 function fiveDayhidden(){page22.style.visibility = 'hidden';
                          page12.style.visibility = 'visible';
                         page22.style.transform = `translatey(0px)`;
