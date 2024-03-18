@@ -66,7 +66,8 @@ table {
                                      margin-left: auto;
                                      margin-right: auto;
                                      margin-top: 50px;}                      
-.weather-data-section .container {
+.weather-data-section .container,
+.weather-data-section .change-page-buttons-wrapper {
             margin-left: auto;
             margin-right: auto;}
 .weather-data-container svg {
@@ -190,6 +191,7 @@ table {
     border-radius: 20px;
     border: none;
     background-color: rgba(255, 255, 255);
+    border: 1px solid rgb(0, 140, 255);
 }
 
 .change-page-buttons-wrapper {
@@ -214,9 +216,10 @@ table {
         height: 235px;
         width: auto; margin-top: 20px;}
 
-    .weather-data-section .container {width: 400px;
-                   margin-left: calc(100vw - 500px);
-                   margin-right: 100px;}
+    .weather-data-section .container,
+    .weather-data-section .change-page-buttons-wrapper{width: 400px;
+                                                      margin-left: calc(100vw - 500px);
+                                                      margin-right: 100px;}
 
 
     .weather-data-section .weather-quote{flex-direction: row;

@@ -1,65 +1,186 @@
-.fivedayscontainer {
-  width: 100%;
+:root {--blackMain: #000000;
+  --whiteMain: #FFFFFF;
+  --orangeMain: #FF6B09;
+  --blueChart: #0906EB;
+  --yellowChart: #EA9A05;
+  --greenChart: #067806;
+  --gackgroundcolorfivedays : #102136;
+  --moreinfoanddash: #ffffff4d; 
+  --fivedaysandtemperaturecolor: #ffffff8a;
+  --font-family: 'Lato', sans-serif;
+};
+
+    /* butonul care iti arata chartul le-am facut tot de proba*/
+  
+    .fivedays-button{
+      background-color: var(--whiteMain);
+      opacity: 0.6;
+      width: 126px;
+      height: 30px;
+      border: 0;
+      border-radius: 50px;
+      outline: none;
+      font-size: 14px;
+      color:var(--blackMain);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.571;
+      margin-bottom: 30px;
+      position: relative;
+      right: 10px;
+    }
+    
+    .fivedays-button:active,
+    .fivedays-button:focus{
+      background-color: var(--whiteMain);
+      opacity: 100%;
+    }
+  /* */
+  .fivedayscontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-top: 100px;
+  }  
+
+.wheather-fivedays-section{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  position: absolute;
-}  
-
-.fivedays-button{
-  background-color: white;
-  opacity: 0.6;
-  width: 126px;
-  height: 30px;
-  border: 0;
-  border-radius: 50px;
-  outline: none;
-  font-size: 14px;
-  color: #000;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 1.571;
-  margin-bottom: 30px;
-  position: relative;
-  right: 10px;
-}
-
-.fivedays-button:active,
-.fivedays-button:focus{
-  background-color: white;
-  opacity: 100%;
-}
-
-.wheather-section{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 280px;
-  height: 272px;
+  width: 282px;
+  padding: 20px 5px;
   border-radius: 35px;
-  background-color: #102136;
+  background-color: var(--gackgroundcolorfivedays);
   opacity: .8;
   box-shadow: 0 8px 43px 0 rgba(16,33,54,.59);
+  overflow-x: scroll;
 }
 
-.city-name{
-  font-family: Lato, sans-serif;
-  color: black;
-  font-weight: 700;
+.fivedays-city-country-name{
+  margin-bottom: 20px;
+  color: var(--whiteMain);
+  font-family: var(--font-family);
   font-size: 18px;
-  font-style: normal;
-  letter-spacing: 1px;
+  font-weight: 700;
   line-height: 22px;
-  margin-bottom: 14px;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
-.navigation-buttons{
-  position: absolute;
-  bottom: 10px;
+.weather-fivedays-container{
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding: 0 0 0 180px;
+  margin: 0;
+}
+
+.weatherfivedays-card{
+  display: flex;
+  flex-direction: column;
+  width: 70px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-inline: 10px;
+  text-align: center;
+}
+
+.weatherfivedays-card:hover,
+.weatherfivedays-card:focus {
+  background-color: hsla(0, 0%, 100%, .12);
+}
+
+
+.weatherfivedays-card .day{
+  color: var(--fivedaysandtemperaturecolor);
+  margin: 0;
+  margin-bottom: 15px;
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.weatherfivedays-card .date{
+  letter-spacing: 1px;
+  color: var(--whiteMain);
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  text-align: center;
+}
+
+.weatherfivedays-card .min-max-temp{
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.fivedays-icon{
+  width: 60px;
+}
+
+.weatherfivedays-card .min-max-temp .dash{
+  border: 1px solid;
+  color: var(--moreinfoanddash);
+  opacity: .2;
+  height: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.weatherfivedays-card .temp-title{
+  color: #767D85;
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+} 
+
+.weatherfivedays-card .min-max-temp .temperature{
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--orangeMain);
+  margin: 0;
+}
+
+.weatherfivedays-card .more-info{
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--moreinfoanddash);
+  text-decoration: underline;
+  margin-bottom: 15px;
+  background-color: initial;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/*.navigation-buttons{
+  margin-bottom: 10px;
   border-radius: 50%;
   display: flex;
-  justify-content: space-between;
 }
 
 .navigation-buttons .left-btn,
@@ -67,36 +188,158 @@
   background-color: unset;
   cursor: pointer;
   border: none;
-  color: white;
-}
+  color: var(--whiteMain);
+}*/
 
 @media screen and (min-width:768px){
-  .wheather-section{
+  .wheather-fivedays-section{
     border-radius: 0;
     background-color: unset;
     opacity: 100%;
     box-shadow: none;
-    width: 500px;
-    height: 350px;
+    overflow-x: unset;
   }
 
-  .weather{
-    display: flex;
-    align-items: center;
-    width: 280px;
-    height: 272px;
+  .weather-fivedays-container{
+    width: 700px;
+    height: 300px;
     border-radius: 35px;
-    background-color: #102136;
+    background-color: var(--gackgroundcolorfivedays);
     opacity: .8;
     box-shadow: 0 8px 43px 0 rgba(16,33,54,.59);
+    padding: 0;
+    justify-content: space-evenly;
   }
 
-  .city-name{
+  #city-fivedays-name,
+  #country-fivedays-name{
+    font-family: var(--font-family);
     font-size: 28px;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 1px;
+    text-align: center;
   }
 
-  .navigation-buttons{
-    display: none;
+  .weatherfivedays-card .day{
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 1px;
+    text-align: center;
   }
+
+  .weatherfivedays-card .date{
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-align: center;
+    
+  }
+
+  .weatherfivedays-card .min-max-temp .temp-title{
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 1px;
+    text-align: center;
+    
+  }
+
+  .weatherfivedays-card .min-max-temp .temperature{
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .weatherfivedays-card .min-max-temp .dash{
+    opacity: .9;
+    height: 60px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .weatherfivedays-card .more-info{
+    margin-bottom: 0;
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 1px;
+    text-align: center;
+    width: 100px;
+    display: flex;
+    align-items: center;
+  }
+
+  /*.navigation-buttons{
+    display: none;
+  }*/
 }
 
+@media screen and (min-width:1280px){
+  .weather-fivedays-container {
+    width: 1000px;
+  }
+
+  .weatherfivedays-card{
+    width: 120px;
+    margin-inline: 0;
+  }
+
+  .weatherfivedays-card .day{
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .weatherfivedays-card .date{
+    font-family: var(--font-family);
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .fivedays-icon{
+    width: 90px;
+  }
+
+  .weatherfivedays-card .min-max-temp .temp-title{
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .weatherfivedays-card .min-max-temp .temperature{
+    font-family: var(--font-family);
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .weatherfivedays-card .min-max-temp .dash {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .weatherfivedays-card .more-info{
+      justify-content: end;
+  }
+}

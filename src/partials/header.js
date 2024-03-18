@@ -67,7 +67,7 @@ savedCityMarkup = (event) =>
 emptyMarkup = (event) => {event.preventDefault();
                           let g = event.target;
                           let gg = g.parentNode;
-                          if(g.nodeName == "span"){console.log("gg 0: all good"); return;}
+                          if(g.nodeName == "span"){return;}
                           else if(g.nodeName == "svg"){gg.remove();
                                                   citiesArr.splice(citiesArr.indexOf(gg.getAttribute("title")),1);}
                           else if(g.nodeName == "use"){gg.parentNode.remove();
@@ -81,7 +81,8 @@ emptyMarkup = (event) => {event.preventDefault();
                              }
 
 function storedCities()
-{let retrievedArrayAsString = localStorage.getItem(localStoreCities);
+{localStorage.setItem('temporary', '');
+  let retrievedArrayAsString = localStorage.getItem(localStoreCities);
 retrievedArray = JSON.parse(retrievedArrayAsString);
 citiesArr = [...retrievedArray];
 if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.createElement("li");
@@ -94,7 +95,7 @@ if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.create
                                                                                             </svg>`;
                                                       savedCities.append(item);
                                                       item.insertAdjacentHTML("beforeend", markupSaved)});
-                                                      btnShow();                                                      
+                                                      btnShow();                                       
                                                       return retrievedArray;}                                              
 }
 storedCities()
@@ -112,36 +113,32 @@ function showPreviousItems(){if(initial > 0){initial -= 110;
                                                                   prevButton.style.visibility = "hidden";}}
                                                 return initial;}                                       
 
-function inputSearch(event){console.log("inputText submit enter",inputText);
+function inputSearch(event){
                        let apiUrl = `https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&&safesearch=true&image_type=photo&pretty=true&q=${inputText}`;
                        fetch(apiUrl).then(response => {if (!response.ok) {console.log("response No:", body);}
-                                                        else{console.log("response YES:", body)
+                                                        else{console.log("response YES:", body);
                                                               return response.json()};})
                                     .then(data => {for(let hit of data.hits){if (hit.tags.includes("city") || hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("landscape") || hit.tags.includes("landmark")){largeImageARR.push(hit.largeImageURL);};};
                                                                              if(largeImageARR.length > 1){body.style.backgroundImage = `url('${largeImageARR[1]}')`;}
                                                                              else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}});
                        largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
-                       console.log("inputText submit exit",inputText);
+                       localStorage.setItem('temporary', `${inputText}`)
                        form.reset();                                                   
                           }
 
-function addInputText(event){console.log("inputText add enter",inputText);
-                            console.log(event.target.nodeName);
+function addInputText(event){
                             let www = event.target;
-                             console.log("inputText add set",inputText);
                              if(event.target.nodeName == "SPAN"){inputText = www.textContent;
-                                                                 console.log(inputText)
                                                                   inputSearch();
                                                                   largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
-                                                                inputText = ``; return;}
-                             console.log("inputText add exit",inputText);
+                                                                inputText = ``; return;};
+                             localStorage.setItem('temporary', `${inputText}`);
                              }                                   
 
 function inputSearchDefault(event){event.preventDefault();
                                    inputSearch();}         
 
-/*function temporaryCity(){localStorage.setItem('temporary', 'cuba');
-                         console.log(localStorage.getItem('temporary'));}*/
+
 //eventlistener
 cityInput.addEventListener("input", getInput);
 saveCitySVG.addEventListener("click", savedCityMarkup);
@@ -152,6 +149,7 @@ form.addEventListener("submit", inputSearchDefault);
 searchCitySVG.addEventListener("click", inputSearchDefault);
 savedCities.addEventListener("click", addInputText);
 
+export {addInputText}
 
 
 
