@@ -10,39 +10,15 @@
   --font-family: 'Lato', sans-serif;
 };
 
-  /* butonul care iti arata chartul le-am facut tot de proba*/
- 
-  .fivedays-button{
-    background-color: var(--whiteMain);
-    opacity: 0.6;
-    width: 126px;
-    height: 30px;
-    border: 0;
-    border-radius: 50px;
-    outline: none;
-    font-size: 14px;
-    color:var(--blackMain);
-    font-weight: 700;
-    text-transform: uppercase;
-    line-height: 1.571;
-    margin-bottom: 30px;
-    position: relative;
-    right: 10px;
-  }
-  
-  .fivedays-button:active,
-  .fivedays-button:focus{
-    background-color: var(--whiteMain);
-    opacity: 100%;
-  }
-  /* */
   .fivedayscontainer {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    transform: translatey(0px);
+    transition-duration: 1000ms;
+    transition-timing-function: linear;
   }  
 
 .wheather-fivedays-section{
@@ -57,8 +33,18 @@
   box-shadow: 0 8px 43px 0 rgba(16,33,54,.59);
   overflow-x: scroll;
 }
+.change-today {
+  text-transform: uppercase;
+  font: var(--lato700-s14-h17-normal);
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+  border: 1px solid rgb(0, 140, 255);
 
-.fivedays-city-country-name{
+  text-align: center;}
+.wheather-today {display: flex;
+                  flex-direction: row;}
+.fivedays-city-country-name{display: inline-block;
   margin-bottom: 20px;
   color: var(--whiteMain);
   font-family: var(--font-family);
@@ -67,6 +53,8 @@
   line-height: 22px;
   letter-spacing: 1px;
   text-align: center;
+  width: 200px;
+  margin-right: 15px;
 }
 
 .weather-fivedays-container{
@@ -176,21 +164,16 @@
   padding: 0;
 }
 
-/*.navigation-buttons{
-  margin-bottom: 10px;
-  border-radius: 50%;
-  display: flex;
-}
-
-.navigation-buttons .left-btn,
-.navigation-buttons .right-btn{
-  background-color: unset;
-  cursor: pointer;
-  border: none;
-  color: var(--whiteMain);
-}*/
 
 @media screen and (min-width:768px){
+  .change-today {
+    text-transform: uppercase;
+    font: var(--lato700-s14-h17-normal);
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+    border: 1px solid rgb(0, 140, 255);
+    text-align: center;}
   .wheather-fivedays-section{
     border-radius: 0;
     background-color: unset;
@@ -284,6 +267,14 @@
 }
 
 @media screen and (min-width:1280px){
+  .change-today {
+    text-transform: uppercase;
+    font: var(--lato700-s14-h17-normal);
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+    border: 1px solid rgb(0, 140, 255);
+    text-align: center;}
   .weather-fivedays-container {
     width: 1000px;
   }

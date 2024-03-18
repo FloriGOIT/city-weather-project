@@ -1,47 +1,78 @@
 import axios from "axios";
 
-const fiveDaysContainer = document.querySelector('.fivedayscontainer');
-const weatherChart = document.querySelector('.weather-fivedays-container');
-const cityName = document.getElementById('city-fivedays-name');
-const countryName = document.getElementById('country-fivedays-name');
+let array23 = [];
+const fiveDaysContainer22 = document.querySelector('.fivedayscontainer');
+const weatherChart22 = document.querySelector('.weather-fivedays-container');
+const cityName22 = document.getElementById('city-fivedays-name');
+const countryName22 = document.getElementById('country-fivedays-name');
+let aContainer = document.querySelector('.cities-scroll');
 //const leftBtn = document.querySelector('.left-btn');
 //const rightBtn = document.querySelector('.right-btn');
 
 // de sters, le-am facut eu ca sa pot lucra
-const inputText = document.getElementsByName("searchQuery")[0];
-const form = document.querySelector('.form');
-const showFiveDaysWeather = document.querySelector('.fivedays-button');
+const inputText22 = '';
+const form22 = document.querySelector('.searchbar');
+const addForm22 = document.querySelector('.city');
 
-form.addEventListener("submit", async (e) => {
+const showFiveDaysWeather = document.querySelector('#five');
+
+form22.addEventListener("submit", async (e) => {
     e.preventDefault();
     await fetchWeather();
 });
-//
 
 
-fiveDaysContainer.style.opacity = '0';
+aContainer.addEventListener("click", async (e) => {
+    e.preventDefault();
+    await fetchWeather();})
+
+function get(event){let x = event.target;
+                    x.click()}
+
 
 showFiveDaysWeather.addEventListener("click", e =>{
-    fiveDaysContainer.style.opacity = '100%';
+    fiveDaysContainer22.style.opacity = '0.9';
 });
 
 
-const fetchWeather = async () =>{
+
+const fetchWeather = async (event) =>{
+    
     const apiKey = '6c59b7271a472d858ef65bf9fc510832';
-    const location = inputText.value.trim();
-   
+    const location = localStorage.getItem('temporary').trim();
     try{
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?units=metric&q=${location}&appid=${apiKey}`);
         const city =  response.data;
        
         weatherPerDays(city.list);
-        cityName.textContent = city.city.name;
-        countryName.textContent = city.city.country;
+        cityName22.textContent = city.city.name;
+        countryName22.textContent = city.city.country;
     }
     catch(error){
         console.log(error)
     }
 }
+
+const fetchWeatherrr = async (event) =>{
+    aContainer.addEventListener("click", get)
+    const apiKey = '6c59b7271a472d858ef65bf9fc510832';
+    const location = localStorage.getItem('temporary').trim();
+    try{
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?units=metric&q=${location}&appid=${apiKey}`);
+        const city =  response.data;
+       
+        weatherPerDays(city.list);
+        cityName22.textContent = city.city.name;
+        countryName22.textContent = city.city.country;
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+
+
+
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -52,11 +83,11 @@ function weatherPerDays(weatherData) {
 
     for (let i = 0; i < weatherData.length; i += 8) {
         filteredWeatherData.push(weatherData[i]);
-        console.log(weatherData[i]);
+        //console.log(weatherData[i]);
     } 
 
     const weatherMarkup = filteredWeatherData.map((data) => `
-        <li class="weatherfivedays-card">
+        <li class="weatherfivedays-card" data-date=${new Date(data.dt_txt).getDate()}>
             <h2 class="day">${days[new Date(data.dt_txt).getDay()]}</h2>
             <h2 class="date">${new Date(data.dt_txt).getDate() + ' ' + currtentMonth}</h2>
             <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"
@@ -75,38 +106,6 @@ function weatherPerDays(weatherData) {
             <button class="more-info">more info</button>
         </li>
     `);
-    weatherChart.innerHTML = weatherMarkup.join("");
+    weatherChart22.innerHTML = weatherMarkup.join("");
 }
-
-//butoane mobil
-
-//let transformStart = 0;
-//let transOneMove = 90;
-//let transMaxMove = 180;
-
-//rightBtn.addEventListener("click", nexttransOneMoveFunction);
-//leftBtn.addEventListener("click", prevtransOneMoveFunction);
-
-//function nexttransOneMoveFunction(){
-//    transformStart += transOneMove;
-//    if(transformStart < transMaxMove ){
-//        weatherChart.style.transform = `translatex(-${transformStart}px)`;
-//        console.log(transformStart);
-//        console.log(transMaxMove);
-//    }else {
-//        weatherChart.style.transform = `translatex(-${transMaxMove}px)`
-//        rightBtn.style.disabled = true;
-//    }return transformStart;
-//   }
-//
-//function prevtransOneMoveFunction(){
-//    console.log(transformStart)
-//    transformStart -= transOneMove;
-//    weatherChart.style.transform = `translatex(-${transformStart}px)`;
-//    if(transformStart == 0 ){
-//        leftBtn.style.disabled = true;
-//    }
-//       return transformStart}
-
-
 
