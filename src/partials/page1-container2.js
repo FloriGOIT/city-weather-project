@@ -64,14 +64,13 @@ setInterval(function() {let quoteText = document.querySelector(".quote-text");
 function oneDayhidden(){page22.style.visibility = 'visible';
                         page12.style.visibility = 'hidden';
                         page22.style.transform = `translatey(-550px)`;
-                        page22.style.visibility = `visible`
                       console.log(page22);
                     }
 function fiveDayhidden(){page22.style.visibility = 'hidden';
                          page12.style.visibility = 'visible';
                         page22.style.transform = `translatey(0px)`;
                         page22.style.visibility = `hidden`;
-                        oneDayBtn.style.visibility = 'visible';
+
                         consolelog(oneDayBtn)
                     }
 
