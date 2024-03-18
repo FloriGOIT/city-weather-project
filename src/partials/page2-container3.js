@@ -49,7 +49,7 @@ async function getWeatherData(dataValue) {
           main: { humidity, temp, pressure },
           wind: { speed },
         } = list;
-
+        console.log("humidity:",humidity)
         const date = new Date(dt * 1000);
         console.log("date 2",date)
         let amPm = 'AM';
