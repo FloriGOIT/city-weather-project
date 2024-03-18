@@ -48,13 +48,16 @@ let quoteAll = [
   ];
 
 let page12beforeBtn = document.querySelector(".weather-quote");
+let page12beforeBtnHeight = page12beforeBtn.clientHeight;
 let page12afterBtn = document.querySelector(".container");
-page12beforeBtn.style.display = 'block';
-page12afterBtn.style.display = 'block';
+let page12afterBtnHeight = page12afterBtn.clientHeight;
+page12beforeBtn.style.visibility = 'visible';
+page12afterBtn.style.visibility = 'visible';
 let oneDayBtn = document.querySelector("#one");
 let fiveDayBtn = document.querySelector("#five");
-oneDayBtn.disabled = true;
+oneDayBtn.style.visibility = "hidden";
 let page22 = document.querySelector(".fivedayscontainer");
+page22.style.visibility = "hidden";
 console.log(page22)
 
 setInterval(function() {let quoteText = document.querySelector(".quote-text");
@@ -63,19 +66,26 @@ setInterval(function() {let quoteText = document.querySelector(".quote-text");
                         quoteText.textContent = quoteAll[x].quote;
                         quoteAuthor.textContent = quoteAll[x].author;}, 10000);
 
-function oneDayNone(){page12beforeBtn.style.display = 'none';
-                      page12afterBtn.style.display = 'none';
- 
-
-                      //fiveDayBtn.disabled = false;
-                        oneDayBtn.disabled = true;
-                    }
-function fiveDayNone(){page12beforeBtn.style.display = 'block';
-                        page12afterBtn.style.display = 'block';
-                      page22.style.display = 'none';
+function oneDayhidden(){page12beforeBtn.style.visibility = 'hidden';
+                      page12afterBtn.style.visibility = 'hidden';
+                      page12beforeBtn.style.height = '0px';
+                      page12afterBtn.style.height = '0px';
+                      fiveDayBtn.style.visibility = 'hidden';
+                      oneDayBtn.style.visibility = 'visible';
+                      page22.style.visibility = 'visible';
+                      //page22.style.transform = `translatey(-100px)`
                       console.log(page22);
+                    }
+function fiveDayhidden(){page12beforeBtn.style.visibility = 'visible';
+                        page12afterBtn.style.visibility = 'visible';
+                        page12beforeBtn.style.height = `${page12beforeBtnHeight}`;
+                        page12afterBtn.style.height = `${page12afterBtnHeight}`;
+                        page22.style.visibility = 'hidden';
+                        oneDayBtn.style.visibility = 'hidden';
+                        fiveDayBtn.style.visibility = 'visible';
+                        //page22.style.transform = `translatey(0px)`
                       //fiveDayBtn.disabled = true;
                       //oneDayBtn.disabled = false;
                     }
-fiveDayBtn.addEventListener("click",oneDayNone)
-oneDayBtn.addEventListener("click",fiveDayNone)
+fiveDayBtn.addEventListener("click",oneDayhidden)
+oneDayBtn.addEventListener("click",fiveDayhidden)

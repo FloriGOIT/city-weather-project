@@ -26,7 +26,6 @@
       text-transform: uppercase;
       line-height: 1.571;
       margin-bottom: 30px;
-      position: relative;
       right: 10px;
     }
     
@@ -42,8 +41,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    margin-top: 100px;
+    //transform: translatey(0px);
+    //transition-duration: 300ms;
+    //transition-timing-function: linear;
   }  
 
 .wheather-fivedays-section{

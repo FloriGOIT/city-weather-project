@@ -33,9 +33,6 @@ function get(event){let x = event.target;
                     x.click()}
 
 
-
-fiveDaysContainer22.style.opacity = '0';
-
 showFiveDaysWeather.addEventListener("click", e =>{
     fiveDaysContainer22.style.opacity = '0.9';
 });
