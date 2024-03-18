@@ -18,6 +18,7 @@
     --lato400-s13-h16-normal: normal normal 400 13px/16px Lato, sans-serif;
     --lato400-s12-h14-normal: normal normal 400 12px/14px Lato, sans-serif;
     --lato300-s90-h108-normal: normal normal 300 90px/108px Lato, sans-serif;
+    --lato300-s65-h90-normal: normal normal 300 65px/90px Lato, sans-serif;
     --lato300-s45-h54-normal: normal normal 300 45px/54px Lato, sans-serif;
     --lato700-s28-h34-italic: italic normal 700 28px/34px Lato, sans-serif;
     --lato700-s25-h30-italic: italic normal 700 25px/30px Lato, sans-serif;
@@ -35,18 +36,18 @@
     --lato300-s90-h108-italic: italic normal 300 90px/108px Lato, sans-serif;
     --lato300-s45-h54-italic: italic normal 300 45px/54px Lato, sans-serif; };
 
+
+body{background-image: url("/src/images/simple_sky.jpg");}
 //toggle classes
 .hidden {visibility: hidden;}
-.visible {visibility: visible;}
+.visible {visibility: visible;
+ height: 600px;}
 
 
 //
-body{background-image: url("/src/images/simple_sky.jpg");
-    background-repeat:no-repeat;
-    background-size:cover;}
 
-.search-section {height: 500px;
-                 margin-top: 40px};
+
+
 
 .search-section .search-container { position: relative;
                                     margin-left: auto;
@@ -85,6 +86,7 @@ body{background-image: url("/src/images/simple_sky.jpg");
                                                                     color: #808080;
                                                                     font-weight:600;
                                                                     height: 30px;
+                                                                    width: 30px;
                                                                 visibility: hidden;}
 
 .search-section .search-container .cities-scroll div {overflow: hidden;
@@ -99,12 +101,13 @@ body{background-image: url("/src/images/simple_sky.jpg");
 
 
 .search-section .search-container .cities-scroll div .saved-cities .saved-city{display: inline-block;
+                                                                                height: 30px;
                                                                                 width: 100px; margin-right: 10px;
                                                                                  background-color: rgba(128, 128, 128, 0.7);
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
                                                                                  padding-left: 10px;
-                                                                                 padding-top: 4px;
+                                                                                 padding-top: 6px;
                                                                                  cursor: pointer;
                                                                                  font: var(--lato400-s12-h14-normal);}
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .city {display: inline-block; width: 60px;
@@ -126,10 +129,10 @@ body{background-image: url("/src/images/simple_sky.jpg");
                                                                                                 width: 12px;
                                                                                                 height: 12px;}
 
+@media screen and (min-width: 300px){.search-section {margin-top: 40px};}
 
-
-@media screen and (min-width: 768px)
-{   
+@media screen and (min-width: 1000px)
+{   .search-section {margin-top: 10px};
     .search-section .search-container{max-width: 500px;}
     .search-section .search-container .searchbar input{font: var(--lato400-s18-h22-normal)};
     .search-section .search-container .searchbar input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
