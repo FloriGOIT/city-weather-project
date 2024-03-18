@@ -47,17 +47,12 @@ let quoteAll = [
     {quote:'Just for the record, the weather today is calm and sunny, but the air is full of shit.', author:'Ellie Yelizarieva '}
   ];
 
-let page12beforeBtn = document.querySelector(".weather-quote");
-let page12beforeBtnHeight = page12beforeBtn.clientHeight;
-let page12afterBtn = document.querySelector(".container");
-let page12afterBtnHeight = page12afterBtn.clientHeight;
-page12beforeBtn.style.visibility = 'visible';
-page12afterBtn.style.visibility = 'visible';
-let oneDayBtn = document.querySelector("#one");
+let page12 = document.querySelector(".weather-data-section");
+let oneDayBtn = document.querySelector(".change-today");
 let fiveDayBtn = document.querySelector("#five");
-oneDayBtn.style.visibility = "hidden";
 let page22 = document.querySelector(".fivedayscontainer");
-page22.style.visibility = "hidden";
+page22.style.visibility = 'hidden';
+//page22.style.visibility = "hidden";
 console.log(page22)
 
 setInterval(function() {let quoteText = document.querySelector(".quote-text");
@@ -66,26 +61,19 @@ setInterval(function() {let quoteText = document.querySelector(".quote-text");
                         quoteText.textContent = quoteAll[x].quote;
                         quoteAuthor.textContent = quoteAll[x].author;}, 10000);
 
-function oneDayhidden(){page12beforeBtn.style.visibility = 'hidden';
-                      page12afterBtn.style.visibility = 'hidden';
-                      page12beforeBtn.style.height = '0px';
-                      page12afterBtn.style.height = '0px';
-                      fiveDayBtn.style.visibility = 'hidden';
-                      oneDayBtn.style.visibility = 'visible';
-                      page22.style.visibility = 'visible';
-                      //page22.style.transform = `translatey(-100px)`
+function oneDayhidden(){page22.style.visibility = 'visible';
+                        page12.style.visibility = 'hidden';
+                        page22.style.transform = `translatey(-550px)`;
+                        page22.style.visibility = `visible`
                       console.log(page22);
                     }
-function fiveDayhidden(){page12beforeBtn.style.visibility = 'visible';
-                        page12afterBtn.style.visibility = 'visible';
-                        page12beforeBtn.style.height = `${page12beforeBtnHeight}`;
-                        page12afterBtn.style.height = `${page12afterBtnHeight}`;
-                        page22.style.visibility = 'hidden';
-                        oneDayBtn.style.visibility = 'hidden';
-                        fiveDayBtn.style.visibility = 'visible';
-                        //page22.style.transform = `translatey(0px)`
-                      //fiveDayBtn.disabled = true;
-                      //oneDayBtn.disabled = false;
+function fiveDayhidden(){page22.style.visibility = 'hidden';
+                         page12.style.visibility = 'visible';
+                        page22.style.transform = `translatey(0px)`;
+                        page22.style.visibility = `hidden`;
+                        oneDayBtn.style.visibility = 'visible';
+                        consolelog(oneDayBtn)
                     }
+
 fiveDayBtn.addEventListener("click",oneDayhidden)
 oneDayBtn.addEventListener("click",fiveDayhidden)

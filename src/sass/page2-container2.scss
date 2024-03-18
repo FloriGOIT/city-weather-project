@@ -41,9 +41,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    //transform: translatey(0px);
-    //transition-duration: 300ms;
-    //transition-timing-function: linear;
+    transform: translatey(0px);
+    transition-duration: 1000ms;
+    transition-timing-function: linear;
   }  
 
 .wheather-fivedays-section{
@@ -58,8 +58,20 @@
   box-shadow: 0 8px 43px 0 rgba(16,33,54,.59);
   overflow-x: scroll;
 }
-
-.fivedays-city-country-name{
+.change-today {
+  text-transform: uppercase;
+  font: var(--lato700-s14-h17-normal);
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+  border: 1px solid rgb(0, 140, 255);
+  width: 100px;
+  height: 34px;
+  text-align: center;}
+.wheather-today {display: flex;
+                  flex-direction: row;
+                 gap: 30px;}
+.fivedays-city-country-name{display: inline-block;
   margin-bottom: 20px;
   color: var(--whiteMain);
   font-family: var(--font-family);
@@ -68,6 +80,7 @@
   line-height: 22px;
   letter-spacing: 1px;
   text-align: center;
+  width: 200px;
 }
 
 .weather-fivedays-container{

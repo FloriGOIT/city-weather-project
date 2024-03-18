@@ -129,10 +129,12 @@ body{background-image: url("/src/images/simple_sky.jpg");}
                                                                                                 width: 12px;
                                                                                                 height: 12px;}
 
-@media screen and (min-width: 300px){.search-section {margin-top: 40px};}
+@media screen and (min-width: 300px){.search-section {margin-top: 40px;
+                                                      margin-bottom: 50px;}}
 
 @media screen and (min-width: 1000px)
-{   .search-section {margin-top: 10px};
+{   .search-section {margin-top: 10px;
+                    margin-bottom: 0px};
     .search-section .search-container{max-width: 500px;}
     .search-section .search-container .searchbar input{font: var(--lato400-s18-h22-normal)};
     .search-section .search-container .searchbar input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
