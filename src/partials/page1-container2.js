@@ -147,7 +147,7 @@ function firstcontainer(event)
                                    else{reply = response.json();
                                         return reply};})
                .then(city => {console.log(city);
-                              locationText.innerHTML = city.name +`, `+city.sys.country +`° `;
+                              locationText.innerHTML = city.name +`, `+city.sys.country;
                               currentTemperature.innerHTML = Math.round(city.main.temp) + `° `;
                               minimum.innerHTML = Math.round(city.main.temp_min)+`° `;
                               maximum.innerHTML = Math.round(city.main.temp_max)+`° `;
