@@ -14,7 +14,7 @@ let searchCitySVG = document.querySelector("#gps");
 let savedCities = document.querySelector(".saved-cities");
 let savedCitiesWidth = savedCities.parentNode.offsetWidth; 
 let localStoreCities = "localCities";
-let localStoreTemporary = "temporary";
+export let localStoreTemporary = "temporary";
 let prevButton = document.querySelector(".prevButton");
 let nextButton = document.querySelector(".nextButton");
 let itemsPerPage;
@@ -116,8 +116,7 @@ function showPreviousItems(){if(initial > 0){initial -= 110;
 function inputSearch(event){
                        let apiUrl = `https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&&safesearch=true&image_type=photo&pretty=true&q=${inputText}`;
                        fetch(apiUrl).then(response => {if (!response.ok) {console.log("response No:", body);}
-                                                        else{console.log("response YES:", body);
-                                                              return response.json()};})
+                                                        else{return response.json()};})
                                     .then(data => {for(let hit of data.hits){if (hit.tags.includes("city") || hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("landscape") || hit.tags.includes("landmark")){largeImageARR.push(hit.largeImageURL);};};
                                                                              if(largeImageARR.length > 1){body.style.backgroundImage = `url('${largeImageARR[1]}')`;}
                                                                              else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}});
