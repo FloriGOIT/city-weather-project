@@ -1,3 +1,53 @@
+//current location
+/*
+let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+console.log(timeZone); // Output: e.g., "Europe/Bucharest"
+
+
+
+let btn = document.querySelector(".localize");
+let localizationLatLon = ``;
+function getLocation() {
+  if (navigator.geolocation) {navigator.geolocation.getCurrentPosition(showPosition);} //originally(showPosition, showError)
+  else {alert("Geolocation is not supported by this browser.");}}
+
+function showPosition(position) 
+{
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  localizationLatLon = `lat=${Math.trunc(latitude * 1000)/1000}&lon=${Math.trunc(longitude * 1000)/1000}`;//lat=43.8207125&lon=28.5860482
+  console.log(localizationLatLon);
+  return localizationLatLon;
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      alert("User denied the request for Geolocation.");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("Location information is unavailable.");
+      break;
+    case error.TIMEOUT:
+      alert("The request to get user location timed out.");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("An unknown error occurred.");
+      break;
+  }
+}
+btn.addEventListener("click", getLocation)
+
+let localSite = `https://api.openweathermap.org/data/2.5/weather?&units=metric&APPID=65135483567bdfc07e8e9ad4811a6114&${localizationLatLon}`
+*/
+
+import { conforms, functions } from "lodash";
+
+
+
+
+
+
 let quoteAll = [
     {
       quote: 'Climate is what we expect, weather is what we get.',
@@ -52,9 +102,8 @@ let oneDayBtn = document.querySelector(".change-today");
 let fiveDayBtn = document.querySelector("#five");
 let page22 = document.querySelector(".fivedayscontainer");
 page22.style.visibility = 'hidden';
-//page22.style.visibility = "hidden";
 
-
+//when button
 setInterval(function() {let quoteText = document.querySelector(".quote-text");
                         let quoteAuthor = document.querySelector(".quote-author");
                         let x = Math.floor(Math.random() * 13)
@@ -74,3 +123,101 @@ function fiveDayhidden(){page22.style.visibility = 'hidden';
 
 fiveDayBtn.addEventListener("click",oneDayhidden)
 oneDayBtn.addEventListener("click",fiveDayhidden)
+
+//first tempreture container
+
+let locationText = document.querySelector(".location-text");
+let currentTemperature = document.querySelector(".current-temperature")
+let minimum = document.querySelector("#minimum");
+let maximum = document.querySelector("#maximum");
+localStoreTemporary = "temporary";
+let cityStorage12=``;
+let weatherIcon = document.querySelector(".weather-icon")
+let clearsky= `🌞`; let fewclouds = `🌤️`; let scatteredclouds = `🌥️`; let brokenclouds = `☁️`; 
+let showerrain = `🌦️`; let rain = `🌧️`; let thunderstorm = `🌩️`; let snow = `❄️`; let mist = `🌫️`;
+form = document.querySelector(".searchbar");
+form.addEventListener("submit", firstcontainer);
+
+
+function firstcontainer(event)
+{cityStorage12= localStorage.getItem("temporary");
+   let reply = ``;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?appid=65135483567bdfc07e8e9ad4811a6114&units=metric&q=${cityStorage12}`;
+  fetch(apiUrl).then(response => {if (!response.ok) {console.log("Please refresh");}
+                                   else{reply = response.json();
+                                        return reply};})
+               .then(city => {console.log(city);
+                              locationText.innerHTML = city.name +`, `+city.sys.country +`° `;
+                              currentTemperature.innerHTML = Math.round(city.main.temp) + `° `;
+                              minimum.innerHTML = Math.round(city.main.temp_min)+`° `;
+                              maximum.innerHTML = Math.round(city.main.temp_max)+`° `;
+                              let iconforweather = city.weather[0].description.replace(/\s/g, "")});
+                              weatherIcon.innerHTML  = iconforweather;
+
+              }
+                          
+
+              /*
+              //design
+              
+              //https://api.openweathermap.org/data/2.5/weather?appid=65135483567bdfc07e8e9ad4811a6114&units=metric&q=ZURICH
+              
+              let city = 
+              
+              {
+                coord:{lon:8.55,lat:47.3667},
+                weather:[{id:800,main:'Clear',description:'clear sky',icon:'01d'}],
+                base:`stations`,
+                main:{temp:15.02,feels_like:14.17,temp_min:12.96,temp_max:17.04,pressure:1018,humidity:61},
+                visibility:10000,
+                wind:{speed:2.57,deg:50},
+                clouds:{all:0},
+                dt:1710864381,
+                sys:{type:2,id:2004824,country:`CH`,sunrise:1710826217,sunset:1710869800},
+                timezone:3600,
+                id:2657896,
+                name: 'Zurich',
+                cod:200
+                }
+
+
+              let descrWeather = ["clear sky","few clouds","scattered clouds", "broken clouds", "shower rain", "rain","thunderstorm", "snow", "mist"]
+              //let descrWeatherIcon=[🌞,🌤️,🌥️,☁️,🌦️,🌧️,🌩️, ❄️,🌫️,];//https://openweathermap.org/weather-conditions#Icon-list
+              
+              let cityCountry = city.name+`, `+city.sys.country;
+              console.log("cityCountry: ",cityCountry)
+              
+              
+              let iconCityWeather = city.weather[0].description
+              console.log("iconCityWeather: ",iconCityWeather)
+              
+              let day = new Date().getDay();
+              console.log("day: ",day)
+              let number = new Date().getDate();
+              console.log("number: ",number )
+              let month = new Date().getMonth();
+              console.log("month: ",day)
+              let hourMinute = new Date().getHours().toString() + `:` + new Date().getMinutes().toString();
+              console.log("hourMinute: ",hourMinute)
+              
+              let currentTemp12 = Math.round(city.main.temp)
+              console.log("currentTemp12: ",currentTemp12)
+              let minTemp12 = Math.round(city.main.temp_min)
+              console.log("minTemp12: ",minTemp12)
+              let maxTemp12 = Math.round(city.main.temp_max)
+              console.log("maxTemp12: ",maxTemp12)
+              
+              let sunrise = new Date(city.sys.sunrise * 1000);
+              let sunriseTime = sunrise.getHours().toString() +`:`+ sunrise.getMinutes().toString();
+              console.log("sunriseTime:",sunriseTime)
+              
+              
+              
+              
+              let sunset = new Date(city.sys.sunset * 1000);
+              let sunsetTime = sunset.getHours().toString() +`:`+ sunset.getMinutes().toString();
+              console.log("sunsetTime:",sunsetTime)
+              
+              //let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+              //console.log(timeZone)
+              */
