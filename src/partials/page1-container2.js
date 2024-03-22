@@ -2,9 +2,25 @@
 
 import { conforms, functions } from "lodash";
 
+// Get hour and minutes
+
+let day = new Date().getDay();
+console.log("day: ",day)
+let number = new Date().getDate();
+console.log("number: ",number )
+let month = new Date().getMonth();
+console.log("month: ",day)
+let hourMinute = new Date().getHours().toString() + `:` + new Date().getMinutes().toString();
+console.log("hourMinute: ",hourMinute)
+
+
+
 let locationText = document.querySelector(".location-text");
 let btn = document.querySelector(".localize");
 let weatherIcon = document.querySelector(".weather-icon");
+let sunriseeee = document.querySelector(".sunrise-time");
+let twilightttt = document.querySelector(".twilight-time");
+
 let emojiMap = 
 {clearsky: `🌞`,
 fewclouds : `🌤️`,
@@ -43,6 +59,9 @@ function showPosition(position)
                .then(city =>{localStorage.setItem("temporary", city.name.toLowerCase()); markup12(city)})}
 
 
+function format(number) {if (number < 10) {return "0" + number;}
+                              else {return number.toString();}}
+
 function markup12(x)
 {locationText.innerHTML = x.name +`, `+x.sys.country;
 currentTemperature.innerHTML = Math.round(x.main.temp) + `° `;
@@ -52,7 +71,16 @@ console.log(x.weather[0].description)
 let iconforweather = x.weather[0].description.replace(/\s/g, "");
 let emoji = emojiMap[iconforweather];
 weatherIcon.innerHTML  = emoji;
-weatherIcon.style.fontSize = "2em";}
+weatherIcon.style.fontSize = "2em";
+let sunsetUnix = new Date(x.sys.sunset * 1000);
+let sunsetTime = format(sunsetUnix.getHours()) +`:`+ format(sunsetUnix.getMinutes());
+twilightttt.innerHTML = `🌘  ` + sunsetTime;
+let sunriseUnix = new Date(x.sys.sunrise * 1000);
+let sunriseTime = format(sunriseUnix.getHours()) +`:`+ format(sunriseUnix.getMinutes());
+console.log(sunriseTime)
+sunriseeee.innerHTML= `🌅  ` + sunriseTime;
+
+}
 
 
 function showError(error) {
@@ -215,33 +243,7 @@ function firstcontainer(event)
               let iconCityWeather = city.weather[0].description
               console.log("iconCityWeather: ",iconCityWeather)
               
-              let day = new Date().getDay();
-              console.log("day: ",day)
-              let number = new Date().getDate();
-              console.log("number: ",number )
-              let month = new Date().getMonth();
-              console.log("month: ",day)
-              let hourMinute = new Date().getHours().toString() + `:` + new Date().getMinutes().toString();
-              console.log("hourMinute: ",hourMinute)
+
               
-              let currentTemp12 = Math.round(city.main.temp)
-              console.log("currentTemp12: ",currentTemp12)
-              let minTemp12 = Math.round(city.main.temp_min)
-              console.log("minTemp12: ",minTemp12)
-              let maxTemp12 = Math.round(city.main.temp_max)
-              console.log("maxTemp12: ",maxTemp12)
-              
-              let sunrise = new Date(city.sys.sunrise * 1000);
-              let sunriseTime = sunrise.getHours().toString() +`:`+ sunrise.getMinutes().toString();
-              console.log("sunriseTime:",sunriseTime)
-              
-              
-              
-              
-              let sunset = new Date(city.sys.sunset * 1000);
-              let sunsetTime = sunset.getHours().toString() +`:`+ sunset.getMinutes().toString();
-              console.log("sunsetTime:",sunsetTime)
-              
-              //let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-              //console.log(timeZone)
+
               */
