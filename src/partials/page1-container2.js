@@ -1,24 +1,53 @@
-//current location
-/*
-let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-console.log(timeZone); // Output: e.g., "Europe/Bucharest"
 
 
+import { conforms, functions } from "lodash";
 
+let locationText = document.querySelector(".location-text");
 let btn = document.querySelector(".localize");
+let weatherIcon = document.querySelector(".weather-icon");
+let emojiMap = 
+{clearsky: `🌞`,
+fewclouds : `🌤️`,
+scatteredclouds : `🌥️`,
+brokenclouds : `☁️`,
+showerrain : `🌦️`,
+rain : `🌧️`,
+thunderstorm : `🌩️`,
+snow : `❄️`,
+mist : `🌫️`,}
+
+
 let localizationLatLon = ``;
+let localizationCountry =``;
 function getLocation() {
-  if (navigator.geolocation) {navigator.geolocation.getCurrentPosition(showPosition);} //originally(showPosition, showError)
-  else {alert("Geolocation is not supported by this browser.");}}
+  if (navigator.geolocation) {navigator.geolocation.getCurrentPosition(showPosition,showError); return;} //originally(showPosition, showError)
+  else {let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    console.log(timeZone); // Output: e.g., "Europe/Bucharest";
+    let timeZoneSplit = timeZone.split("/");
+    localizationCountry = timeZoneSplit[1]
+    console.log(localizationCountry)
+    return localizationCountry}}
 
 function showPosition(position) 
 {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
+  let reply=``;
   localizationLatLon = `lat=${Math.trunc(latitude * 1000)/1000}&lon=${Math.trunc(longitude * 1000)/1000}`;//lat=43.8207125&lon=28.5860482
-  console.log(localizationLatLon);
-  return localizationLatLon;
-}
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?&units=metric&APPID=65135483567bdfc07e8e9ad4811a6114&${localizationLatLon}`;
+  fetch(apiURL).then(response => {if(!response.ok){console.log("Please refresh");}
+                                  else{reply = response.json();return reply;}})
+               .then(city =>{locationText.innerHTML = city.name +`, `+city.sys.country;
+                             currentTemperature.innerHTML = Math.round(city.main.temp) + `° `;
+                             minimum.innerHTML = Math.round(city.main.temp_min)+`° `;
+                             maximum.innerHTML = Math.round(city.main.temp_max)+`° `;
+                             console.log(city.weather[0].description)
+                             let iconforweather = city.weather[0].description.replace(/\s/g, "");
+                             console.log(iconforweather)
+                             let emoji = emojiMap[iconforweather];
+                             weatherIcon.innerHTML  = emoji;
+                             weatherIcon.style.fontSize = "2em";
+                             console.log(locationText)})}
 
 function showError(error) {
   switch(error.code) {
@@ -36,16 +65,7 @@ function showError(error) {
       break;
   }
 }
-btn.addEventListener("click", getLocation)
-
-let localSite = `https://api.openweathermap.org/data/2.5/weather?&units=metric&APPID=65135483567bdfc07e8e9ad4811a6114&${localizationLatLon}`
-*/
-
-import { conforms, functions } from "lodash";
-
-
-
-
+document.addEventListener("DOMContentLoaded",getLocation)
 
 
 let quoteAll = [
@@ -117,28 +137,26 @@ function fiveDayhidden(){page22.style.visibility = 'hidden';
                          page12.style.visibility = 'visible';
                         page22.style.transform = `translatey(0px)`;
                         page22.style.visibility = `hidden`;
-
-                        consolelog(oneDayBtn)
-                    }
+                        consolelog(oneDayBtn)}
 
 fiveDayBtn.addEventListener("click",oneDayhidden)
 oneDayBtn.addEventListener("click",fiveDayhidden)
 
 //first tempreture container
 
-let locationText = document.querySelector(".location-text");
+
 let currentTemperature = document.querySelector(".current-temperature")
 let minimum = document.querySelector("#minimum");
 let maximum = document.querySelector("#maximum");
 localStoreTemporary = "temporary";
 let cityStorage12=``;
-let weatherIcon = document.querySelector(".weather-icon")
-let clearsky= `🌞`; let fewclouds = `🌤️`; let scatteredclouds = `🌥️`; let brokenclouds = `☁️`; 
-let showerrain = `🌦️`; let rain = `🌧️`; let thunderstorm = `🌩️`; let snow = `❄️`; let mist = `🌫️`;
+
 form = document.querySelector(".searchbar");
+
+
+
+/*
 form.addEventListener("submit", firstcontainer);
-
-
 function firstcontainer(event)
 {cityStorage12= localStorage.getItem("temporary");
    let reply = ``;
@@ -157,7 +175,7 @@ function firstcontainer(event)
               }
                           
 
-              /*
+
               //design
               
               //https://api.openweathermap.org/data/2.5/weather?appid=65135483567bdfc07e8e9ad4811a6114&units=metric&q=ZURICH
