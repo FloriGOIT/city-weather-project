@@ -2,21 +2,26 @@
 
 import { conforms, functions } from "lodash";
 
+function format(number) {if (number < 10) {return "0" + number;}
+                              else {return number.toString();}}
+let weatherDay = document.querySelector(".weather-day");
+let monthDay = document.querySelector(".month");
+let timeDay= document.querySelector(".time");
+let arrayDays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+let arrayMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
 // Get hour and minutes
-
-let day = new Date().getDay();
-console.log("day: ",day)
-let number = new Date().getDate();
-console.log("number: ",number )
-let month = new Date().getMonth();
-console.log("month: ",day)
-let hourMinute = new Date().getHours().toString() + `:` + new Date().getMinutes().toString();
-console.log("hourMinute: ",hourMinute)
-
+function dating(){let currentDate = new Date()
+          let arrayDay = currentDate.getDay();
+          let number = format(currentDate.getDate());
+          weatherDay.innerHTML = arrayDays[arrayDay] + `  ` + number;
+          let month = currentDate.getMonth();
+          monthDay.innerHTML = arrayMonths[month];
+          timeDay.innerHTML = format(currentDate.getHours()) + `:` + format(currentDate.getMinutes()) + `:` + format(currentDate.getSeconds());}
+setInterval(dating, 1000)
 
 
 let locationText = document.querySelector(".location-text");
-let btn = document.querySelector(".localize");
 let weatherIcon = document.querySelector(".weather-icon");
 let sunriseeee = document.querySelector(".sunrise-time");
 let twilightttt = document.querySelector(".twilight-time");
@@ -59,8 +64,7 @@ function showPosition(position)
                .then(city =>{localStorage.setItem("temporary", city.name.toLowerCase()); markup12(city)})}
 
 
-function format(number) {if (number < 10) {return "0" + number;}
-                              else {return number.toString();}}
+
 
 function markup12(x)
 {locationText.innerHTML = x.name +`, `+x.sys.country;
