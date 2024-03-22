@@ -27,7 +27,7 @@ let sunriseeee = document.querySelector(".sunrise-time");
 let twilightttt = document.querySelector(".twilight-time");
 
 let emojiMap = 
-{clearsky: `🌞`,
+{clearsky: `☀️`,
 fewclouds : `🌤️`,
 scatteredclouds : `🌥️`,
 brokenclouds : `☁️`,
@@ -71,19 +71,18 @@ function markup12(x)
 currentTemperature.innerHTML = Math.round(x.main.temp) + `° `;
 minimum.innerHTML = Math.round(x.main.temp_min)+`° `;
 maximum.innerHTML = Math.round(x.main.temp_max)+`° `;
-console.log(x.weather[0].description)
 let iconforweather = x.weather[0].description.replace(/\s/g, "");
 let emoji = emojiMap[iconforweather];
-weatherIcon.innerHTML  = emoji;
-weatherIcon.style.fontSize = "2em";
 let sunsetUnix = new Date(x.sys.sunset * 1000);
 let sunsetTime = format(sunsetUnix.getHours()) +`:`+ format(sunsetUnix.getMinutes());
 twilightttt.innerHTML = `🌘  ` + sunsetTime;
 let sunriseUnix = new Date(x.sys.sunrise * 1000);
 let sunriseTime = format(sunriseUnix.getHours()) +`:`+ format(sunriseUnix.getMinutes());
-console.log(sunriseTime)
 sunriseeee.innerHTML= `🌅  ` + sunriseTime;
-
+let newDate = new Date();
+if(newDate.getHours() > format(sunsetUnix.getHours())){weatherIcon.innerHTML  = `🌒`;}
+else{weatherIcon.innerHTML  = emoji;}
+weatherIcon.style.fontSize = "2em";
 }
 
 
@@ -100,9 +99,7 @@ function showError(error) {
       break;
     case error.UNKNOWN_ERROR:
       alert("An unknown error occurred.");
-      break;
-  }
-}
+      break;}}
 document.addEventListener("DOMContentLoaded",getLocation)
 
 
@@ -174,8 +171,7 @@ function oneDayhidden(){page22.style.visibility = 'visible';
 function fiveDayhidden(){page22.style.visibility = 'hidden';
                          page12.style.visibility = 'visible';
                         page22.style.transform = `translatey(0px)`;
-                        page22.style.visibility = `hidden`;
-                        consolelog(oneDayBtn)}
+                        page22.style.visibility = `hidden`;}
 
 fiveDayBtn.addEventListener("click",oneDayhidden)
 oneDayBtn.addEventListener("click",fiveDayhidden)
@@ -190,64 +186,3 @@ localStoreTemporary = "temporary";
 let cityStorage12=``;
 
 form = document.querySelector(".searchbar");
-
-
-
-/*
-form.addEventListener("submit", firstcontainer);
-function firstcontainer(event)
-{cityStorage12= localStorage.getItem("temporary");
-   let reply = ``;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?appid=65135483567bdfc07e8e9ad4811a6114&units=metric&q=${cityStorage12}`;
-  fetch(apiUrl).then(response => {if (!response.ok) {console.log("Please refresh");}
-                                   else{reply = response.json();
-                                        return reply};})
-               .then(city => {console.log(city);
-                              locationText.innerHTML = city.name +`, `+city.sys.country;
-                              currentTemperature.innerHTML = Math.round(city.main.temp) + `° `;
-                              minimum.innerHTML = Math.round(city.main.temp_min)+`° `;
-                              maximum.innerHTML = Math.round(city.main.temp_max)+`° `;
-                              let iconforweather = city.weather[0].description.replace(/\s/g, "")});
-                              weatherIcon.innerHTML  = iconforweather;
-
-              }
-                          
-
-
-              //design
-              
-              //https://api.openweathermap.org/data/2.5/weather?appid=65135483567bdfc07e8e9ad4811a6114&units=metric&q=ZURICH
-              
-              let city = 
-              
-              {
-                coord:{lon:8.55,lat:47.3667},
-                weather:[{id:800,main:'Clear',description:'clear sky',icon:'01d'}],
-                base:`stations`,
-                main:{temp:15.02,feels_like:14.17,temp_min:12.96,temp_max:17.04,pressure:1018,humidity:61},
-                visibility:10000,
-                wind:{speed:2.57,deg:50},
-                clouds:{all:0},
-                dt:1710864381,
-                sys:{type:2,id:2004824,country:`CH`,sunrise:1710826217,sunset:1710869800},
-                timezone:3600,
-                id:2657896,
-                name: 'Zurich',
-                cod:200
-                }
-
-
-              let descrWeather = ["clear sky","few clouds","scattered clouds", "broken clouds", "shower rain", "rain","thunderstorm", "snow", "mist"]
-              //let descrWeatherIcon=[🌞,🌤️,🌥️,☁️,🌦️,🌧️,🌩️, ❄️,🌫️,];//https://openweathermap.org/weather-conditions#Icon-list
-              
-              let cityCountry = city.name+`, `+city.sys.country;
-              console.log("cityCountry: ",cityCountry)
-              
-              
-              let iconCityWeather = city.weather[0].description
-              console.log("iconCityWeather: ",iconCityWeather)
-              
-
-              
-
-              */
