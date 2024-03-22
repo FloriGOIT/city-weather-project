@@ -22,6 +22,8 @@ form22.addEventListener("submit", async (e) => {
 });
 
 
+
+
 aContainer.addEventListener("click", async (e) => {
     e.preventDefault();
     await fetchWeather();})
@@ -37,7 +39,6 @@ showFiveDaysWeather.addEventListener("click", e =>{
 
 
 const fetchWeather = async (event) =>{
-    
     const apiKey = '6c59b7271a472d858ef65bf9fc510832';
     const location = localStorage.getItem('temporary').trim();
     try{
@@ -53,9 +54,11 @@ const fetchWeather = async (event) =>{
     }
 }
 
+
 const fetchWeatherrr = async (event) =>{
     aContainer.addEventListener("click", get)
     const apiKey = '6c59b7271a472d858ef65bf9fc510832';
+
     const location = localStorage.getItem('temporary').trim();
     try{
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?units=metric&q=${location}&appid=${apiKey}`);
