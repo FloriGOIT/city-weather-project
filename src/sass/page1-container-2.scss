@@ -162,11 +162,7 @@ table {
     padding-right: 20px;
 }
 
-.location-text {
-    padding-top: 5px;
-    font: var(--lato400-s16-h19-normal);
-    color: #767D85;
-}
+
 
 .maximum-temp {
     padding-left: 5px;
@@ -203,6 +199,8 @@ table {
     .weather-data-section .weather-quote{flex-direction: column;}
     .weather-data-section .change-page-buttons-wrapper{padding-bottom: 50px;
                                                        padding-top: 10px;}
+    .location-text {padding-top: 5px; color: #767D85;
+            font: var(--lato400-s18-h22-normal);}                                                   
 }
 
 
@@ -250,9 +248,7 @@ table {
         flex-direction: column;
     }
 
-    .location-text {
-        font: var(--lato400-s18-h22-normal);
-    }
+    .location-text {font: var(--lato400-s25-h30-normal);}
 
     .current-temperature {
         font-size: 40px;

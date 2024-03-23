@@ -212,6 +212,4 @@ let maximum = document.querySelector("#maximum");
 localStoreTemporary = "temporary";
 let cityStorage12=``;
 
-form = document.querySelector(".searchbar");
-
 export {getData12, markup12}
