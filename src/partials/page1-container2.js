@@ -37,7 +37,7 @@ thunderstorm : `🌩️`,
 snow : `❄️`,
 mist : `🌫️`,}
 
-
+let location =``;
 let localizationLatLon = ``;
 let localizationCountry =``;
 function getLocation() {
@@ -45,12 +45,18 @@ function getLocation() {
   else {let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     let timeZoneSplit = timeZone.split("/");
     localizationCountry = timeZoneSplit[1].toLowerCase();
-    let reply=``;
-    let apiURL = `https://api.openweathermap.org/data/2.5/weather?&units=metric&APPID=65135483567bdfc07e8e9ad4811a6114&q=${localizationCountry}`;
-    fetch(apiURL).then(response => {if(!response.ok){console.log("Please refresh");}
-                                    else{reply = response.json();return reply;}})
-                 .then(city =>{localStorage.setItem("temporary", localizationCountry); markup12(city)})};
-    return localizationCountry}
+    localStorage.setItem("temporary", localizationCountry);
+    getData12();
+    };}
+
+function getData12(){
+                  let location = localStorage.getItem("temporary");
+                  let reply=``;
+                  let apiURL = `https://api.openweathermap.org/data/2.5/weather?&units=metric&APPID=65135483567bdfc07e8e9ad4811a6114&q=${location}`;
+                  console.log(apiURL)
+                  fetch(apiURL).then(response => {if(!response.ok){console.log("Please refresh");}
+                                else{reply = response.json();return reply;}})
+                               .then(city =>{ markup12(city)})}
 
 function showPosition(position) 
 {
@@ -67,7 +73,8 @@ function showPosition(position)
 
 
 function markup12(x)
-{locationText.innerHTML = x.name +`, `+x.sys.country;
+{
+locationText.innerHTML = x.name +`, `+x.sys.country;
 currentTemperature.innerHTML = Math.round(x.main.temp) + `° `;
 minimum.innerHTML = Math.round(x.main.temp_min)+`° `;
 maximum.innerHTML = Math.round(x.main.temp_max)+`° `;
@@ -99,7 +106,8 @@ function showError(error) {
       break;
     case error.UNKNOWN_ERROR:
       alert("An unknown error occurred.");
-      break;}}
+      break;}};
+
 document.addEventListener("DOMContentLoaded",getLocation)
 
 
@@ -186,3 +194,5 @@ localStoreTemporary = "temporary";
 let cityStorage12=``;
 
 form = document.querySelector(".searchbar");
+
+export {getData12, markup12}

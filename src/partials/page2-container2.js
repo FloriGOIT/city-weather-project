@@ -1,4 +1,7 @@
 import axios from "axios";
+import {getData12, markup12} from "./page1-container2.js"
+
+
 
 let array23 = [];
 const fiveDaysContainer22 = document.querySelector('.fivedayscontainer');
@@ -20,17 +23,10 @@ form22.addEventListener("submit", async (e) => {e.preventDefault();
                                                 await fetchWeather();}
                          );
 
-document.addEventListener("DOMContentLoaded", async (e) => {e.preventDefault();
-    await fetchWeather();})
-
 
 aContainer.addEventListener("click", async (e) => {
     e.preventDefault();
     await fetchWeather();})
-
-function get(event){let x = event.target;
-                    x.click()}
-
 
 showFiveDaysWeather.addEventListener("click", e =>{
     fiveDaysContainer22.style.opacity = '0.9';
@@ -41,8 +37,10 @@ setTimeout(() => {
 }, 1000);
 
 const fetchWeather = async (event) =>{
+
     const apiKey = '6c59b7271a472d858ef65bf9fc510832';
-    const location = localStorage.getItem('temporary').trim();
+    let location = localStorage.getItem('temporary').trim();
+    setTimeout(() => getData12(),100);
     console.log("location:",location)
     try{
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?units=metric&q=${location}&appid=${apiKey}`);
@@ -56,28 +54,6 @@ const fetchWeather = async (event) =>{
         console.log(error)
     }
 }
-
-
-const fetchWeatherrr = async (event) =>{
-    aContainer.addEventListener("click", get)
-    const apiKey = '6c59b7271a472d858ef65bf9fc510832';
-
-    const location = localStorage.getItem('temporary').trim();
-    try{
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?units=metric&q=${location}&appid=${apiKey}`);
-        const city =  response.data;
-       
-        weatherPerDays(city.list);
-        cityName22.textContent = city.city.name;
-        countryName22.textContent = city.city.country;
-    }
-    catch(error){
-        console.log(error)
-    }
-}
-
-
-
 
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
