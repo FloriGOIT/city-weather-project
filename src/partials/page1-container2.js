@@ -69,19 +69,6 @@ function showPosition(position)
                                   else{reply = response.json();return reply;}})
                .then(city =>{localStorage.setItem("temporary", city.name.toLowerCase()); markup12(city)})}
 
-
-               let sunriseUNIXxxx = 1711177514
-               let timezoneOffsetSeconds = 0;
-               
-               // Convert Unix timestamp to milliseconds
-               let sunriseDate = new Date(sunriseUNIXxxx * 1000);
-               
-               // Add timezone offset to get UTC time
-               let utcTime = new Date(sunriseDate.getTime() + (timezoneOffsetSeconds - 7200) * 1000);
-               
-               console.log("utcTime:",utcTime); 
-               
-
 function markup12(x)
 {
 locationText.innerHTML = x.name +`, `+x.sys.country;
