@@ -1,6 +1,15 @@
 import { remove } from 'lodash';
 import Notiflix from 'notiflix'; 
-let anamaria = []
+
+let currentDate = new Date();
+let currentDateInMillis = new Date().getTime();
+let currentDateInSeconds = Math.floor(currentDateInMillis / 1000);
+let myTimeSeconds = currentDate.getTimezoneOffset() * 60;
+let timezoneOffsetSeconds = -18000;
+let dateeeeUnix = currentDateInSeconds + timezoneOffsetSeconds + myTimeSeconds;
+let dateeee = new Date(dateeeeUnix * 1000)
+console.log(dateeee)
+
 //declaration
 let body = document.querySelector("body");
 let searchSection = document.querySelector(".search-section");
@@ -121,7 +130,7 @@ function inputSearch(event){
                        let apiUrl = `https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&&safesearch=true&image_type=photo&pretty=true&q=${inputText}`;
                        fetch(apiUrl).then(response => {if (!response.ok) {console.log("response No:", body);}
                                                         else{return response.json()};})
-                                    .then(data => {for(let hit of data.hits){if (hit.tags.includes("city") || hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("landscape") || hit.tags.includes("landmark")){largeImageARR.push(hit.largeImageURL);};};
+                                    .then(data => {for(let hit of data.hits){if (hit.tags.includes("landscape") || hit.tags.includes("city") || hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("landmark")){largeImageARR.push(hit.largeImageURL);};};
                                                                              if(largeImageARR.length > 1){body.style.backgroundImage = `url('${largeImageARR[1]}')`;}
                                                                              else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}});
                        largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
