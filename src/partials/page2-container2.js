@@ -43,7 +43,6 @@ const fetchWeather = async (event) =>{
     const apiKey = '6c59b7271a472d858ef65bf9fc510832';
     let location = localStorage.getItem('temporary').trim();
     setTimeout(() => getData12(),100);
-    console.log("location:",location)
     try{
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?units=metric&q=${location}&appid=${apiKey}`);
         const city =  response.data;
@@ -67,7 +66,6 @@ function weatherPerDays(weatherData) {
 
     for (let i = 0; i < weatherData.length; i += 8) {
         filteredWeatherData.push(weatherData[i]);
-        //console.log(weatherData[i]);
     } 
 
     const weatherMarkup = filteredWeatherData.map((data) => `

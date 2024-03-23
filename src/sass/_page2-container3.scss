@@ -47,13 +47,15 @@
   }
   .container23 {
       width: 280px;
-      margin: 0 auto 100 auto;
+      margin: -400 auto 0 auto;
   }
   .more_info23 {
     background: #102136cc;
     box-shadow: 0px 8px 43px 0px #10213699;
     position: relative;
-    padding: 20px 15px;
+    padding: 15px 15px 5px;
+    border-radius: 20px;
+    overflow: hidden;
   }
   .close__more-info {
     text-align: center;
@@ -77,8 +79,8 @@
   .hourly-weather-btns {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    padding: 20px 0;
+    gap: 20px;
+    padding: 1% 0;
   }
   .three_hour_prev-btn,
   .three_hour_next-btn {
@@ -168,9 +170,10 @@
   }
   @media (min-width: 768px) {
     .container23 {
-      width: 620px;
+      width: 700px;
       margin-bottom: 100px;
     }
+    .three_hour_weather {gap: 14px;}
   }
   
   @media (min-width: 1280px) {
@@ -179,12 +182,12 @@
       margin-bottom: 100px;
     }
     .more_info23 {
-      padding-bottom: 40px;
+      padding-bottom: 20px;
     }
     .three_hour_forecast {
-      justify-content: center;
-      
+      justify-content: center;  
     }
+    .three_hour_weather {gap: 10px;}
     .hourly-weather-btns {
       display: none;
     }
