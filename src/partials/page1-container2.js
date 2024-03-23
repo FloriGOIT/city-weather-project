@@ -11,14 +11,6 @@ let arrayDays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 let arrayMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
 // Get hour and minutes
-function dating(){let currentDate = new Date()
-          let arrayDay = currentDate.getDay();
-          let number = format(currentDate.getDate());
-          weatherDay.innerHTML = arrayDays[arrayDay] + `  ` + number;
-          let month = currentDate.getMonth();
-          monthDay.innerHTML = arrayMonths[month];
-          timeDay.innerHTML = format(currentDate.getHours()) + `:` + format(currentDate.getMinutes()) + `:` + format(currentDate.getSeconds());}
-setInterval(dating, 1000)
 
 
 let locationText = document.querySelector(".location-text");
@@ -27,19 +19,27 @@ let sunriseeee = document.querySelector(".sunrise-time");
 let twilightttt = document.querySelector(".twilight-time");
 
 let emojiMap = 
-{clearsky: `☀️`,
-fewclouds : `🌤️`,
-scatteredclouds : `🌥️`,
-brokenclouds : `☁️`,
-showerrain : `🌦️`,
-rain : `🌧️`,
-thunderstorm : `🌩️`,
-snow : `❄️`,
-mist : `🌫️`,}
+{Drizzle: `🌧️`,
+Thunderstorm : `🌩️`,
+Rain : `🌧️`,
+Snow : `❄️`,
+Mist : `🌫️`,
+Smoke: `🌫️`,
+Haze: `🌫️`,
+Dust: `🌫️`,
+Fog: `🌫️`,
+Sand: `🌫️`,
+Dust: `🌫️`,
+Ash: `🌫️`,
+Squall: `🌫️`,
+Tornado: `🌪️`,
+Clear: `☀️`,
+Clouds : `🌥️`,}
 
 let location =``;
 let localizationLatLon = ``;
 let localizationCountry =``;
+let timezoneOffsetSeconds = ``;
 function getLocation() {
   if (navigator.geolocation) {navigator.geolocation.getCurrentPosition(showPosition,showError); return;} //originally(showPosition, showError)
   else {let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -75,9 +75,9 @@ locationText.innerHTML = x.name +`, `+x.sys.country;
 currentTemperature.innerHTML = Math.round(x.main.temp) + `° `;
 minimum.innerHTML = Math.round(x.main.temp_min)+`° `;
 maximum.innerHTML = Math.round(x.main.temp_max)+`° `;
-let iconforweather = x.weather[0].description.replace(/\s/g, "");
+let iconforweather = x.weather[0].main;
 let emoji = emojiMap[iconforweather];
-let timezoneOffsetSeconds = x.timezone;
+timezoneOffsetSeconds = x.timezone;
 let sunsetUnix = new Date(x.sys.sunset * 1000);
 let utcTimeSunset = new Date(sunsetUnix .getTime() + (timezoneOffsetSeconds - 7200) * 1000);
 let sunsetTime = format(utcTimeSunset.getHours()) +`:`+ format(utcTimeSunset.getMinutes());
@@ -90,7 +90,26 @@ let newDate = new Date();
 if(newDate.getHours() > format(sunsetUnix.getHours())){weatherIcon.innerHTML  = `🌒`;}
 else{weatherIcon.innerHTML  = emoji;}
 weatherIcon.style.fontSize = "2em";
+return timezoneOffsetSeconds;
 }
+
+function dating(){
+  let currentDate = new Date();
+  let currentDateInMillis = new Date().getTime();
+  let currentDateInSeconds = Math.floor(currentDateInMillis / 1000);
+  let myTimeSeconds = currentDate.getTimezoneOffset() * 60;
+  console.log(timezoneOffsetSeconds)
+  let dateeeeUnix = currentDateInSeconds + timezoneOffsetSeconds + myTimeSeconds;
+  let dateeee = new Date(dateeeeUnix * 1000)
+  console.log(dateeee)
+  let arrayDay = dateeee.getDay();
+  let number = format(dateeee.getDate());
+  weatherDay.innerHTML = arrayDays[arrayDay] + `  ` + number;
+  let month = dateeee.getMonth();
+  monthDay.innerHTML = arrayMonths[month];
+  timeDay.innerHTML = format(dateeee.getHours()) + `:` + format(dateeee.getMinutes()) + `:` + format(dateeee.getSeconds());}
+setInterval(dating, 1000)
+
 
 
 function showError(error) {

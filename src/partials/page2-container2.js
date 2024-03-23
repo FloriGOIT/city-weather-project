@@ -3,7 +3,9 @@ import {getData12, markup12} from "./page1-container2.js"
 
 
 
+
 let array23 = [];
+let searchCitySVG23 = document.querySelector("#gps");
 const fiveDaysContainer22 = document.querySelector('.fivedayscontainer');
 const weatherChart22 = document.querySelector('.weather-fivedays-container');
 const cityName22 = document.getElementById('city-fivedays-name');
@@ -20,11 +22,11 @@ const addForm22 = document.querySelector('.city');
 const showFiveDaysWeather = document.querySelector('#five');
 
 form22.addEventListener("submit", async (e) => {e.preventDefault();
-                                                await fetchWeather();}
-                         );
-
-
+                                                await fetchWeather();});
 aContainer.addEventListener("click", async (e) => {
+    e.preventDefault();
+    await fetchWeather();});
+searchCitySVG23.addEventListener("click", async (e) => {
     e.preventDefault();
     await fetchWeather();})
 
@@ -34,7 +36,7 @@ showFiveDaysWeather.addEventListener("click", e =>{
 
 setTimeout(() => {
     fetchWeather();
-}, 1000);
+}, 250);
 
 const fetchWeather = async (event) =>{
 
