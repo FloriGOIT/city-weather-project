@@ -197,8 +197,7 @@ function oneDayhidden(){page22.style.visibility = 'visible';
                         page22.style.transform = `translatey(-550px)`;}
 function fiveDayhidden(){page22.style.visibility = 'hidden';
                          page12.style.visibility = 'visible';
-                        page22.style.transform = `translatey(0px)`;
-                        page22.style.visibility = `hidden`;}
+                        page22.style.transform = `translatey(0px)`;}
 
 fiveDayBtn.addEventListener("click",oneDayhidden)
 oneDayBtn.addEventListener("click",fiveDayhidden)
@@ -213,3 +212,4 @@ localStoreTemporary = "temporary";
 let cityStorage12=``;
 
 export {getData12, markup12}
+
