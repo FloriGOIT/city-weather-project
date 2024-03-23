@@ -118,7 +118,7 @@ function fiveDayhidden(){page22.style.visibility = 'hidden';
                         page22.style.transform = `translatey(0px)`;
                         page22.style.visibility = `hidden`;
 
-                        consolelog(oneDayBtn)
+                        
                     }
 
 fiveDayBtn.addEventListener("click",oneDayhidden)
@@ -146,7 +146,7 @@ function firstcontainer(event)
   fetch(apiUrl).then(response => {if (!response.ok) {console.log("Please refresh");}
                                    else{reply = response.json();
                                         return reply};})
-               .then(city => {console.log(city);
+               .then(city => {
                               locationText.innerHTML = city.name +`, `+city.sys.country;
                               currentTemperature.innerHTML = Math.round(city.main.temp) + `° `;
                               minimum.innerHTML = Math.round(city.main.temp_min)+`° `;
