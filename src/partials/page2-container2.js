@@ -16,12 +16,12 @@ const addForm22 = document.querySelector('.city');
 
 const showFiveDaysWeather = document.querySelector('#five');
 
-form22.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    await fetchWeather();
-});
+form22.addEventListener("submit", async (e) => {e.preventDefault();
+                                                await fetchWeather();}
+                         );
 
-
+document.addEventListener("DOMContentLoaded", async (e) => {e.preventDefault();
+    await fetchWeather();})
 
 
 aContainer.addEventListener("click", async (e) => {
@@ -36,11 +36,14 @@ showFiveDaysWeather.addEventListener("click", e =>{
     fiveDaysContainer22.style.opacity = '0.9';
 });
 
-
+setTimeout(() => {
+    fetchWeather();
+}, 1000);
 
 const fetchWeather = async (event) =>{
     const apiKey = '6c59b7271a472d858ef65bf9fc510832';
     const location = localStorage.getItem('temporary').trim();
+    console.log("location:",location)
     try{
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?units=metric&q=${location}&appid=${apiKey}`);
         const city =  response.data;
