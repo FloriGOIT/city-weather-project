@@ -36,7 +36,7 @@ showFiveDaysWeather.addEventListener("click", e =>{
 
 setTimeout(() => {
     fetchWeather();
-}, 250);
+}, 1000);
 
 const fetchWeather = async (event) =>{
 
