@@ -87,7 +87,7 @@ function weatherPerDays(weatherData) {
                     <p class="temperature">${Math.round(data.main.temp_max)}&#176</p>
                 </div>
             </div>
-            <button class="more-info">more info</button>
+            <button class="more-info" data-date=${new Date(data.dt_txt).getDate()}>more info</button>
         </li>
     `);
     weatherChart22.innerHTML = weatherMarkup.join("");

@@ -197,8 +197,7 @@ function oneDayhidden(){page22.style.visibility = 'visible';
                         page22.style.transform = `translatey(-550px)`;}
 function fiveDayhidden(){page22.style.visibility = 'hidden';
                          page12.style.visibility = 'visible';
-                        page22.style.transform = `translatey(0px)`;
-                        page22.style.visibility = `hidden`;}
+                        page22.style.transform = `translatey(0px)`;}
 
 fiveDayBtn.addEventListener("click",oneDayhidden)
 oneDayBtn.addEventListener("click",fiveDayhidden)
@@ -211,7 +210,5 @@ let minimum = document.querySelector("#minimum");
 let maximum = document.querySelector("#maximum");
 localStoreTemporary = "temporary";
 let cityStorage12=``;
-
-form = document.querySelector(".searchbar");
 
 export {getData12, markup12}

@@ -91,9 +91,13 @@ emptyMarkup = (event) => {event.preventDefault();
 
 function storedCities()
 {localStorage.setItem('temporary', '');
-  let retrievedArrayAsString = localStorage.getItem(localStoreCities);
-retrievedArray = JSON.parse(retrievedArrayAsString);
-citiesArr = [...retrievedArray];
+try {
+  retrievedArray = JSON.parse(localStorage.getItem(localStoreCities));
+  citiesArr = [...retrievedArray];
+} catch (error) {
+  
+  citiesArr = [];
+}
 if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.createElement("li");
                                                       item.classList.add("saved-city");
                                                       item.setAttribute("id", `${city}`);
