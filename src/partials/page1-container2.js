@@ -70,7 +70,17 @@ function showPosition(position)
                .then(city =>{localStorage.setItem("temporary", city.name.toLowerCase()); markup12(city)})}
 
 
-
+               let sunriseUNIXxxx = 1711177514
+               let timezoneOffsetSeconds = 0;
+               
+               // Convert Unix timestamp to milliseconds
+               let sunriseDate = new Date(sunriseUNIXxxx * 1000);
+               
+               // Add timezone offset to get UTC time
+               let utcTime = new Date(sunriseDate.getTime() + (timezoneOffsetSeconds - 7200) * 1000);
+               
+               console.log("utcTime:",utcTime); 
+               
 
 function markup12(x)
 {
@@ -80,11 +90,14 @@ minimum.innerHTML = Math.round(x.main.temp_min)+`° `;
 maximum.innerHTML = Math.round(x.main.temp_max)+`° `;
 let iconforweather = x.weather[0].description.replace(/\s/g, "");
 let emoji = emojiMap[iconforweather];
+let timezoneOffsetSeconds = x.timezone;
 let sunsetUnix = new Date(x.sys.sunset * 1000);
-let sunsetTime = format(sunsetUnix.getHours()) +`:`+ format(sunsetUnix.getMinutes());
+let utcTimeSunset = new Date(sunsetUnix .getTime() + (timezoneOffsetSeconds - 7200) * 1000);
+let sunsetTime = format(utcTimeSunset.getHours()) +`:`+ format(utcTimeSunset.getMinutes());
 twilightttt.innerHTML = `🌘  ` + sunsetTime;
 let sunriseUnix = new Date(x.sys.sunrise * 1000);
-let sunriseTime = format(sunriseUnix.getHours()) +`:`+ format(sunriseUnix.getMinutes());
+let utcTimeSunrise = new Date(sunriseUnix .getTime() + (timezoneOffsetSeconds - 7200) * 1000);
+let sunriseTime = format(utcTimeSunrise.getHours()) +`:`+ format(utcTimeSunrise.getMinutes());
 sunriseeee.innerHTML= `🌅  ` + sunriseTime;
 let newDate = new Date();
 if(newDate.getHours() > format(sunsetUnix.getHours())){weatherIcon.innerHTML  = `🌒`;}

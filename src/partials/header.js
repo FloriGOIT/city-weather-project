@@ -1,6 +1,8 @@
 import { remove } from 'lodash';
 import Notiflix from 'notiflix'; 
-let anamaria = []
+
+
+
 //declaration
 let body = document.querySelector("body");
 let searchSection = document.querySelector(".search-section");
