@@ -53,7 +53,6 @@ function getData12(){
                   let location = localStorage.getItem("temporary");
                   let reply=``;
                   let apiURL = `https://api.openweathermap.org/data/2.5/weather?&units=metric&APPID=65135483567bdfc07e8e9ad4811a6114&q=${location}`;
-                  console.log(apiURL)
                   fetch(apiURL).then(response => {if(!response.ok){console.log("Please refresh");}
                                 else{reply = response.json();return reply;}})
                                .then(city =>{ markup12(city)})}
@@ -98,10 +97,8 @@ function dating(){
   let currentDateInMillis = new Date().getTime();
   let currentDateInSeconds = Math.floor(currentDateInMillis / 1000);
   let myTimeSeconds = currentDate.getTimezoneOffset() * 60;
-  console.log(timezoneOffsetSeconds)
   let dateeeeUnix = currentDateInSeconds + timezoneOffsetSeconds + myTimeSeconds;
   let dateeee = new Date(dateeeeUnix * 1000)
-  console.log(dateeee)
   let arrayDay = dateeee.getDay();
   let number = format(dateeee.getDate());
   weatherDay.innerHTML = arrayDays[arrayDay] + `  ` + number;
@@ -183,6 +180,7 @@ let page12 = document.querySelector(".weather-data-section");
 let oneDayBtn = document.querySelector(".change-today");
 let fiveDayBtn = document.querySelector("#five");
 let page22 = document.querySelector(".fivedayscontainer");
+let page23 = document.querySelector(".container23")
 page22.style.visibility = 'hidden';
 
 //when button
@@ -192,12 +190,16 @@ setInterval(function() {let quoteText = document.querySelector(".quote-text");
                         quoteText.textContent = quoteAll[x].quote;
                         quoteAuthor.textContent = quoteAll[x].author;}, 10000);
 
-function oneDayhidden(){page22.style.visibility = 'visible';
-                        page12.style.visibility = 'hidden';
-                        page22.style.transform = `translatey(-550px)`;}
-function fiveDayhidden(){page22.style.visibility = 'hidden';
+function oneDayhidden(){page12.style.visibility = 'hidden';
+                        page22.style.transform = `translatey(-450px)`;
+                        page22.style.display = "flex";
+                        page22.style.visibility = "visible";
+                        page23.style.display = 'flex';
+                      }
+function fiveDayhidden(){page22.style.display = 'none';
                          page12.style.visibility = 'visible';
-                        page22.style.transform = `translatey(0px)`;}
+                         page22.style.transform = `translatey(0px)`;
+                         page23.style.display = 'none';}
 
 fiveDayBtn.addEventListener("click",oneDayhidden)
 oneDayBtn.addEventListener("click",fiveDayhidden)
@@ -212,3 +214,4 @@ localStoreTemporary = "temporary";
 let cityStorage12=``;
 
 export {getData12, markup12}
+

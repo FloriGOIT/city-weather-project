@@ -8,7 +8,6 @@ let myTimeSeconds = currentDate.getTimezoneOffset() * 60;
 let timezoneOffsetSeconds = -18000;
 let dateeeeUnix = currentDateInSeconds + timezoneOffsetSeconds + myTimeSeconds;
 let dateeee = new Date(dateeeeUnix * 1000)
-console.log(dateeee)
 
 //declaration
 let body = document.querySelector("body");
@@ -95,7 +94,6 @@ try {
   retrievedArray = JSON.parse(localStorage.getItem(localStoreCities));
   citiesArr = [...retrievedArray];
 } catch (error) {
-  
   citiesArr = [];
 }
 if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.createElement("li");
