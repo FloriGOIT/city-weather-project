@@ -1,0 +1,32 @@
+<!-- Search bar (trebuie stearsa)-->
+<div class="search-bar">
+    <form class="search-form" id="search-form">
+        <input
+          id="search-input"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+        <button type="submit">Search</button>
+      </form>
+</div>
+
+<!--Show-chart Button-->
+
+
+<div class="show-chart-div">
+     <button class="show-chart-btn">Show Chart</button>
+     <svg class="show-chart-svg show-chart-svg-open " width="25" height="25"><use href="./symbol-defs.svg#icon-keyboard_arrow_down"/></svg>
+</div>
+
+
+<div class="extention-chart">
+  <div class="hide-chart-div">
+    <button class="hide-chart-btn">Hide Chart</button>
+    <svg class="hide-chart-svg" width="25" height="25"><use href="./symbol-defs.svg#icon-keyboard_arrow_up"/></svg>
+  </div>
+  <canvas id="myChart"></canvas>
+</div>
+
+

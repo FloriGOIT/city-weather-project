@@ -18,7 +18,9 @@
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
+
     "axios": "^1.6.8",
+"chart.js": "^4.4.2",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.7"
   },
