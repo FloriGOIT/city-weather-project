@@ -19,20 +19,40 @@
     transition-duration: 1000ms;
     transition-timing-function: linear;
     margin-top: 50px;
-   //transform: translatey(-450px);
   }  
 
 .wheather-fivedays-section{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 282px;
   padding: 20px 5px;
   border-radius: 35px;
   background-color: var(--gackgroundcolorfivedays);
   opacity: .8;
   box-shadow: 0 8px 43px 0 rgba(16,33,54,.59);
   overflow-x: hidden;
+}
+.wheather-fivedays-btns {
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 1% 0;
+}
+.wheather-fivedays-btns button {
+  border-radius: 50%;
+  border: none;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-color: hsla(0, 0%, 100%, 0.9);
+  outline: none;
+}
+.wheather-fivedays-btns button:hover {
+  background-color: hsla(0, 0%, 100%, 0.5);
+  color: #fff;
 }
 .change-today {
   text-transform: uppercase;
@@ -44,7 +64,9 @@
 
   text-align: center;}
 .wheather-today {display: flex;
-                  flex-direction: row;}
+                flex-direction: row;
+                justify-content: space-between;
+                 width: 280px;}
 .fivedays-city-country-name{display: inline-block;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.726);
@@ -59,13 +81,17 @@
 }
 
 .weather-fivedays-container{
-  width: 280px;
+  width: 270px;
   justify-content: space-around;
   display: flex;
   align-items: center;
   list-style-type: none;
-  padding: 0 0 0 180px;
+  padding: 0px 0px 0px 180px;
   margin: 0;
+  gap: 5px;
+  transform: translateX(0px);
+  transition-duration: 300ms;
+  transition-timing-function: linear;
 }
 
 .weatherfivedays-card{
@@ -168,7 +194,7 @@
 
 
 @media screen and (min-width:768px){
-
+  .wheather-fivedays-btns {visibility: hidden;}
   .change-today {
     text-transform: uppercase;
     font: var(--lato700-s14-h17-normal);
@@ -270,7 +296,7 @@
 }
 
 @media screen and (min-width:1280px){
-  
+  .wheather-fivedays-btns {visibility: hidden;}
   .change-today {
     text-transform: uppercase;
     font: var(--lato700-s14-h17-normal);
