@@ -32,7 +32,7 @@
   background-color: var(--gackgroundcolorfivedays);
   opacity: .8;
   box-shadow: 0 8px 43px 0 rgba(16,33,54,.59);
-  overflow-x: scroll;
+  overflow-x: hidden;
 }
 .change-today {
   text-transform: uppercase;
@@ -59,6 +59,7 @@
 }
 
 .weather-fivedays-container{
+  width: 280px;
   justify-content: space-around;
   display: flex;
   align-items: center;
