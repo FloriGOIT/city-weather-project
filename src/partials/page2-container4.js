@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import notiflix from 'notiflix';
 import Chart from 'chart.js/auto';
@@ -172,3 +173,4 @@ async function getFiveDays(location) {
   }
 
 showChart();
+
