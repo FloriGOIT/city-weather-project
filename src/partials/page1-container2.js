@@ -1,7 +1,7 @@
 
 
 import { conforms, functions } from "lodash";
-
+import {destroyChart} from './page2-container4';
 function format(number) {if (number < 10) {return "0" + number;}
                               else {return number.toString();}}
 let weatherDay = document.querySelector(".weather-day");
@@ -47,6 +47,7 @@ function getLocation() {
     localizationCountry = timeZoneSplit[1].toLowerCase();
     localStorage.setItem("temporary", localizationCountry);
     getData12();
+    
     };}
 
 function getData12(){
@@ -66,7 +67,7 @@ function showPosition(position)
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?&units=metric&APPID=65135483567bdfc07e8e9ad4811a6114&${localizationLatLon}`;
   fetch(apiURL).then(response => {if(!response.ok){console.log("Please refresh");}
                                   else{reply = response.json();return reply;}})
-               .then(city =>{localStorage.setItem("temporary", city.name.toLowerCase()); markup12(city)})}
+               .then(city =>{localStorage.setItem("temporary", city.name.toLowerCase()); markup12(city); })};
 
 function markup12(x)
 {
@@ -89,7 +90,6 @@ let newDate = new Date();
 if(newDate.getHours() > format(sunsetUnix.getHours())){weatherIcon.innerHTML  = `🌒`;}
 else{weatherIcon.innerHTML  = emoji;}
 weatherIcon.style.fontSize = "2em";
-return timezoneOffsetSeconds;
 }
 
 function dating(){

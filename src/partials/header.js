@@ -133,18 +133,17 @@ function inputSearch(event){
                                     .then(data => {for(let hit of data.hits){if (hit.tags.includes("landscape") || hit.tags.includes("city") || hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("landmark")){largeImageARR.push(hit.largeImageURL);};};
                                                                              if(largeImageARR.length > 1){body.style.backgroundImage = `url('${largeImageARR[1]}')`;}
                                                                              else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}});
-                       largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
+                       largeImageARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
                        localStorage.setItem('temporary', `${inputText}`);
                        closeBtn23.click();
                        hideCart24.click();
-                       destroyChart();
                        form.reset();}
 
 function addInputText(event){
                             let www = event.target;
                              if(event.target.nodeName == "SPAN"){inputText = www.textContent;
                                                                   inputSearch();
-                                                                  largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
+                                                                  largeImageARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
                                                                 inputText = ``; return;};
                              localStorage.setItem('temporary', `${inputText}`);
                              }                                   

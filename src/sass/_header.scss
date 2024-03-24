@@ -37,14 +37,10 @@
     --lato300-s45-h54-italic: italic normal 300 45px/54px Lato, sans-serif; };
 
 
-body{background-image: url("/src/images/simple_sky.jpg");}
-//toggle classes
+body{background-image: url("/src/images/vincent-van-gogh.jpg");
+     background-size: cover;}
 
-
-//
-
-
-
+.search-section {height: auto;}
 
 .search-section .search-container { position: relative;
                                     margin-left: auto;
