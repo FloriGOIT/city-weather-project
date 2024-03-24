@@ -1,5 +1,6 @@
 import { remove } from 'lodash';
 import Notiflix from 'notiflix'; 
+import {destroyChart} from './page2-container4';
 
 let currentDate = new Date();
 let currentDateInMillis = new Date().getTime();
@@ -29,7 +30,8 @@ let itemsPerPage;
 if (savedCitiesWidth < 220){itemsPerPage = 2;}
 else{itemsPerPage = 4;}
 let initial = 0;
-
+let closeBtn23 = document.querySelector('.close__more-info');
+let hideCart24 = document.querySelector('.hide-chart-div');
 //functions
 
 //scroll saved city
@@ -131,22 +133,23 @@ function inputSearch(event){
                                     .then(data => {for(let hit of data.hits){if (hit.tags.includes("landscape") || hit.tags.includes("city") || hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("landmark")){largeImageARR.push(hit.largeImageURL);};};
                                                                              if(largeImageARR.length > 1){body.style.backgroundImage = `url('${largeImageARR[1]}')`;}
                                                                              else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}});
-                       largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
-                       localStorage.setItem('temporary', `${inputText}`)
-                       form.reset();                                                   
-                          }
+                       largeImageARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
+                       localStorage.setItem('temporary', `${inputText}`);
+                       closeBtn23.click();
+                       hideCart24.click();
+                       form.reset();}
 
 function addInputText(event){
                             let www = event.target;
                              if(event.target.nodeName == "SPAN"){inputText = www.textContent;
                                                                   inputSearch();
-                                                                  largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
+                                                                  largeImageARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
                                                                 inputText = ``; return;};
                              localStorage.setItem('temporary', `${inputText}`);
                              }                                   
 
 function inputSearchDefault(event){event.preventDefault();
-                                   inputSearch();}         
+                                   inputSearch(); }         
 
 
 //eventlistener

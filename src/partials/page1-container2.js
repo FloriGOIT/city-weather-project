@@ -1,7 +1,7 @@
 
 
 import { conforms, functions } from "lodash";
-
+import {destroyChart} from './page2-container4';
 function format(number) {if (number < 10) {return "0" + number;}
                               else {return number.toString();}}
 let weatherDay = document.querySelector(".weather-day");
@@ -47,6 +47,7 @@ function getLocation() {
     localizationCountry = timeZoneSplit[1].toLowerCase();
     localStorage.setItem("temporary", localizationCountry);
     getData12();
+    
     };}
 
 function getData12(){
@@ -66,7 +67,7 @@ function showPosition(position)
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?&units=metric&APPID=65135483567bdfc07e8e9ad4811a6114&${localizationLatLon}`;
   fetch(apiURL).then(response => {if(!response.ok){console.log("Please refresh");}
                                   else{reply = response.json();return reply;}})
-               .then(city =>{localStorage.setItem("temporary", city.name.toLowerCase()); markup12(city)})}
+               .then(city =>{localStorage.setItem("temporary", city.name.toLowerCase()); markup12(city); })};
 
 function markup12(x)
 {
@@ -89,7 +90,6 @@ let newDate = new Date();
 if(newDate.getHours() > format(sunsetUnix.getHours())){weatherIcon.innerHTML  = `🌒`;}
 else{weatherIcon.innerHTML  = emoji;}
 weatherIcon.style.fontSize = "2em";
-return timezoneOffsetSeconds;
 }
 
 function dating(){
@@ -182,6 +182,10 @@ let fiveDayBtn = document.querySelector("#five");
 let page22 = document.querySelector(".fivedayscontainer");
 let page23 = document.querySelector(".container23")
 page22.style.visibility = 'hidden';
+let showChartDiv24 = document.querySelector(".show-chart-div");
+let hideCart24 = document.querySelector('.hide-chart-div');
+let bigChart24 = document.querySelector(".bigChart24");
+let closeBtn23 = document.querySelector('.close__more-info');
 
 //when button
 setInterval(function() {let quoteText = document.querySelector(".quote-text");
@@ -190,16 +194,23 @@ setInterval(function() {let quoteText = document.querySelector(".quote-text");
                         quoteText.textContent = quoteAll[x].quote;
                         quoteAuthor.textContent = quoteAll[x].author;}, 10000);
 
-function oneDayhidden(){page12.style.visibility = 'hidden';
-                        page22.style.transform = `translatey(-450px)`;
+function oneDayhidden(){//page12.style.visibility = 'hidden';
+                        page12.style.display = 'none';
+                        //page22.style.transform = `translatey(-450px)`;
                         page22.style.display = "flex";
                         page22.style.visibility = "visible";
                         page23.style.display = 'flex';
+                        showChartDiv24.style.visibility = "visible";
                       }
 function fiveDayhidden(){page22.style.display = 'none';
-                         page12.style.visibility = 'visible';
-                         page22.style.transform = `translatey(0px)`;
-                         page23.style.display = 'none';}
+                         //page12.style.visibility = 'visible';
+                         page12.style.display = 'block';
+                         //page22.style.transform = `translatey(0px)`;
+                         page23.style.display = 'none';
+                         showChartDiv24.style.visibility = "hidden";
+                         closeBtn23.click();
+                         hideCart24.click();
+                         }
 
 fiveDayBtn.addEventListener("click",oneDayhidden)
 oneDayBtn.addEventListener("click",fiveDayhidden)

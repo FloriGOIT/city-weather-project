@@ -5,14 +5,12 @@ import Chart from 'chart.js/auto';
 
 const apiKey = '4010945aa892ea67d326c4c740de3e65';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+let charty;
 
 
 // Functia principala care aduce datele de pe API
 async function fetchData(location) {
-  if (location.trim() === "") {
-    notiflix.Notify.failure("Te rog introdu un oraș valid.");
-    return;
-  }
+  if (location.trim() === "") {return;}
   try {
     const response = await axios.get(`${apiUrl}?q=${location}&appid=${apiKey}&units=metric`);
     return response.data  //const data = response.data; 
@@ -35,23 +33,20 @@ async function getFiveDays(location) {
       }
       return false;
     });
-    console.log(fiveDaysForecast);
     drawChart(fiveDaysForecast);
   }
 }
  
 
     // Functia care creaza chart-ul
-    function drawChart(fiveDaysForecast) {
-
+    function drawChart(fiveDaysForecast) 
+{ destroyChart();
       const ctx = document.getElementById('myChart');
+
+      if (!ctx) {console.error('Canvas element not found');return;}
     
-      if (!ctx) {
-        console.error('Canvas element not found');
-        return;
-      }
-    
-      new Chart(ctx, {
+configuration = 
+       {
         type: 'line',
         data: {
             labels: fiveDaysForecast.map(weatherItem => {
@@ -60,8 +55,7 @@ async function getFiveDays(location) {
                 const month = parseInt(dateParts[1]);
                 const year = parseInt(dateParts[0]);
                 const months = new Intl.DateTimeFormat('en', { month: 'short' }).format(new Date(year, month - 1, day));
-                return `${day}-${months}-${year}`; //Modific cum vreau
-            }),
+                return `${day}-${months}-${year}`;}), //Modific cum vreau
             datasets: [
                 {
                     label: '- Temperature (°C)',
@@ -90,69 +84,40 @@ async function getFiveDays(location) {
                     borderWidth: 1,
                     borderColor: 'rgba(6, 120, 6, 1)',
                     backgroundColor: 'rgba(6, 120, 6, 1)',
-                },
-            ]
-        },
+                },]
+              },
         options: {
-            layout: {
-                padding: {
-                    bottom: 60
-                }
-            },
-            responsive: true,
-            maintainAspectRatio: false,
-            tension: 0.4,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.4)'
-                    },
-                    ticks: {
-                        color: 'rgba(255, 255, 255, 0.4)'
-                    }
-                },
-                x: {
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.4)'
-                    },
-                    ticks: {
-                        color: 'rgba(255, 255, 255, 0.4)'
-                    }
-                },
-            },
-            plugins: {
-                subtitle: {
-                    display: true,
-                    text: 'AVERAGE:',
-                    align: 'start',
-                    color: 'rgba(255, 255, 255, 0.4)',
-                    font: {
-                        size: 14,
-                        weight: 'normal'
-                    }
-                },
-                legend: {
-                    display: true,
-                    labels: {
-                        color: 'rgba(255, 255, 255, 0.4)',
-                        font: {
-                            size: 14,
-                        },
-                    },
-                },
-            },
-        }
-    });
-  }
+                  layout: {padding: {bottom: 60}},
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  tension: 0.4,
+                  scales: {y: {beginAtZero: true,
+                              grid: {color: 'rgba(255, 255, 255, 0.4)'},
+                              ticks: {color: 'rgba(255, 255, 255, 0.4)'}},
+                        x: {grid: {color: 'rgba(255, 255, 255, 0.4)'},
+                             ticks: {color: 'rgba(255, 255, 255, 0.4)'}},},
+                  plugins: {subtitle: {display: true,
+                                       text: 'AVERAGE:',
+                                       align: 'start',
+                                       color: 'rgba(255, 255, 255, 0.4)',
+                                       font: {size: 12,weight: 'normal'}},
+                  legend: {display: true,
+                           labels: {color: 'rgba(255, 255, 255, 0.4)',
+                                   font: {size: 12,},},},
+                           },
+                  }
+       };
+       charty = new Chart(ctx, configuration);
+}
   
+function destroyChart(){if(charty){charty.destroy(); console.log("hello")}}
+function alabala(event) {let location = localStorage.getItem("temporary");
+                         getFiveDays(location);}
 
   //shearch-bar-ul general unde scriem orasul 
-  document.getElementById('search-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-    const location = document.getElementById('search-input').value; 
-    getFiveDays(location); //functia care transmite orasul selectat catre chart-ul meu
-  });
+  document.querySelector('.searchbar').addEventListener('submit', alabala());
+  document.querySelector("#gps").addEventListener('click', alabala());
+  document.querySelector(".saved-cities").addEventListener('click', alabala());
 
 
    //Functie care ascunde div-ule
@@ -174,3 +139,4 @@ async function getFiveDays(location) {
 
 showChart();
 
+export {destroyChart}
