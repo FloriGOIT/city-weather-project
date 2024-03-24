@@ -194,16 +194,18 @@ setInterval(function() {let quoteText = document.querySelector(".quote-text");
                         quoteText.textContent = quoteAll[x].quote;
                         quoteAuthor.textContent = quoteAll[x].author;}, 10000);
 
-function oneDayhidden(){page12.style.visibility = 'hidden';
-                        page22.style.transform = `translatey(-450px)`;
+function oneDayhidden(){//page12.style.visibility = 'hidden';
+                        page12.style.display = 'none';
+                        //page22.style.transform = `translatey(-450px)`;
                         page22.style.display = "flex";
                         page22.style.visibility = "visible";
                         page23.style.display = 'flex';
                         showChartDiv24.style.visibility = "visible";
                       }
 function fiveDayhidden(){page22.style.display = 'none';
-                         page12.style.visibility = 'visible';
-                         page22.style.transform = `translatey(0px)`;
+                         //page12.style.visibility = 'visible';
+                         page12.style.display = 'block';
+                         //page22.style.transform = `translatey(0px)`;
                          page23.style.display = 'none';
                          showChartDiv24.style.visibility = "hidden";
                          closeBtn23.click();

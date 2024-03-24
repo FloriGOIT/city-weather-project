@@ -38,7 +38,24 @@
 
 
 body{background-image: url("/src/images/vincent-van-gogh.jpg");
-     background-size: cover;}
+     background-size: cover;
+     background-repeat: repeat-y;}
+
+     body:before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Flip the background using CSS transform */
+        transform: scaleX(-1);
+        /* Match the background size */
+        z-index: -1;
+        /* Match the background image */
+        background-image: inherit;
+        background-size: cover;
+    }
 
 .search-section {height: auto;}
 
