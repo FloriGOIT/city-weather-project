@@ -1,5 +1,6 @@
 import { remove } from 'lodash';
 import Notiflix from 'notiflix'; 
+import {destroyChart} from './page2-container4';
 
 let currentDate = new Date();
 let currentDateInMillis = new Date().getTime();
@@ -29,7 +30,8 @@ let itemsPerPage;
 if (savedCitiesWidth < 220){itemsPerPage = 2;}
 else{itemsPerPage = 4;}
 let initial = 0;
-
+let closeBtn23 = document.querySelector('.close__more-info');
+let hideCart24 = document.querySelector('.hide-chart-div');
 //functions
 
 //scroll saved city
@@ -132,9 +134,11 @@ function inputSearch(event){
                                                                              if(largeImageARR.length > 1){body.style.backgroundImage = `url('${largeImageARR[1]}')`;}
                                                                              else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}});
                        largeImageARR=["https://e0.pxfuel.com/wallpapers/685/451/desktop-wallpaper-summer-day-sky-midday-sky.jpg"];
-                       localStorage.setItem('temporary', `${inputText}`)
-                       form.reset();                                                   
-                          }
+                       localStorage.setItem('temporary', `${inputText}`);
+                       closeBtn23.click();
+                       hideCart24.click();
+                       destroyChart();
+                       form.reset();}
 
 function addInputText(event){
                             let www = event.target;
@@ -146,7 +150,7 @@ function addInputText(event){
                              }                                   
 
 function inputSearchDefault(event){event.preventDefault();
-                                   inputSearch();}         
+                                   inputSearch(); }         
 
 
 //eventlistener

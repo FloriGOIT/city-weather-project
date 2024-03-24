@@ -12,9 +12,10 @@ const prevBtn = document.querySelector('.three_hour_prev-btn');
 const nextBtn = document.querySelector('.three_hour_next-btn');
 
 
-
 async function getWeatherForDate() {
-  let site = `https://api.openweathermap.org/data/2.5/forecast?APPID=8defc985a5e2c764076c53bf90c6c44e&units=metric&lang=en&q=${localStorage.getItem("temporary")}`;
+  let location = localStorage.getItem("temporary");
+  console.log("location23: ",location)
+  let site = `https://api.openweathermap.org/data/2.5/forecast?APPID=8defc985a5e2c764076c53bf90c6c44e&units=metric&lang=en&q=${location}`;
   try {
     const response = await axios(site);
     return response.data;

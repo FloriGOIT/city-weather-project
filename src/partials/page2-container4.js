@@ -5,6 +5,7 @@ import Chart from 'chart.js/auto';
 
 const apiKey = '4010945aa892ea67d326c4c740de3e65';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+let charty;
 
 
 // Functia principala care aduce datele de pe API
@@ -24,6 +25,7 @@ async function fetchData(location) {
 
 // Functia care aduce datele pentru 5 zile in format 14 Mar 2024
 async function getFiveDays(location) {
+  console.log("location getFiveDays:", location);
   const data = await fetchData(location);
   if (data) {
     const uniqueForecastDays = [];
@@ -42,16 +44,14 @@ async function getFiveDays(location) {
  
 
     // Functia care creaza chart-ul
-    function drawChart(fiveDaysForecast) {
-
+    function drawChart(fiveDaysForecast) 
+{
       const ctx = document.getElementById('myChart');
+
+      if (!ctx) {console.error('Canvas element not found');return;}
     
-      if (!ctx) {
-        console.error('Canvas element not found');
-        return;
-      }
-    
-      new Chart(ctx, {
+configuration = 
+       {
         type: 'line',
         data: {
             labels: fiveDaysForecast.map(weatherItem => {
@@ -60,8 +60,7 @@ async function getFiveDays(location) {
                 const month = parseInt(dateParts[1]);
                 const year = parseInt(dateParts[0]);
                 const months = new Intl.DateTimeFormat('en', { month: 'short' }).format(new Date(year, month - 1, day));
-                return `${day}-${months}-${year}`; //Modific cum vreau
-            }),
+                return `${day}-${months}-${year}`;}), //Modific cum vreau
             datasets: [
                 {
                     label: '- Temperature (°C)',
@@ -90,70 +89,53 @@ async function getFiveDays(location) {
                     borderWidth: 1,
                     borderColor: 'rgba(6, 120, 6, 1)',
                     backgroundColor: 'rgba(6, 120, 6, 1)',
-                },
-            ]
-        },
+                },]
+              },
         options: {
-            layout: {
-                padding: {
-                    bottom: 60
-                }
-            },
-            responsive: true,
-            maintainAspectRatio: false,
-            tension: 0.4,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.4)'
-                    },
-                    ticks: {
-                        color: 'rgba(255, 255, 255, 0.4)'
-                    }
-                },
-                x: {
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.4)'
-                    },
-                    ticks: {
-                        color: 'rgba(255, 255, 255, 0.4)'
-                    }
-                },
-            },
-            plugins: {
-                subtitle: {
-                    display: true,
-                    text: 'AVERAGE:',
-                    align: 'start',
-                    color: 'rgba(255, 255, 255, 0.4)',
-                    font: {
-                        size: 14,
-                        weight: 'normal'
-                    }
-                },
-                legend: {
-                    display: true,
-                    labels: {
-                        color: 'rgba(255, 255, 255, 0.4)',
-                        font: {
-                            size: 14,
-                        },
-                    },
-                },
-            },
-        }
-    });
-  }
+                  layout: {padding: {bottom: 60}},
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  tension: 0.4,
+                  scales: {y: {beginAtZero: true,
+                              grid: {color: 'rgba(255, 255, 255, 0.4)'},
+                              ticks: {color: 'rgba(255, 255, 255, 0.4)'}},
+                        x: {grid: {color: 'rgba(255, 255, 255, 0.4)'},
+                             ticks: {color: 'rgba(255, 255, 255, 0.4)'}},},
+                  plugins: {subtitle: {display: true,
+                                       text: 'AVERAGE:',
+                                       align: 'start',
+                                       color: 'rgba(255, 255, 255, 0.4)',
+                                       font: {size: 14,weight: 'normal'}},
+                  legend: {display: true,
+                           labels: {color: 'rgba(255, 255, 255, 0.4)',
+                                   font: {size: 14,},},},
+                           },
+                  }
+       };
+       charty = new Chart(ctx, configuration);
+}
   
+function destroyChart(){if(charty){charty.destroy();}}
 
   //shearch-bar-ul general unde scriem orasul 
-  document.getElementById('search-form').addEventListener('submit', function (event) {
+  document.querySelector('.searchbar').addEventListener('submit', function (event) {
     event.preventDefault();
-    const location = document.getElementById('search-input').value; 
-    getFiveDays(location); //functia care transmite orasul selectat catre chart-ul meu
+    let location = localStorage.getItem("temporary");
+    console.log("location EventListener:", location);
+    setTimeout(() => {getFiveDays(location)},500);//functia care transmite orasul selectat catre chart-ul meu
   });
-
+  document.querySelector("#gps").addEventListener('click', function (event) {
+    event.preventDefault();
+    let location = localStorage.getItem("temporary");
+    console.log("location EventListener:", location);
+    setTimeout(() => {getFiveDays(location)},500);//functia care transmite orasul selectat catre chart-ul meu
+  });
+  document.querySelector(".saved-cities").addEventListener('click', function (event) {
+    event.preventDefault();
+    let location = localStorage.getItem("temporary");
+    console.log("location EventListener:", location);
+    setTimeout(() => {getFiveDays(location)},500);//functia care transmite orasul selectat catre chart-ul meu
+  });
 
    //Functie care ascunde div-ule
   function showChart() {
@@ -173,3 +155,5 @@ async function getFiveDays(location) {
   }
 
 showChart();
+
+export {destroyChart}

@@ -182,6 +182,10 @@ let fiveDayBtn = document.querySelector("#five");
 let page22 = document.querySelector(".fivedayscontainer");
 let page23 = document.querySelector(".container23")
 page22.style.visibility = 'hidden';
+let showChartDiv24 = document.querySelector(".show-chart-div");
+let hideCart24 = document.querySelector('.hide-chart-div');
+let bigChart24 = document.querySelector(".bigChart24");
+let closeBtn23 = document.querySelector('.close__more-info');
 
 //when button
 setInterval(function() {let quoteText = document.querySelector(".quote-text");
@@ -195,11 +199,16 @@ function oneDayhidden(){page12.style.visibility = 'hidden';
                         page22.style.display = "flex";
                         page22.style.visibility = "visible";
                         page23.style.display = 'flex';
+                        showChartDiv24.style.visibility = "visible";
                       }
 function fiveDayhidden(){page22.style.display = 'none';
                          page12.style.visibility = 'visible';
                          page22.style.transform = `translatey(0px)`;
-                         page23.style.display = 'none';}
+                         page23.style.display = 'none';
+                         showChartDiv24.style.visibility = "hidden";
+                         closeBtn23.click();
+                         hideCart24.click();
+                         }
 
 fiveDayBtn.addEventListener("click",oneDayhidden)
 oneDayBtn.addEventListener("click",fiveDayhidden)

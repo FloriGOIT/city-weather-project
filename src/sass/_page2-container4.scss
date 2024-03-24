@@ -46,6 +46,7 @@
     opacity: 1;
     margin: 30 auto;
     padding: 0px;
+    visibility: hidden;
 }
 
 .show-chart-btn {
@@ -162,7 +163,7 @@
 @media screen and (min-width: 768px) {
 
     .extention-chart {
-        width: 80vw;
+        width: 700px;
         height: 534px;
         padding: 3vw;
     }
@@ -176,8 +177,8 @@
 @media screen and (min-width: 1280px) {
 
     .extention-chart {
-        width: 80vw;
-        height: 700px;
+        width: 1060px;
+        height: 500px;
     }
     #myChart {
         width: 70vw;
