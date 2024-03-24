@@ -35,7 +35,6 @@
     --lato300-s90-h108-italic: italic normal 300 90px/108px Lato, sans-serif;
     --lato300-s45-h54-italic: italic normal 300 45px/54px Lato, sans-serif; 
 };
-//.bigChart{margin-top: 450px}
 
 .show-chart-div {
     width: 120px;
@@ -47,7 +46,6 @@
     opacity: 1;
     margin: 30 auto;
     padding: 0px;
-    visibility: hidden;
 }
 
 .show-chart-btn {
@@ -90,7 +88,7 @@
     display: none;
     width: 80vw;
     height: 516px;
-    margin: 20px auto 30px;
+    margin: 30px auto;
     padding: 5vw;
     border-radius: 35px;
     filter: drop-shadow(0 8px 21.5px rgba(16, 33, 54, .59));
@@ -164,7 +162,7 @@
 @media screen and (min-width: 768px) {
 
     .extention-chart {
-        width: 700px;
+        width: 80vw;
         height: 534px;
         padding: 3vw;
     }
@@ -178,8 +176,8 @@
 @media screen and (min-width: 1280px) {
 
     .extention-chart {
-        width: 1060px;
-        height: 500px;
+        width: 80vw;
+        height: 700px;
     }
     #myChart {
         width: 70vw;
