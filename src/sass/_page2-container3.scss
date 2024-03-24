@@ -98,12 +98,15 @@
     display: none;
   }
   .three_hour_weather {
+    transform: translateX(0px);
+    width: 250px;
     padding: 0;
-    overflow-x: hidden;
+
     list-style-type: none;
     display: flex;
       justify-content: left;
       gap: 10px;
+  
   }
   .list-item {
         display: flex;
@@ -173,7 +176,7 @@
       width: 700px;
       margin-bottom: 50px;
     }
-    .three_hour_weather {gap: 14px;}
+    .three_hour_weather {gap: 14px; width: 670px; }
   }
   
   @media (min-width: 1280px) {
@@ -187,7 +190,7 @@
     .three_hour_forecast {
       justify-content: center;  
     }
-    .three_hour_weather {gap: 10px;}
+    .three_hour_weather {gap: 10px; width: 1030px;}
     .hourly-weather-btns {
       display: none;
     }

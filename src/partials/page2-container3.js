@@ -84,8 +84,10 @@ function removeSelectedCls(elem){
     modalElem.classList.add('is-hidden');
   }
 
+let value = 0;  
 //add listener on divDays to open modal with data from day
 container23.addEventListener('click', ev => {
+  resetTrans()
   const clickedBtn = ev.target;
   if (clickedBtn.nodeName !== 'BUTTON') {return;};
 
@@ -105,6 +107,7 @@ container23.addEventListener('click', ev => {
 
 //close modal
 closeBtn.addEventListener('click', ()=>{
+  forecastList.style.transform = `translateX(0px)`;
   hideModal();
   const hoveredBtn = document.querySelector('.selected');
   if (hoveredBtn) {
@@ -114,7 +117,7 @@ closeBtn.addEventListener('click', ()=>{
 
 
 
-let currentPosition = 0;
+/*let currentPosition = 0;
 const itemWidth = 130;
 prevBtn.addEventListener('click', () => {
   const targetPosition = Math.max(currentPosition - itemWidth, 0);
@@ -142,4 +145,78 @@ function scrollTo(targetPosition) {
     left: adjustedPosition,
     behavior: 'smooth',
   });
+}*/
+nextBtn.addEventListener("click",traslateXNext23medium)
+prevBtn.addEventListener("click",traslateXprev23medium)
+console.log(forecastList.offsetWidth)
+console.log(forecastList)
+
+let forecastListWidth = forecastList.offsetWidth;
+function resetTrans(){forecastList.style.transform = `translateX(0px)`;
+                      value = 0;
+                      prevBtn.style.display = "none";
+                      nextBtn.style.display = "block";}
+
+
+function traslateXNext23medium()
+{console.log("value 1: ", value);
+ if(forecastList.offsetWidth == 670)
+      {value += 390;
+        forecastList.style.transform = `translateX(-${value}px)`;
+        nextBtn.style.display = "visible";
+        console.log("value 2: ", value)
+       if(value == 390){console.log("valueeee",value)
+                                           nextBtn.style.display = "none";
+                                           prevBtn.style.display = "block";}}
+
+  if(forecastList.offsetWidth == 250)
+      {value += 260;
+        forecastList.style.transform = `translateX(-${value}px)`;
+        nextBtn.style.display = "visible";
+        console.log("value 2: ", value)
+       if(value == 780){console.log("valueeee",value)
+         nextBtn.style.display = "none";
+                        prevBtn.style.display = "block";}
+       if(value > 0 && value < 780){prevBtn.style.display = "block";
+                                   nextBtn.style.display = "block";}}                                         
 }
+function traslateXprev23medium()
+{console.log("value prev1: ", value);
+ if(forecastList.offsetWidth == 670)
+    {value -= 390;
+     forecastList.style.transform = `translateX(-${value}px)`;
+     nextBtn.style.display = "block";
+     if(value == 0){console.log("valueeee",value)
+     prevBtn.style.display = "none";
+     nextBtn.style.display = "block";}}
+ if(forecastList.offsetWidth == 250)
+     {value -= 260;
+      forecastList.style.transform = `translateX(-${value}px)`;
+      nextBtn.style.display = "block";
+      if(value == 0){console.log("valueeee",value)
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "block";}
+      if(value > 0 && value < 780){prevBtn.style.display = "block";
+                                   nextBtn.style.display = "block";}
+      }
+}
+/*function traslateXNext23small(){console.log("value 1: ", value);
+                          if(forecastList.offsetWidth == 670){value += 390;
+                                    forecastList.style.transform = `translateX(-${value}px)`;
+                                     nextBtn.style.display = "visible"}
+                          console.log("value 2: ", value);
+                          if(value == 390){console.log("valueeee",value)
+                                    nextBtn.style.display = "none";
+                                    prevBtn.style.display = "block";}
+                     return value;}
+function traslateXprev23small(){console.log("value prev1: ", value);
+                              if(value <= 390){value -= 390;
+                          forecastList.style.transform = `translateX(-${value}px)`;
+                         nextBtn.style.display = "block";}
+                         if(value == 0){console.log("valueeee",value)
+                                       prevBtn.style.display = "none";
+                                       nextBtn.style.display = "block";}}                                       
+
+                                       else if(forecastList.offsetWidth == 250){value += 260;
+                                        forecastList.style.transform = `translateX(-${value}px)`;
+                                        nextBtn.style.display = "visible"}*/
