@@ -52,7 +52,9 @@ function getInput(){inputText = form.elements.userinput.value.toLowerCase();
 function savedCityMarkup()
 {let retrievedArrayAsString = localStorage.getItem(localStoreCities);
   retrievedArray = JSON.parse(retrievedArrayAsString);
-  citiesArr = [...retrievedArray];
+  console.log(retrievedArray)
+  citiesArr = [`${retrievedArray}`];
+  console.log(citiesArr)
   if(inputText == undefined){Notiflix.Notify.warning('Enter a valid city name.')}
   else if(inputText.length !== 0)
       {if(!citiesArr.includes(inputText)){ citiesArr.push(inputText.toLowerCase());
