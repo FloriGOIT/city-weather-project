@@ -37,21 +37,12 @@ async function getWeatherData(dataValue) {
                return date === dataValue;
       })
       .map(list => {
-        const {
-          dt,
-          main: { humidity, temp, pressure },
-          wind: { speed },
-        } = list;
-               const date = new Date(dt * 1000);
-                let amPm = 'AM';
+        const {dt, main: { humidity, temp, pressure }, wind: { speed },} = list;
+        const date = new Date(dt * 1000);
+        let amPm = 'AM';
         let hours = date.getHours().toString().padStart(2, '0');
-        if (hours >= 12) {
-          hours -= 12;
-          amPm = 'PM';
-        }
-        if (hours === 0) {
-          hours = 12;
-        }
+        if (hours >= 12) {hours -= 12; amPm = 'PM';}
+        if (hours === 0) {hours = 12;}
         const formattedTime = `${hours}:${date
           .getMinutes()
           .toString()
@@ -106,46 +97,13 @@ container23.addEventListener('click', ev => {
 });
 
 //close modal
-closeBtn.addEventListener('click', ()=>{
+closeBtn.addEventListener('click', 
+()=>{
   forecastList.style.transform = `translateX(0px)`;
   hideModal();
   const hoveredBtn = document.querySelector('.selected');
-  if (hoveredBtn) {
-    removeSelectedCls(hoveredBtn);
-  }
-});
-
-
-
-/*let currentPosition = 0;
-const itemWidth = 130;
-prevBtn.addEventListener('click', () => {
-  const targetPosition = Math.max(currentPosition - itemWidth, 0);
-  scrollTo(targetPosition);
-  currentPosition = targetPosition;
-});
-
-nextBtn.addEventListener('click', () => {
-  const maxScrollPosition =
-    forecastList.scrollWidth - container23.clientWidth + 40;
-  const targetPosition = Math.min(
-    currentPosition + itemWidth,
-    maxScrollPosition
-  );
-  scrollTo(targetPosition);
-  currentPosition = targetPosition;
-});
-
-function scrollTo(targetPosition) {
-  const adjustedPosition = Math.min(
-    Math.max(targetPosition, 0),
-    forecastList.scrollWidth - container23.clientWidth + 40
-  );
-  forecastList.scrollTo({
-    left: adjustedPosition,
-    behavior: 'smooth',
-  });
-}*/
+  if (hoveredBtn) {removeSelectedCls(hoveredBtn)} 
+    }                     );
 nextBtn.addEventListener("click",traslateXNext23medium)
 prevBtn.addEventListener("click",traslateXprev23medium)
 console.log(forecastList.offsetWidth)
@@ -200,23 +158,3 @@ function traslateXprev23medium()
                                    nextBtn.style.display = "block";}
       }
 }
-/*function traslateXNext23small(){console.log("value 1: ", value);
-                          if(forecastList.offsetWidth == 670){value += 390;
-                                    forecastList.style.transform = `translateX(-${value}px)`;
-                                     nextBtn.style.display = "visible"}
-                          console.log("value 2: ", value);
-                          if(value == 390){console.log("valueeee",value)
-                                    nextBtn.style.display = "none";
-                                    prevBtn.style.display = "block";}
-                     return value;}
-function traslateXprev23small(){console.log("value prev1: ", value);
-                              if(value <= 390){value -= 390;
-                          forecastList.style.transform = `translateX(-${value}px)`;
-                         nextBtn.style.display = "block";}
-                         if(value == 0){console.log("valueeee",value)
-                                       prevBtn.style.display = "none";
-                                       nextBtn.style.display = "block";}}                                       
-
-                                       else if(forecastList.offsetWidth == 250){value += 260;
-                                        forecastList.style.transform = `translateX(-${value}px)`;
-                                        nextBtn.style.display = "visible"}*/
