@@ -194,6 +194,7 @@
 
 
 @media screen and (min-width:768px){
+  .wheather-today {width: 400px;}
   .wheather-fivedays-btns {visibility: hidden; }
   .change-today {
     text-transform: uppercase;
@@ -296,6 +297,7 @@
 }
 
 @media screen and (min-width:1280px){
+  .wheather-today {width: 250px;}
   .wheather-fivedays-btns {visibility: hidden;}
   .change-today {
     text-transform: uppercase;
