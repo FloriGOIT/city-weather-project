@@ -83,7 +83,7 @@ table {
                                                background-color: rgb(158, 166, 176, 0.7);
                                                border-radius: 25px;
                                                text-align: center;
-                                               max-height: 180px;}
+                                               max-height: 220px;}
 .weather-data-section .weather-quote .weather .weather-day{color:white;
                                                            font: var(--lato300-s45-h54-normal)};
                                                            
@@ -99,22 +99,20 @@ table {
                                                                                 justify-content: center;
                                                                                 gap: 10px;}                                       
 
-.weather-data-section .weather-quote .quote {margin-top: 50px;
-                                             margin-bottom: 50px;   
-                                             margin-left: 85px;
+.weather-data-section .weather-quote .quote {margin: 50px auto 50px auto;
                                              border: 1px solid black;
-                                             padding-top: 40px;
+                                             padding-top: 50px;
                                              padding-left: 30px;
                                              padding-right: 15px;
                                              border-radius: 25px;
-                                             width: 200px;
+                                             width: 235px;
                                              background-color: rgba(16, 33, 54, 0.8);
                                              color: white;
                                              background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Quotation_Marks.svg/391px-Quotation_Marks.svg.png?20070401015211');
                                              background-size: contain;
                                              background-repeat: no-repeat;
                                              background-position:0.2cm;
-                                             height: 160px;}
+                                             height: 140px;}
 .weather-data-section .weather-quote .quote .quote-container{display: flex;
                                                              justify-content: space-between;}
 .weather-data-section .weather-quote .quote .quote-container .quote-text {font: var(--lato400-s14-h17-italic)}                                                            
@@ -196,7 +194,6 @@ table {
 
 @media screen and (min-width: 300px){
     .weather-data-section{margin-top: 60px;}
-    .weather-data-section .weather-quote .quote {margin-right: 20px;}
     .weather-data-section .weather-quote{flex-direction: column;}
     .weather-data-section .change-page-buttons-wrapper{padding-bottom: 50px;
                                                        padding-top: 10px;}
@@ -204,10 +201,9 @@ table {
             font: var(--lato400-s18-h22-normal);}                                                   
 }
 
-@media screen and (min-width: 768px){.weather-data-section .weather-quote .quote {margin-right: 0px;}}
 
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 850px) {
     
     .weather-data-section{padding: 17px 33px 0px;
         width: auto; margin-top: 0px;}
@@ -216,7 +212,7 @@ table {
     .weather-data-section .container,
     .weather-data-section .change-page-buttons-wrapper{width: 400px;
                                                       margin-left: calc(100vw - 500px);
-                                                      margin-right: 140px;
+                                                      margin-right: 100px;
                                                       padding-bottom: 0px;
                                                       padding-top: 20px;
                                                       
@@ -224,12 +220,13 @@ table {
 
 
     .weather-data-section .weather-quote{flex-direction: row;
+                                         align-items: center;
                                         margin-left: auto;
                                         margin-right: auto;}                     
     .weather-data-section .weather-quote .weather {width: 500px;
                                                    margin-right: 0px;
                                                    margin-left: -40px;
-                                                   height: 200px;}                              
+                                                   height: 251px;}                              
     .weather-data-section .weather-quote .weather .weather-time {display: flex;
                                                                  flex-direction: row;
                                                                  gap: 30px;                                                           
