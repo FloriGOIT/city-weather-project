@@ -19,6 +19,7 @@
     transition-duration: 1000ms;
     transition-timing-function: linear;
     margin-top: 50px;
+    margin-bottom: 50px;
   }  
 
 .wheather-fivedays-section{
@@ -195,6 +196,7 @@
 
 
 @media screen and (min-width:768px){
+  .fivedayscontainer {margin-bottom: 0px;}
   .wheather-today {width: 400px;}
   .wheather-fivedays-btns {visibility: hidden; }
   .change-today {
@@ -222,6 +224,8 @@
     box-shadow: 0 8px 43px 0 rgba(16,33,54,.59);
     padding: 0;
     justify-content: space-evenly;
+    transition-duration: 0ms;
+
   }
 
   #city-fivedays-name,

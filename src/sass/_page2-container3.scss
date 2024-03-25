@@ -55,7 +55,7 @@
     box-shadow: 0px 8px 43px 0px #10213699;
     position: relative;
     padding: 15px 15px 5px;
-    border-radius: 20px;
+    border-radius: 25px;
   }
   .close__more-info {
     text-align: center;
@@ -105,7 +105,7 @@
     list-style-type: none;
     display: flex;
       justify-content: left;
-      gap: 10px;
+      gap: 15px;
   
   }
   .list-item {
@@ -176,7 +176,7 @@
       width: 700px;
       margin-bottom: 50px;
     }
-    .three_hour_weather {gap: 14px; width: 670px; }
+    .three_hour_weather {gap: 16px; width: 670px; }
   }
   
   @media (min-width: 1280px) {
