@@ -154,21 +154,18 @@
   transition: transform 0.6s ease;
 }
 
-#myChart {
-    width: 70vw;
-    height: 250px;
-}
 
-@media screen and (min-width: 768px) {
+
+@media screen and (min-width: 300px) {
 
     .extention-chart {
-        width: 80vw;
-        height: 534px;
-        padding: 3vw;
+        width: 700;
+        height: 310px;
+        padding: 10px;
     }
 
     #myChart {
-        width: 720px;
+        width: 670px;
         height: 250px;
     }
 }
@@ -176,11 +173,11 @@
 @media screen and (min-width: 1280px) {
 
     .extention-chart {
-        width: 80vw;
-        height: 700px;
+        width: 1030px;
+        height: 360px;
     }
     #myChart {
-        width: 1030px;
+        width: 1000px;
         height: 300px;
     }
 }
