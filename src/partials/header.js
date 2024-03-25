@@ -48,7 +48,7 @@ function getInput(){inputText = form.elements.userinput.value.toLowerCase();
 
 
 
-savedCityMarkup = (event) =>
+function savedCityMarkup()
 {let retrievedArrayAsString = localStorage.getItem(localStoreCities);
   retrievedArray = JSON.parse(retrievedArrayAsString);
   citiesArr = [...retrievedArray];
@@ -74,7 +74,7 @@ savedCityMarkup = (event) =>
 
 };
 
-emptyMarkup = (event) => {event.preventDefault();
+function emptyMarku(event){event.preventDefault();
                           let g = event.target;
                           let gg = g.parentNode;
                           if(g.nodeName == "span"){return;}
