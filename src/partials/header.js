@@ -74,7 +74,7 @@ function savedCityMarkup()
 
 };
 
-function emptyMarku(event){event.preventDefault();
+function emptyMarkup(event){event.preventDefault();
                           let g = event.target;
                           let gg = g.parentNode;
                           if(g.nodeName == "span"){return;}
