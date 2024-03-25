@@ -23,6 +23,7 @@ let searchCitySVG = document.querySelector("#gps");
 let savedCities = document.querySelector(".saved-cities");
 let savedCitiesWidth = savedCities.parentNode.offsetWidth; 
 export let localStoreTemporary = "temporary";
+localStorage.setItem("localCities",[])
 let prevButton = document.querySelector(".prevButton");
 let nextButton = document.querySelector(".nextButton");
 let itemsPerPage;
@@ -51,7 +52,7 @@ function getInput(){inputText = form.elements.userinput.value.toLowerCase();
 function savedCityMarkup()
 {let retrievedArrayAsString = localStorage.getItem("localCities");
   retrievedArray = JSON.parse(retrievedArrayAsString);
-  console.log(retrievedArray)
+  console.log(retrievedArray);
   citiesArr = [`${retrievedArray}`];
   console.log(citiesArr)
   if(inputText == undefined){Notiflix.Notify.warning('Enter a valid city name.')}
