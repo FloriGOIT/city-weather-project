@@ -69,7 +69,8 @@
                 flex-direction: row;
                 justify-content: space-between;
                  width: 280px;}
-.fivedays-city-country-name{display: inline-block;
+.fivedays-city-country-name{display: flex;
+  flex-direction: row;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.726);
   font-family: var(--font-family);
@@ -78,8 +79,10 @@
   line-height: 22px;
   letter-spacing: 1px;
   text-align: center;
-  width: 200px;
+  gap: 10px;
+  //width: 200px;
   margin-right: 15px;
+  padding-left: 15px;
 }
 
 .weather-fivedays-container{

@@ -64,7 +64,7 @@ const fetchWeather = async (event) =>{
         const city =  response.data;
        
         weatherPerDays(city.list);
-        cityName22.textContent = city.city.name;
+        cityName22.textContent = city.city.name + `,`;
         countryName22.textContent = city.city.country;
     }
     catch(error){
