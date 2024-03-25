@@ -61,7 +61,7 @@ savedCityMarkup = (event) =>
                                           item.setAttribute("title", `${inputText}`);
                                           let markup = `<span class="city">${inputText}</span>
                                                      <svg class="close-city" title = ${inputText}>
-                                                      <use href = "/header-symbol-defs.5e7c9225.svg#icon-cancel-circle"></use>
+                                                      <use href = "/src/images/header-symbol-defs.svg#icon-cancel-circle"></use>
                                                      </svg>`;
                                       savedCities.append(item);
                                       item.insertAdjacentHTML("beforeend", markup);
