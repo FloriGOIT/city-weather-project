@@ -14,7 +14,6 @@ const nextBtn = document.querySelector('.three_hour_next-btn');
 
 async function getWeatherForDate() {
   let location = localStorage.getItem("temporary");
-  console.log("location23: ",location)
   let site = `https://api.openweathermap.org/data/2.5/forecast?APPID=8defc985a5e2c764076c53bf90c6c44e&units=metric&lang=en&q=${location}`;
   try {
     const response = await axios(site);
@@ -106,8 +105,7 @@ closeBtn.addEventListener('click',
     }                     );
 nextBtn.addEventListener("click",traslateXNext23medium)
 prevBtn.addEventListener("click",traslateXprev23medium)
-console.log(forecastList.offsetWidth)
-console.log(forecastList)
+
 
 let forecastListWidth = forecastList.offsetWidth;
 function resetTrans(){forecastList.style.transform = `translateX(0px)`;
@@ -117,44 +115,36 @@ function resetTrans(){forecastList.style.transform = `translateX(0px)`;
 
 
 function traslateXNext23medium()
-{console.log("value 1: ", value);
- if(forecastList.offsetWidth == 670)
+{if(forecastList.offsetWidth == 670)
       {value += 390;
         forecastList.style.transform = `translateX(-${value}px)`;
         nextBtn.style.display = "visible";
-        console.log("value 2: ", value)
-       if(value == 390){console.log("valueeee",value)
-                                           nextBtn.style.display = "none";
-                                           prevBtn.style.display = "block";}}
+       if(value == 390){nextBtn.style.display = "none";
+                        prevBtn.style.display = "block";}}
 
   if(forecastList.offsetWidth == 250)
       {value += 260;
         forecastList.style.transform = `translateX(-${value}px)`;
         nextBtn.style.display = "visible";
-        console.log("value 2: ", value)
-       if(value == 780){console.log("valueeee",value)
-         nextBtn.style.display = "none";
+       if(value == 780){nextBtn.style.display = "none";
                         prevBtn.style.display = "block";}
        if(value > 0 && value < 780){prevBtn.style.display = "block";
                                    nextBtn.style.display = "block";}}                                         
 }
 function traslateXprev23medium()
-{console.log("value prev1: ", value);
+{
  if(forecastList.offsetWidth == 670)
     {value -= 390;
      forecastList.style.transform = `translateX(-${value}px)`;
      nextBtn.style.display = "block";
-     if(value == 0){console.log("valueeee",value)
-     prevBtn.style.display = "none";
-     nextBtn.style.display = "block";}}
+     if(value == 0){prevBtn.style.display = "none";
+                    nextBtn.style.display = "block";}}
  if(forecastList.offsetWidth == 250)
      {value -= 260;
       forecastList.style.transform = `translateX(-${value}px)`;
       nextBtn.style.display = "block";
-      if(value == 0){console.log("valueeee",value)
-      prevBtn.style.display = "none";
-      nextBtn.style.display = "block";}
+      if(value == 0){prevBtn.style.display = "none";
+                     nextBtn.style.display = "block";}
       if(value > 0 && value < 780){prevBtn.style.display = "block";
-                                   nextBtn.style.display = "block";}
-      }
+                                   nextBtn.style.display = "block";}}
 }

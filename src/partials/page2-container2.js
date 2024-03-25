@@ -18,22 +18,17 @@ fivedaysNextBtn.addEventListener("click",traslateXNext)
 fivedaysPrevBtn.addEventListener("click",traslateXprev)
 let value = 0;
 let max = 180;
-function traslateXNext(){console.log("value 1: ", value);
-                     if(value < max){value += 95;
+function traslateXNext(){if(value < max){value += 95;
                                      weatherChart22.style.transform = `translateX(-${value}px)`;
                                      fivedaysNextBtn.style.display = "visible"}
-                     console.log("value 2: ", value);
-                     if(value == 190){console.log("valueeee",value)
-                                    fivedaysNextBtn.style.display = "none";
-                                    fivedaysPrevBtn.style.display = "block";}
+                         if(value == 190){fivedaysNextBtn.style.display = "none";
+                                          fivedaysPrevBtn.style.display = "block";}
                      return value;}
-function traslateXprev(){console.log("value prev1: ", value);
-                         if(value <= 190){value -= 95;
+function traslateXprev(){if(value <= 190){value -= 95;
                          weatherChart22.style.transform = `translateX(-${value}px)`;
                          fivedaysNextBtn.style.display = "block";}
-                         if(value == 0){console.log("valueeee",value)
-                                       fivedaysPrevBtn.style.display = "none";
-                                       fivedaysNextBtn.style.display = "block";}}
+                         if(value == 0){fivedaysPrevBtn.style.display = "none";
+                                        fivedaysNextBtn.style.display = "block";}}
 
 // de sters, le-am facut eu ca sa pot lucra
 const inputText22 = '';
