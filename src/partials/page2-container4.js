@@ -10,7 +10,7 @@ let charty;
 
 // Functia principala care aduce datele de pe API
 async function fetchData(location) {
-  if (location.trim() === "") {return;}
+  if (location === "") {return;}
   try {
     const response = await axios.get(`${apiUrl}?q=${location}&appid=${apiKey}&units=metric`);
     return response.data  //const data = response.data; 
