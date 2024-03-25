@@ -43,7 +43,7 @@ function btnShow(){if(citiesArr.length > itemsPerPage){nextButton.style.visibili
                            savedCities.style.transform = `translatex(0px)`;}}
                          
 
-getInput = () => {inputText = form.elements.userinput.value.toLowerCase();
+function getInput(){inputText = form.elements.userinput.value.toLowerCase();
                      return inputText;}
 
 
