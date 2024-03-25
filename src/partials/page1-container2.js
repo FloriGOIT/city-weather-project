@@ -47,7 +47,7 @@ function getLocation() {
     localizationCountry = timeZoneSplit[1].toLowerCase();
     localStorage.setItem("temporary", localizationCountry);
     getData12();
-    
+    localStorage.setItem("temporary", localizationCountry);
     };}
 
 function getData12(){
@@ -90,6 +90,8 @@ let newDate = new Date();
 if(newDate.getHours() > format(sunsetUnix.getHours())){weatherIcon.innerHTML  = `🌒`;}
 else{weatherIcon.innerHTML  = emoji;}
 weatherIcon.style.fontSize = "2em";
+let anArray = localStorage.getItem("localStoreCities");
+localStorage.setItemItem("localStoreCities",anArray);
 }
 
 function dating(){
