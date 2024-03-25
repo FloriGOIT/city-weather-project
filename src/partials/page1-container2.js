@@ -221,7 +221,6 @@ oneDayBtn.addEventListener("click",fiveDayhidden)
 let currentTemperature = document.querySelector(".current-temperature")
 let minimum = document.querySelector("#minimum");
 let maximum = document.querySelector("#maximum");
-localStoreTemporary = "temporary";
 let cityStorage12=``;
 
 export {getData12, markup12}
