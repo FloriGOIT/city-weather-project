@@ -50,7 +50,7 @@ function getInput(){inputText = form.elements.userinput.value.toLowerCase();
 
 
 function savedCityMarkup()
-{let retrievedArrayAsString = localStorage.getItem(localStoreCities);
+{let retrievedArrayAsString = localStorage.getItem("localCities");
   retrievedArray = JSON.parse(retrievedArrayAsString);
   console.log(retrievedArray)
   citiesArr = [`${retrievedArray}`];
@@ -68,7 +68,7 @@ function savedCityMarkup()
                                                      </svg>`;
                                       savedCities.append(item);
                                       item.insertAdjacentHTML("beforeend", markup);
-                                      localStorage.setItem(localStoreCities, JSON.stringify(citiesArr));
+                                      localStorage.setItem("localCities", JSON.stringify(citiesArr));
                                       btnShow();
                                       form.reset();
                                       return citiesArr;}
@@ -85,7 +85,7 @@ function emptyMarkup(event){event.preventDefault();
                                                   citiesArr.splice(citiesArr.indexOf(gg.getAttribute("title")),1);}
                           else if(g.nodeName == "use"){gg.parentNode.remove();
                                 citiesArr.splice(citiesArr.indexOf(gg.parentNode.getAttribute("title")),1);}
-                          localStorage.setItem(localStoreCities, JSON.stringify(citiesArr));
+                          localStorage.setItem("localCities", JSON.stringify(citiesArr));
                           initial = 0;
                           savedCities.style.transform = `translatex(0px)`;
                           prevButton.style.visibility = "hidden";
@@ -96,7 +96,7 @@ function emptyMarkup(event){event.preventDefault();
 function storedCities()
 {localStorage.setItem('temporary', '');
 try {
-  retrievedArray = JSON.parse(localStorage.getItem(localStoreCities));
+  retrievedArray = JSON.parse(localStorage.getItem("localCities"));
   citiesArr = [...retrievedArray];
 } catch (error) {
   citiesArr = [];
