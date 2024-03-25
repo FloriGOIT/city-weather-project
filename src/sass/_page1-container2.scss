@@ -196,6 +196,7 @@ table {
 
 @media screen and (min-width: 300px){
     .weather-data-section{margin-top: 60px;}
+    .weather-data-section .weather-quote .quote {margin-right: 20px;}
     .weather-data-section .weather-quote{flex-direction: column;}
     .weather-data-section .change-page-buttons-wrapper{padding-bottom: 50px;
                                                        padding-top: 10px;}
@@ -203,11 +204,14 @@ table {
             font: var(--lato400-s18-h22-normal);}                                                   
 }
 
+@media screen and (min-width: 768px){.weather-data-section .weather-quote .quote {margin-right: 0px;}}
+
 
 @media screen and (min-width: 1000px) {
- 
+    
     .weather-data-section{padding: 17px 33px 0px;
         width: auto; margin-top: 0px;}
+    
 
     .weather-data-section .container,
     .weather-data-section .change-page-buttons-wrapper{width: 400px;
