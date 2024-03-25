@@ -107,7 +107,6 @@ nextBtn.addEventListener("click",traslateXNext23medium)
 prevBtn.addEventListener("click",traslateXprev23medium)
 
 
-let forecastListWidth = forecastList.offsetWidth;
 function resetTrans(){forecastList.style.transform = `translateX(0px)`;
                       value = 0;
                       prevBtn.style.display = "none";
@@ -115,12 +114,13 @@ function resetTrans(){forecastList.style.transform = `translateX(0px)`;
 
 
 function traslateXNext23medium()
-{if(forecastList.offsetWidth == 670)
+{console.log(forecastList.offsetWidth)
+  if(forecastList.offsetWidth == 670)
       {value += 390;
         forecastList.style.transform = `translateX(-${value}px)`;
         nextBtn.style.display = "visible";
        if(value == 390){nextBtn.style.display = "none";
-                        prevBtn.style.display = "block";}}
+                        prevBtn.style.display = "block";}};
 
   if(forecastList.offsetWidth == 250)
       {value += 260;
@@ -129,7 +129,8 @@ function traslateXNext23medium()
        if(value == 780){nextBtn.style.display = "none";
                         prevBtn.style.display = "block";}
        if(value > 0 && value < 780){prevBtn.style.display = "block";
-                                   nextBtn.style.display = "block";}}                                         
+                                   nextBtn.style.display = "block";}};
+                           
 }
 function traslateXprev23medium()
 {
@@ -138,7 +139,7 @@ function traslateXprev23medium()
      forecastList.style.transform = `translateX(-${value}px)`;
      nextBtn.style.display = "block";
      if(value == 0){prevBtn.style.display = "none";
-                    nextBtn.style.display = "block";}}
+                    nextBtn.style.display = "block";}}   
  if(forecastList.offsetWidth == 250)
      {value -= 260;
       forecastList.style.transform = `translateX(-${value}px)`;
@@ -146,5 +147,5 @@ function traslateXprev23medium()
       if(value == 0){prevBtn.style.display = "none";
                      nextBtn.style.display = "block";}
       if(value > 0 && value < 780){prevBtn.style.display = "block";
-                                   nextBtn.style.display = "block";}}
+                                   nextBtn.style.display = "block";}}                         
 }
