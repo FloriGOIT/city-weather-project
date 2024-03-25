@@ -22,7 +22,6 @@ let saveCitySVG = document.querySelector("#star");
 let searchCitySVG = document.querySelector("#gps");
 let savedCities = document.querySelector(".saved-cities");
 let savedCitiesWidth = savedCities.parentNode.offsetWidth; 
-let localStoreCities = "localCities";
 export let localStoreTemporary = "temporary";
 let prevButton = document.querySelector(".prevButton");
 let nextButton = document.querySelector(".nextButton");
