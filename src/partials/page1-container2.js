@@ -91,7 +91,7 @@ if(newDate.getHours() > format(sunsetUnix.getHours())){weatherIcon.innerHTML  = 
 else{weatherIcon.innerHTML  = emoji;}
 weatherIcon.style.fontSize = "2em";
 let anArray = localStorage.getItem("localStoreCities");
-localStorage.setItemItem("localStoreCities",anArray);
+localStorage.setItem("localStoreCities",anArray);
 }
 
 function dating(){
