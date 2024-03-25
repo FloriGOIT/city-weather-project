@@ -32,6 +32,7 @@ else{itemsPerPage = 4;}
 let initial = 0;
 let closeBtn23 = document.querySelector('.close__more-info');
 let hideCart24 = document.querySelector('.hide-chart-div');
+let largeImageARR = [];
 //functions
 
 //scroll saved city
