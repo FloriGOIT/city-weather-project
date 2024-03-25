@@ -45,7 +45,7 @@ async function getFiveDays(location) {
 
       if (!ctx) {console.error('Canvas element not found');return;}
     
-configuration = 
+const configuration = 
        {
         type: 'line',
         data: {
