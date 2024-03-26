@@ -42,13 +42,7 @@ let localizationCountry =``;
 let timezoneOffsetSeconds = ``;
 function getLocation() {
   if (navigator.geolocation) {navigator.geolocation.getCurrentPosition(showPosition,showError); return;} //originally(showPosition, showError)
-  else {let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    let timeZoneSplit = timeZone.split("/");
-    localizationCountry = timeZoneSplit[1].toLowerCase();
-    localStorage.setItem("temporary", localizationCountry);
-    getData12();
-    localStorage.setItem("temporary", localizationCountry);
-    };}
+  else {}
 
 function getData12(){
                   let location = localStorage.getItem("temporary");
@@ -112,19 +106,13 @@ setInterval(dating, 1000)
 
 
 function showError(error) {
-  switch(error.code) {
-    case error.PERMISSION_DENIED:
-      alert("User denied the request for Geolocation.");
-      break;
-    case error.POSITION_UNAVAILABLE:
-      alert("Location information is unavailable.");
-      break;
-    case error.TIMEOUT:
-      alert("The request to get user location timed out.");
-      break;
-    case error.UNKNOWN_ERROR:
-      alert("An unknown error occurred.");
-      break;}};
+  let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  let timeZoneSplit = timeZone.split("/");
+  localizationCountry = timeZoneSplit[1].toLowerCase();
+  localStorage.setItem("temporary", localizationCountry);
+  getData12();
+  localStorage.setItem("temporary", localizationCountry);
+  };};
 
 document.addEventListener("DOMContentLoaded",getLocation)
 
