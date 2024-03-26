@@ -41,7 +41,7 @@ let localizationLatLon = ``;
 let localizationCountry =``;
 let timezoneOffsetSeconds = ``;
 function getLocation() {
-  if (navigator.geolocation) {navigator.geolocation.getCurrentPosition(showPosition,showError); return;} //originally(showPosition, showError)
+  if (!navigator.geolocation) {navigator.geolocation.getCurrentPosition(showPosition,showError); return;} //originally(showPosition, showError)
   else {let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     let timeZoneSplit = timeZone.split("/");
     localizationCountry = timeZoneSplit[1].toLowerCase();
