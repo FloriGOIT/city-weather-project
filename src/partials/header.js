@@ -128,13 +128,13 @@ if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.create
 storedCities()
 
 
-function showNextItems(){let maxTrans = (citiesArr.length - itemsPerPage) * 110;                   
-                         if(initial < maxTrans){initial += 110;
+function showNextItems(){let maxTrans = (citiesArr.length - itemsPerPage) * 113;                   
+                         if(initial < maxTrans){initial += 113;
                                                  savedCities.style.transform = `translatex(-${initial}px)`};
                          if(initial == maxTrans){nextButton.style.visibility = "hidden"};
                                                  prevButton.style.visibility = "visible";
                                                   return initial;}
-function showPreviousItems(){if(initial > 0){initial -= 110;
+function showPreviousItems(){if(initial > 0){initial -= 113;
                                                 savedCities.style.transform = `translatex(-${initial}px)`;
                                                 if (initial == 0){nextButton.style.visibility = "visible";
                                                                   prevButton.style.visibility = "hidden";}}
