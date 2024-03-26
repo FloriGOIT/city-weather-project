@@ -105,7 +105,9 @@ function emptyMarkup(event){event.preventDefault();
                              }
 
 function storedCities()
-{localStorage.setItem('temporary', '');
+{
+console.log("storedCities:")
+  localStorage.setItem('temporary', '');
 try {
   retrievedArray = JSON.parse(localStorage.getItem("localCities"));
   citiesArr = [...retrievedArray];
@@ -124,9 +126,9 @@ if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.create
                                                       item.insertAdjacentHTML("beforeend", markupSaved)});
                                                       btnShow();                                       
                                                       return retrievedArray;}                                              
-}
-storedCities()
+};
 
+storedCities()
 
 function showNextItems(){let maxTrans = (citiesArr.length - itemsPerPage) * 113;                   
                          if(initial < maxTrans){initial += 113;
