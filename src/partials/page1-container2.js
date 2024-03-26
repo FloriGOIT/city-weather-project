@@ -41,8 +41,8 @@ let localizationLatLon = ``;
 let localizationCountry =``;
 let timezoneOffsetSeconds = ``;
 function getLocation() {
-  if (navigator.geolocation) {navigator.geolocation.getCurrentPosition(showPosition,showError); return;} //originally(showPosition, showError)
-  else {}
+  if (navigator.geolocation) {navigator.geolocation.getCurrentPosition(showPosition,geoDenied()); return;} //originally(showPosition, showError)
+  else {geoDenied}}
 
 function getData12(){
                   let location = localStorage.getItem("temporary");
@@ -105,14 +105,15 @@ setInterval(dating, 1000)
 
 
 
-function showError(error) {
+function geoDenied() {
   let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   let timeZoneSplit = timeZone.split("/");
   localizationCountry = timeZoneSplit[1].toLowerCase();
   localStorage.setItem("temporary", localizationCountry);
   getData12();
   localStorage.setItem("temporary", localizationCountry);
-  };};
+  
+};
 
 document.addEventListener("DOMContentLoaded",getLocation)
 
