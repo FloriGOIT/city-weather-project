@@ -42,7 +42,7 @@ let localizationCountry =``;
 let timezoneOffsetSeconds = ``;
 function getLocation() {
   if (navigator.geolocation) {navigator.geolocation.getCurrentPosition(showPosition,geoDenied()); return;} //originally(showPosition, showError)
-  else {geoDenied}}
+  else {geoDenied()}}
 
 function getData12(){
                   let location = localStorage.getItem("temporary");
