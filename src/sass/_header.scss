@@ -47,7 +47,6 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
 .search-section .search-container { position: relative;
                                     margin-left: auto;
                                     margin-right: auto;
-                                //min-width: 200px;
                                     max-width: 280px;};
 .search-section .search-container .searchbar {display: flex;
                                         flex-direction: row;
@@ -96,33 +95,36 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
 
 
 .search-section .search-container .cities-scroll div .saved-cities .saved-city{display: inline-block;
-                                                                                height: 30px;
-                                                                                width: 100px; margin-right: 10px;
+                                                                                height: 25px;
+                                                                                width: 103px;
+                                                                                margin-right: 10px;
                                                                                  background-color: rgba(128, 128, 128, 0.7);
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
-                                                                                 padding-left: 10px;
+                                                                                 //padding-left: 10px;
                                                                                  padding-top: 6px;
                                                                                  cursor: pointer;
                                                                                  font: var(--lato400-s12-h14-normal);}
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .city {display: inline-block; width: 60px;
-                                                                                      overflow: hidden;}
+                                                                                      overflow: hidden;
+                                                                                      padding-left: 10px;}
 
 
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .city::first-letter{text-transform: uppercase;}
-.search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city{fill: var(--whiteMain);
+.search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city{fill: white;
                                                                                            text-align: end;
-                                                                                           margin-left: 10px;
-                                                                                             width: 9px;
-                                                                                             height: 9px;
-                                                                                           margin-bottom: 3px;}
+                                                                                           margin-left: 8px;
+                                                                                           margin-right: 8px;
+                                                                                           width: 11px;
+                                                                                           height: 11px;
+                                                                                           margin-bottom: 1px;}
 
 .search-section .search-container .searchbar .icons:hover,
 .search-section .search-container .cities-scroll .other-cities:hover,
 .search-section .search-container .cities-scroll .city:hover{color: gold; fill: gold;cursor: pointer;}
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city:hover{fill: gold;
-                                                                                                width: 12px;
-                                                                                                height: 12px;}
+                                                                                                width: 13px;
+                                                                                                height: 13px;}
 
 @media screen and (min-width: 300px){.search-section {margin-top: 40px;
                                                       margin-bottom: 50px;}}
@@ -130,12 +132,12 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
 @media screen and (min-width: 780px)
 {   .search-section {margin-top: 10px;
                     margin-bottom: 0px};
-    .search-section .search-container{max-width: 500px;}
+    .search-section .search-container{max-width: 520px;}
     .search-section .search-container .searchbar input{font: var(--lato400-s18-h22-normal)};
     .search-section .search-container .searchbar input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
 
     .search-section .search-container .cities-scroll div .saved-cities .saved-city{font: var(--lato400-s14-h17-normal)};
-    .search-section .search-container .cities-scroll div{width: 433px;}
+    .search-section .search-container .cities-scroll div{width: 442px;}
 
 }
 
