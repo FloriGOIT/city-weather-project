@@ -113,7 +113,7 @@ if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.create
                                                       item.setAttribute("id", `${city}`);
                                                       item.setAttribute("title", `${city}`);
                                                       let markupSaved = `<span class="city">${city}</span>
-                                                                         <button type="button" class="close-city" title = ${city}>❌</button>`;
+                                                                         <button type="button" class="close-city" title = ${city}>✖️</button>`;
                                                       savedCities.append(item);
                                                       item.insertAdjacentHTML("beforeend", markupSaved)});
                                                       btnShow();                                       
