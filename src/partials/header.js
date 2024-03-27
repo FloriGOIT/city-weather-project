@@ -173,7 +173,6 @@ function addInputText(event){
                                                                 localStorage.setItem('temporary', `${inputText}`);
                                                                   inputSearch();
                                                                   largeImageARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
-                                                                  webformatURLARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
                                                                 inputText = ``; return;};
 }                                   
 
