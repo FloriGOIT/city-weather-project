@@ -73,7 +73,7 @@ if (retrievedArrayAsString !== null) {
                                           item.setAttribute("id", `${inputText}`);
                                           item.setAttribute("title", `${inputText}`);
                                           let markup = `<span class="city">${inputText}</span>
-                                                     <svg class="close-city" title = ${inputText}>
+                                                     <svg width="10" height ="10" class="close-city" title = ${inputText}>
                                                       <use href = "/header-symbol-defs.5e7c9225.svg#icon-cross"></use>
                                                      </svg>`;
                                                      //<use href="/header-symbol-defs.5e7c9225.svg#icon-cancel-circle"></use>
