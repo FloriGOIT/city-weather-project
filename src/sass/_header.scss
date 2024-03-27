@@ -94,37 +94,35 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
                                                                    transition-timing-function: linear;}
 
 
-.search-section .search-container .cities-scroll div .saved-cities .saved-city{display: inline-block;
-                                                                                height: 25px;
+.search-section .search-container .cities-scroll div .saved-cities .saved-city{position: relative;
+                                                                               display: inline-block;
+                                                                                height: 30px;
                                                                                 width: 103px;
                                                                                 margin-right: 10px;
                                                                                  background-color: rgba(128, 128, 128, 0.7);
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
                                                                                  //padding-left: 10px;
-                                                                                 padding-top: 6px;
-                                                                                 cursor: pointer;
-                                                                                 font: var(--lato400-s12-h14-normal);}
-.search-section .search-container .cities-scroll div .saved-cities .saved-city .city {display: inline-block; width: 60px;
+                                                                                 cursor: pointer;}
+.search-section .search-container .cities-scroll div .saved-cities .saved-city .city {
+                                                                                     display: inline-block; width: 60px;
                                                                                       overflow: hidden;
-                                                                                      padding-left: 10px;}
+                                                                                      padding-left: 10px;
+                                                                                      padding-top: 7px;
+                                                                                      font: var(--lato400-s14-h17-normal);}
+.search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city{font-size: 10px;
+                                                                                            position: absolute;
+                                                                                           top: 8;
+                                                                                           right:   8;}                                                                                     
 
 
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .city::first-letter{text-transform: uppercase;}
-/*.search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city{fill: rgb(228, 226, 226);
-                                                                                           text-align: end;
-                                                                                           margin-left: 8px;
-                                                                                           margin-right: 8px;
-                                                                                           width: 10px;
-                                                                                           height: 10px;
-                                                                                           margin-bottom: 1px;}*/
+
 
 .search-section .search-container .searchbar .icons:hover,
 .search-section .search-container .cities-scroll .other-cities:hover,
 .search-section .search-container .cities-scroll .city:hover{color: gold; fill: gold;cursor: pointer;}
-/*.search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city:hover{fill: gold;
-                                                                                                 width: 12px;
-                                                                                                 height: 12px;}*/
+.search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city:hover{font-size: 12px;}
 
 @media screen and (min-width: 300px){.search-section {margin-top: 40px;
                                                       margin-bottom: 50px;}}

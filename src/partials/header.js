@@ -73,9 +73,7 @@ if (retrievedArrayAsString !== null) {
                                           item.setAttribute("id", `${inputText}`);
                                           item.setAttribute("title", `${inputText}`);
                                           let markup = `<span class="city">${inputText}</span>
-                                                     <svg width="10" height ="10" class="close-city" title = ${inputText}>
-                                                     <use href="/symbol-defs.e752d9b8.svg#icon-cross"></use>
-                                                     </svg>`;
+                                                        <span class="close-city" title = ${inputText}>❌</span>`;
                                       savedCities.append(item);
                                       item.insertAdjacentHTML("beforeend", markup);
                                       localStorage.setItem("localCities", JSON.stringify(citiesArr));
