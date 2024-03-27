@@ -8,7 +8,8 @@ let currentDateInSeconds = Math.floor(currentDateInMillis / 1000);
 let myTimeSeconds = currentDate.getTimezoneOffset() * 60;
 let timezoneOffsetSeconds = -18000;
 let dateeeeUnix = currentDateInSeconds + timezoneOffsetSeconds + myTimeSeconds;
-let dateeee = new Date(dateeeeUnix * 1000)
+let dateeee = new Date(dateeeeUnix * 1000);
+let maxTrans;
 
 //declaration
 let body = document.querySelector("body");
@@ -23,7 +24,6 @@ let searchCitySVG = document.querySelector("#gps");
 let savedCities = document.querySelector(".saved-cities");
 let savedCitiesWidth = savedCities.parentNode.offsetWidth; 
 export let localStoreTemporary = "temporary";
-localStorage.setItem("localCities",[])
 let prevButton = document.querySelector(".prevButton");
 let nextButton = document.querySelector(".nextButton");
 let itemsPerPage;
@@ -40,7 +40,7 @@ let largeImageARR = [];
 
 function btnShow(){if(citiesArr.length > itemsPerPage){nextButton.style.visibility = "visible";}
                       else{nextButton.style.visibility = "hidden";
-                          prevButton.style.visibility = "hidden";
+                           prevButton.style.visibility = "hidden";
                            savedCities.style.transform = `translatex(0px)`;}}
                          
 
@@ -50,7 +50,8 @@ function getInput(){inputText = form.elements.userinput.value.toLowerCase();
 
 
 function savedCityMarkup()
-{/*let retrievedArrayAsString = localStorage.getItem("localCities");
+{
+  /*let retrievedArrayAsString = localStorage.getItem("localCities");
 
 let xx;
 if (retrievedArrayAsString !== null) {
@@ -62,9 +63,8 @@ if (retrievedArrayAsString !== null) {
   retrievedArray.push(xx);
 
 
-  console.log(retrievedArray);
   citiesArr = [`${retrievedArray}`];
-  console.log(citiesArr)*/
+*/
   if(inputText == undefined){Notiflix.Notify.warning('Enter a valid city name.')}
   else if(inputText.length !== 0)
       {if(!citiesArr.includes(inputText)){ citiesArr.push(inputText.toLowerCase());
@@ -77,6 +77,10 @@ if (retrievedArrayAsString !== null) {
                                       savedCities.append(item);
                                       item.insertAdjacentHTML("beforeend", markup);
                                       localStorage.setItem("localCities", JSON.stringify(citiesArr));
+                                      initial = 0;
+                                      maxTrans = (citiesArr.length - itemsPerPage) * 113;
+                                      savedCities.style.transform = `translatex(0px)`;
+                                      prevButton.style.visibility = "hidden";
                                       btnShow();
                                       form.reset();
                                       return citiesArr;}
@@ -87,30 +91,23 @@ if (retrievedArrayAsString !== null) {
 
 function emptyMarkup(event){event.preventDefault();
                           let g = event.target;
-                          console.log("g.nodeName",g.nodeName)
                           let attribute = g.getAttribute("title");
-                          console.log("attribute",attribute)
                           let gg = g.parentNode;
-                          console.log("gg",gg)
                           if(g.nodeName == "BUTTON"){gg.remove();
                                                      citiesArr.splice(citiesArr.indexOf(attribute),1)
                                                      localStorage.setItem("localCities", JSON.stringify(citiesArr));
                                                      initial = 0;
+                                                     maxTrans = (citiesArr.length - itemsPerPage) * 113;
                                                      savedCities.style.transform = `translatex(0px)`;
-                                                     prevButton.style.visibility = "hidden";}
+                                                     prevButton.style.visibility = "hidden";}          
                           btnShow()
                              }
 
 function storedCities()
-{
-console.log("storedCities:")
-  localStorage.setItem('temporary', '');
-try {
-  retrievedArray = JSON.parse(localStorage.getItem("localCities"));
-  citiesArr = [...retrievedArray];
-} catch (error) {
-  citiesArr = [];
-}
+{localStorage.setItem('temporary', '');
+try {retrievedArray = JSON.parse(localStorage.getItem("localCities"));
+  citiesArr = [...retrievedArray];} catch (error) {citiesArr = [];}
+  
 if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.createElement("li");
                                                       item.classList.add("saved-city");
                                                       item.setAttribute("id", `${city}`);
@@ -123,25 +120,35 @@ if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.create
                                                       return retrievedArray;}                                              
 };
 
-storedCities()
+document.addEventListener("DOMContentLoaded", storedCities())
 
-function showNextItems(){let maxTrans = (citiesArr.length - itemsPerPage) * 113;                   
+
+
+
+maxTrans = (citiesArr.length - itemsPerPage) * 113;                                          
+function showNextItems(){                  
                          if(initial < maxTrans){initial += 113;
-                                                 savedCities.style.transform = `translatex(-${initial}px)`};
-                         if(initial == maxTrans){nextButton.style.visibility = "hidden"};
-                                                 prevButton.style.visibility = "visible";
+                                                 savedCities.style.transform = `translatex(-${initial}px)`;};
+                         if(initial == maxTrans){nextButton.style.visibility = "hidden";
+                                                 prevButton.style.visibility = "visible";};
+                          if(initial > 0 && initial < maxTrans){
+                                                 nextButton.style.visibility = "visible";
+                                                 prevButton.style.visibility = "visible";}                        
                                                   return initial;}
-function showPreviousItems(){if(initial > 0){initial -= 113;
+function showPreviousItems(){
+                             if(initial > 0){initial -= 113;
+                                              if(initial > 0 && initial < maxTrans){
+                                                                                    nextButton.style.visibility = "visible";
+                                                                                    prevButton.style.visibility = "visible";}   
                                                 savedCities.style.transform = `translatex(-${initial}px)`;
                                                 if (initial == 0){nextButton.style.visibility = "visible";
-                                                                  prevButton.style.visibility = "hidden";}}
+                                                                  prevButton.style.visibility = "hidden";}};
                                                 return initial;}                                       
 
-function inputSearch(event){console.log(inputText);
-                       let apiUrl = `https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&&safesearch=true&image_type=photo&pretty=true&q=${inputText}`;
-                       fetch(apiUrl).then(response => {if (!response.ok) {console.log("response No:", body);}
+function inputSearch(event){let apiUrl = `https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&&safesearch=true&image_type=photo&pretty=true&q=${inputText}`;
+                           fetch(apiUrl).then(response => {if (!response.ok) {console.log("response No:", body);}
                                                         else{return response.json()};})
-                                    .then(data => {for(let hit of data.hits){if (hit.tags.includes("landscape") || hit.tags.includes("city") || hit.tags.includes("architecture") || hit.tags.includes("building") || hit.tags.includes("landmark"))
+                                    .then(data => {for(let hit of data.hits){if (hit.tags.includes("city")  || hit.tags.includes("architecture")  || hit.tags.includes("landscape")|| hit.tags.includes("building") || hit.tags.includes("landmark"))
                                                                                {largeImageARR.push(hit.largeImageURL);};};
                                                                              if(largeImageARR.length > 1){body.style.backgroundImage = `url('${largeImageARR[1]}')`;}
                                                                              else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}});
@@ -153,13 +160,12 @@ function inputSearch(event){console.log(inputText);
 
 function addInputText(event){
                             let www = event.target;
-                            console.log("www", www)
                              if(event.target.nodeName == "SPAN"){inputText = www.textContent;
+                                                                localStorage.setItem('temporary', `${inputText}`);
                                                                   inputSearch();
                                                                   largeImageARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
                                                                 inputText = ``; return;};
-                             localStorage.setItem('temporary', `${inputText}`);
-                             }                                   
+}                                   
 
 function inputSearchDefault(event){event.preventDefault();
                                    inputSearch(); }         

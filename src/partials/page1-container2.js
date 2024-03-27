@@ -84,8 +84,6 @@ let newDate = new Date();
 if(newDate.getHours() > format(sunsetUnix.getHours())){weatherIcon.innerHTML  = `🌒`;}
 else{weatherIcon.innerHTML  = emoji;}
 weatherIcon.style.fontSize = "2em";
-let anArray = localStorage.getItem("localCities");
-localStorage.setItem("localCities",anArray);
 }
 
 function dating(){
