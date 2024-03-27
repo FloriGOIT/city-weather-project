@@ -97,12 +97,11 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
 .search-section .search-container .cities-scroll div .saved-cities .saved-city{position: relative;
                                                                                display: inline-block;
                                                                                 height: 30px;
-                                                                                width: 103px;
+                                                                                width: 100px;
                                                                                 margin-right: 10px;
                                                                                  background-color: rgba(128, 128, 128, 0.7);
                                                                                  border-radius: 25px;
                                                                                  color: var(--whiteMain);
-                                                                                 //padding-left: 10px;
                                                                                  cursor: pointer;}
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .city {
                                                                                      display: inline-block; width: 60px;
@@ -111,8 +110,8 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
                                                                                       padding-top: 7px;
                                                                                       font: var(--lato400-s14-h17-normal);}
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city{font-size: 10px;
-                                                                                            position: absolute;
-                                                                                           top: 8;
+                                                                                        position: absolute;
+                                                                                           top: 9;
                                                                                            right:   8;
                                                                                            background-color: rgba(128, 128, 128, 0.2);
                                                                                            border:none}                                                                                     
@@ -136,8 +135,9 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
     .search-section .search-container .searchbar input{font: var(--lato400-s18-h22-normal)};
     .search-section .search-container .searchbar input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
 
-    .search-section .search-container .cities-scroll div .saved-cities .saved-city{font: var(--lato400-s14-h17-normal)};
-    .search-section .search-container .cities-scroll div{width: 442px;}
+    .search-section .search-container .cities-scroll div .saved-cities .saved-city
+    {font: var(--lato400-s14-h17-normal);}
+    .search-section .search-container .cities-scroll div{width: 433px;}
 
 }
 

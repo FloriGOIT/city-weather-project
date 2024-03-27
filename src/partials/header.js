@@ -73,12 +73,12 @@ if (retrievedArrayAsString !== null) {
                                           item.setAttribute("id", `${inputText}`);
                                           item.setAttribute("title", `${inputText}`);
                                           let markup = `<span class="city">${inputText}</span>
-                                                        <button type="button" class="close-city" title = ${inputText}>❌</button>`;
+                                                        <button type="button" class="close-city" title = ${inputText}>✖️</button>`;
                                       savedCities.append(item);
                                       item.insertAdjacentHTML("beforeend", markup);
                                       localStorage.setItem("localCities", JSON.stringify(citiesArr));
                                       initial = 0;
-                                      maxTrans = (citiesArr.length - itemsPerPage) * 113;
+                                      maxTrans = (citiesArr.length - itemsPerPage) * 110;
                                       savedCities.style.transform = `translatex(0px)`;
                                       prevButton.style.visibility = "hidden";
                                       btnShow();
@@ -97,7 +97,7 @@ function emptyMarkup(event){event.preventDefault();
                                                      citiesArr.splice(citiesArr.indexOf(attribute),1)
                                                      localStorage.setItem("localCities", JSON.stringify(citiesArr));
                                                      initial = 0;
-                                                     maxTrans = (citiesArr.length - itemsPerPage) * 113;
+                                                     maxTrans = (citiesArr.length - itemsPerPage) * 110;
                                                      savedCities.style.transform = `translatex(0px)`;
                                                      prevButton.style.visibility = "hidden";}          
                           btnShow()
@@ -125,9 +125,9 @@ document.addEventListener("DOMContentLoaded", storedCities())
 
 
 
-maxTrans = (citiesArr.length - itemsPerPage) * 113;                                          
+maxTrans = (citiesArr.length - itemsPerPage) * 110;                                          
 function showNextItems(){                  
-                         if(initial < maxTrans){initial += 113;
+                         if(initial < maxTrans){initial += 110;
                                                  savedCities.style.transform = `translatex(-${initial}px)`;};
                          if(initial == maxTrans){nextButton.style.visibility = "hidden";
                                                  prevButton.style.visibility = "visible";};
@@ -136,7 +136,7 @@ function showNextItems(){
                                                  prevButton.style.visibility = "visible";}                        
                                                   return initial;}
 function showPreviousItems(){
-                             if(initial > 0){initial -= 113;
+                             if(initial > 0){initial -= 110;
                                               if(initial > 0 && initial < maxTrans){
                                                                                     nextButton.style.visibility = "visible";
                                                                                     prevButton.style.visibility = "visible";}   
