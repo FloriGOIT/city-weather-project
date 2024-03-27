@@ -80,7 +80,8 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
                                                                     color: #808080;
                                                                     font-weight:600;
                                                                     height: 30px;
-                                                                    width: 30px;
+                                                                    width: 28px;
+                                                                border: 1px solid rgb(0, 140, 255);
                                                                 visibility: hidden;}
 
 .search-section .search-container .cities-scroll div {overflow: hidden;
@@ -97,7 +98,8 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
 .search-section .search-container .cities-scroll div .saved-cities .saved-city{position: relative;
                                                                                display: inline-block;
                                                                                 height: 30px;
-                                                                                width: 100px;
+                                                                                width: 98px;
+                                                                                border: 1px solid rgb(0, 140, 255);
                                                                                 margin-right: 10px;
                                                                                  background-color: rgba(128, 128, 128, 0.7);
                                                                                  border-radius: 25px;
