@@ -74,7 +74,7 @@ if (retrievedArrayAsString !== null) {
                                           item.setAttribute("title", `${inputText}`);
                                           let markup = `<span class="city">${inputText}</span>
                                                      <svg width="10" height ="10" class="close-city" title = ${inputText}>
-                                                       <use href="/city-weather-project/header-symbol-defs.5e7c9225.svg#icon-cross"></use>
+                                                     <use href="/symbol-defs.e752d9b8.svg#icon-cross"></use>
                                                      </svg>`;
                                       savedCities.append(item);
                                       item.insertAdjacentHTML("beforeend", markup);
@@ -118,8 +118,8 @@ if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.create
                                                       item.setAttribute("id", `${city}`);
                                                       item.setAttribute("title", `${city}`);
                                                       let markupSaved = `<span class="city">${city}</span>
-                                                                                            <svg class="close-city">
-                                                                                              <use href = "/header-symbol-defs.5e7c9225.svg#icon-cancel-circle"></use>
+                                                                                            <svg width="10" height ="10" class="close-city">
+                                                                                               <use width="10" height ="10" href="/src/symbol-defs.svg#icon-cross"></use>
                                                                                             </svg>`;
                                                       savedCities.append(item);
                                                       item.insertAdjacentHTML("beforeend", markupSaved)});
