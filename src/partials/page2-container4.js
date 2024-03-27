@@ -10,6 +10,8 @@ let charty;
 
 // Functia principala care aduce datele de pe API
 async function fetchData(location) {
+
+  console.log(location)
   if (location === "") {return;}
   try {
     const response = await axios.get(`${apiUrl}?q=${location}&appid=${apiKey}&units=metric`);
@@ -108,13 +110,13 @@ const configuration =
 }
   
 function destroyChart(){if(charty){charty.destroy(); console.log("hello")}}
-function alabala(event) {let location = localStorage.getItem("temporary");
-                         getFiveDays(location);}
+function alabala() {let location = localStorage.getItem("temporary");
+                      getFiveDays(location);}
 
   //shearch-bar-ul general unde scriem orasul 
-  document.querySelector('.searchbar').addEventListener('submit', alabala());
-  document.querySelector("#gps").addEventListener('click', alabala());
-  document.querySelector(".saved-cities").addEventListener('click', alabala());
+ document.querySelector('.searchbar').addEventListener('submit', alabala());
+ document.querySelector("#gps").addEventListener('click', alabala());
+ document.querySelector(".saved-cities").addEventListener('click', alabala());
 
 
    //Functie care ascunde div-ule

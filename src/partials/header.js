@@ -56,20 +56,6 @@ function getInput(){inputText = form.elements.userinput.value.toLowerCase();
 
 function savedCityMarkup()
 {
-  /*let retrievedArrayAsString = localStorage.getItem("localCities");
-
-let xx;
-if (retrievedArrayAsString !== null) {
-  xx = JSON.parse(retrievedArrayAsString);
-} else {
-  console.log("No data found in localStorage for key 'localCities'");
-}
-
-  retrievedArray.push(xx);
-
-
-  citiesArr = [`${retrievedArray}`];
-*/
   if(inputText == undefined){Notiflix.Notify.warning('Enter a valid city name.')}
   else if(inputText.length !== 0)
       {if(!citiesArr.includes(inputText)){ citiesArr.push(inputText.toLowerCase());
