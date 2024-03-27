@@ -113,7 +113,8 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .close-city{font-size: 10px;
                                                                                             position: absolute;
                                                                                            top: 8;
-                                                                                           right:   8;}                                                                                     
+                                                                                           right:   8;
+                                                                                           background-color: inherit;}                                                                                     
 
 
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .city::first-letter{text-transform: uppercase;}

@@ -73,7 +73,7 @@ if (retrievedArrayAsString !== null) {
                                           item.setAttribute("id", `${inputText}`);
                                           item.setAttribute("title", `${inputText}`);
                                           let markup = `<span class="city">${inputText}</span>
-                                                        <span class="close-city" title = ${inputText}>❌</span>`;
+                                                        <button type="button" class="close-city" title = ${inputText}>❌</button>`;
                                       savedCities.append(item);
                                       item.insertAdjacentHTML("beforeend", markup);
                                       localStorage.setItem("localCities", JSON.stringify(citiesArr));
@@ -87,18 +87,18 @@ if (retrievedArrayAsString !== null) {
 
 function emptyMarkup(event){event.preventDefault();
                           let g = event.target;
+                          console.log("g.nodeName",g.nodeName)
+                          let attribute = g.getAttribute("title");
+                          console.log("attribute",attribute)
                           let gg = g.parentNode;
-                          if(g.nodeName == "span"){return;}
-                          else if(g.nodeName == "svg"){gg.remove();
-                                                  citiesArr.splice(citiesArr.indexOf(gg.getAttribute("title")),1);}
-                          else if(g.nodeName == "use"){gg.parentNode.remove();
-                                citiesArr.splice(citiesArr.indexOf(gg.parentNode.getAttribute("title")),1);}
-                          localStorage.setItem("localCities", JSON.stringify(citiesArr));
-                          initial = 0;
-                          savedCities.style.transform = `translatex(0px)`;
-                          prevButton.style.visibility = "hidden";
-                          btnShow();
-                          
+                          console.log("gg",gg)
+                          if(g.nodeName == "BUTTON"){gg.remove();
+                                                     citiesArr.splice(citiesArr.indexOf(attribute),1)
+                                                     localStorage.setItem("localCities", JSON.stringify(citiesArr));
+                                                     initial = 0;
+                                                     savedCities.style.transform = `translatex(0px)`;
+                                                     prevButton.style.visibility = "hidden";}
+                          btnShow()
                              }
 
 function storedCities()
@@ -116,9 +116,7 @@ if(citiesArr.length !== 0){citiesArr.forEach(city => {let item = document.create
                                                       item.setAttribute("id", `${city}`);
                                                       item.setAttribute("title", `${city}`);
                                                       let markupSaved = `<span class="city">${city}</span>
-                                                                                            <svg width="10" height ="10" class="close-city">
-                                                                                               <use width="10" height ="10" href="/src/symbol-defs.svg#icon-cross"></use>
-                                                                                            </svg>`;
+                                                                         <button type="button" class="close-city" title = ${city}>❌</button>`;
                                                       savedCities.append(item);
                                                       item.insertAdjacentHTML("beforeend", markupSaved)});
                                                       btnShow();                                       
@@ -155,6 +153,7 @@ function inputSearch(event){console.log(inputText);
 
 function addInputText(event){
                             let www = event.target;
+                            console.log("www", www)
                              if(event.target.nodeName == "SPAN"){inputText = www.textContent;
                                                                   inputSearch();
                                                                   largeImageARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];

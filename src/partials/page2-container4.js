@@ -14,10 +14,7 @@ async function fetchData(location) {
   try {
     const response = await axios.get(`${apiUrl}?q=${location}&appid=${apiKey}&units=metric`);
     return response.data  //const data = response.data; 
-  } catch (error) {
-    console.error(error);
-    notiflix.Notify.failure('Error fetching data')
-  }
+  } catch (error) {return;}
 };
 
 // Functia care aduce datele pentru 5 zile in format 14 Mar 2024
