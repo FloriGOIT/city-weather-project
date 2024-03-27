@@ -2,6 +2,9 @@ import { remove } from 'lodash';
 import Notiflix from 'notiflix'; 
 import {destroyChart} from './page2-container4';
 
+let screenWidth = window.screen.width; 
+console.log("Screen width: " + screenWidth);
+
 let currentDate = new Date();
 let currentDateInMillis = new Date().getTime();
 let currentDateInSeconds = Math.floor(currentDateInMillis / 1000);
@@ -33,6 +36,7 @@ let initial = 0;
 let closeBtn23 = document.querySelector('.close__more-info');
 let hideCart24 = document.querySelector('.hide-chart-div');
 let largeImageARR = [];
+let webformatURLARR = [];
 //functions
 
 //scroll saved city
@@ -148,11 +152,16 @@ function showPreviousItems(){
 function inputSearch(event){let apiUrl = `https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&&safesearch=true&image_type=photo&pretty=true&q=${inputText}`;
                            fetch(apiUrl).then(response => {if (!response.ok) {console.log("response No:", body);}
                                                         else{return response.json()};})
-                                    .then(data => {for(let hit of data.hits){if (hit.tags.includes("city")  || hit.tags.includes("architecture")  || hit.tags.includes("landscape")|| hit.tags.includes("building") || hit.tags.includes("landmark"))
-                                                                               {largeImageARR.push(hit.largeImageURL);};};
-                                                                             if(largeImageARR.length > 1){body.style.backgroundImage = `url('${largeImageARR[1]}')`;}
-                                                                             else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}});
+                                    .then(data => {if(screenWidth >= 780){for(let hit of data.hits){if (hit.tags.includes("city")  || hit.tags.includes("architecture")  || hit.tags.includes("landscape")|| hit.tags.includes("building") || hit.tags.includes("landmark"))
+                                                                                                       {largeImageARR.push(hit.largeImageURL);};};
+                                                                          if(largeImageARR.length > 1){body.style.backgroundImage = `url('${largeImageARR[1]}')`;}
+                                                                          else{body.style.backgroundImage = `url('${largeImageARR[0]}')`}}
+                                                    else if(screenWidth < 780){for(let hit of data.hits){if (hit.tags.includes("city")  || hit.tags.includes("architecture")  || hit.tags.includes("landscape")|| hit.tags.includes("building") || hit.tags.includes("landmark"))
+                                                                                  {webformatURLARR.push(hit.webformatURL);};};
+                                                                                  if(webformatURLARR.length > 1){body.style.backgroundImage = `url('${webformatURLARR[1]}')`;}
+                                                                                  else{body.style.backgroundImage = `url('${webformatURLARR[0]}')`}}});
                        largeImageARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
+                       webformatURLARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
                        localStorage.setItem('temporary', `${inputText}`);
                        closeBtn23.click();
                        hideCart24.click();
@@ -164,6 +173,7 @@ function addInputText(event){
                                                                 localStorage.setItem('temporary', `${inputText}`);
                                                                   inputSearch();
                                                                   largeImageARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
+                                                                  webformatURLARR=["https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/wheat-field-with-cypresses-digital-remastered-edition-vincent-van-gogh.jpg"];
                                                                 inputText = ``; return;};
 }                                   
 
