@@ -114,7 +114,8 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
                                                                                             position: absolute;
                                                                                            top: 8;
                                                                                            right:   8;
-                                                                                           background-color: inherit;}                                                                                     
+                                                                                           background-color: rgba(128, 128, 128, 0.2);
+                                                                                           border:none}                                                                                     
 
 
 .search-section .search-container .cities-scroll div .saved-cities .saved-city .city::first-letter{text-transform: uppercase;}
