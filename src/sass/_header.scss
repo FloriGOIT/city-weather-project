@@ -138,7 +138,8 @@ body{background-image: url("/src/images/vincent-van-gogh.jpg");
     .search-section .search-container .searchbar input:placeholder-shown{font: var(--lato400-s18-h22-normal)};
 
     .search-section .search-container .cities-scroll div .saved-cities .saved-city
-    {font: var(--lato400-s14-h17-normal);}
+    {font: var(--lato400-s14-h17-normal);
+        margin-right: 10px;}
     .search-section .search-container .cities-scroll div{width: 433px;}
 
 }
