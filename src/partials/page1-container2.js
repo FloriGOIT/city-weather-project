@@ -142,8 +142,8 @@ let quoteAll = [
       author: 'Tom Lehrer',
     },
     {
-      quote: 'The weather is like the government, always in the wrong.',
-      author: 'Jerome K. Jerome',
+      quote: 'Wherever you go, no matter the weather, always bring your own sunshine.',
+      author: 'Anthony J. D’Angelo',
     },
     {
       quote: 'A beach and warm weather is all I really need.',
@@ -157,12 +157,14 @@ let quoteAll = [
       quote: 'There`s no such thing as bad weather, just soft people.',
       author: 'Bill Bowerman',
     },
-    { quote: 'I love the rain, it can hide my tears', author: 'JS programmer' },
+    { quote: 'Rain is grace; rain is the sky descending to the earth; without rain, there would be no life', author: 'John Updike' },
     {
       quote: 'If you want to see the sunshine, you have to weather the storm',
       author: 'Frank Lane',
     },
-    {quote:'Just for the record, the weather today is calm and sunny, but the air is full of shit.', author:'Ellie Yelizarieva '}
+    {quote:'Some people feel the rain. Others just get wet.', author:'Bob Marley'},
+  {quote:'Keep your face to the sunshine and you cannot see a shadow.', author:'Helen Keller'},
+  {quote:'Life isn’t about waiting for the storm to pass, it’s about learning to dance in the rain.', author:'Vivian Greene'}
   ];
 
 let page12 = document.querySelector(".weather-data-section");
